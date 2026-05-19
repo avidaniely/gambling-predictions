@@ -47,6 +47,8 @@
           <tr>
             <td>
               Season PPG
+              <span title="Points Per Game — average league points earned per match this season (Win=3, Draw=1, Loss=0). Higher = stronger team on paper."
+                    style="cursor:help; color:#999; font-size:0.8rem; border-bottom:1px dotted #999;">?</span>
               {% if features.home_played < min_mp or features.away_played < min_mp %}
               <div style="font-size:0.75rem; color:#c07000;">⚠ early season (&lt;{{ min_mp }} matches)</div>
               {% endif %}
@@ -76,7 +78,10 @@
 
           {# Form #}
           <tr>
-            <td>Recent form<br><span style="font-size:0.75rem; color:#999;">last 5, opp-adjusted</span></td>
+            <td>Recent form
+              <span title="Average points per match over the last 5 games, weighted so recent results count more (decay 0.8) and adjusted for opponent strength — a win against a top team counts more than a win against a bottom team."
+                    style="cursor:help; color:#999; font-size:0.8rem; border-bottom:1px dotted #999;">?</span>
+              <br><span style="font-size:0.75rem; color:#999;">last 5, opp-adjusted</span></td>
             <td class="num">
               {% if features.home_form is not none %}
                 <strong>{{ "%.2f"|format(features.home_form) }}</strong>
@@ -100,7 +105,10 @@
 
           {# H2H #}
           <tr>
-            <td>Head-to-head<br><span style="font-size:0.75rem; color:#999;">{{ features.h2h_n }} recent meeting{{ 's' if features.h2h_n != 1 else '' }}</span></td>
+            <td>Head-to-head
+              <span title="Average points earned per match in recent meetings between these two teams. Only the current season plus last season are counted — older results are ignored as squads change too much."
+                    style="cursor:help; color:#999; font-size:0.8rem; border-bottom:1px dotted #999;">?</span>
+              <br><span style="font-size:0.75rem; color:#999;">{{ features.h2h_n }} recent meeting{{ 's' if features.h2h_n != 1 else '' }}</span></td>
             <td class="num" colspan="2" style="text-align:center; color:#888; font-size:0.82rem;">
               {% if features.h2h_n == 0 %}
                 No recent meetings
