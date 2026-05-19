@@ -25,8 +25,7 @@ SEASONS = [2022, 2023, 2024]
 
 # --- Files ------------------------------------------------------------------
 DATA_DIR = "data"
-RAW_MATCHES = f"{DATA_DIR}/raw_matches.csv"
-CALIBRATION_TABLE = f"{DATA_DIR}/calibration_table.csv"
+DB_PATH = f"{DATA_DIR}/gambling.db"
 MODEL_WEIGHTS = f"{DATA_DIR}/model_weights.json"
 
 # --- Feature parameters -----------------------------------------------------

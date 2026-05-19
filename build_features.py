@@ -1,5 +1,5 @@
 """
-Step 2 of the pipeline: turn raw_matches.csv into a calibration table.
+Step 2 of the pipeline: turn raw_matches (SQLite) into the calibration table.
 
 For every completed match it reconstructs the "automatic" parameters *as they
 stood the moment before kick-off* — never using the match itself or anything
@@ -22,17 +22,16 @@ reconstruct. They join the model later as manually-entered inputs.
 Usage:
     python build_features.py
 """
-import csv
 import sys
 from collections import defaultdict, deque
 
 import config
+import db
 
 COMPLETED = {"FT", "AET", "PEN"}
 
 
 def points(gf, ga):
-    """Points earned by a team that scored gf against ga."""
     if gf > ga:
         return 3
     if gf == ga:
@@ -41,17 +40,14 @@ def points(gf, ga):
 
 
 def load_completed_matches():
-    """Load completed matches, chronologically sorted, with numeric goals."""
-    try:
-        with open(config.RAW_MATCHES, encoding="utf-8") as f:
-            rows = list(csv.DictReader(f))
-    except FileNotFoundError:
-        sys.exit(f"{config.RAW_MATCHES} not found — run pull_data.py first.")
+    rows = db.fetch_all_matches()
+    if not rows:
+        sys.exit("No matches in database — run pull_data.py or pull_thesportsdb.py first.")
     matches = []
     for r in rows:
         if r["status"] not in COMPLETED:
             continue
-        if r["home_goals"] in ("", None) or r["away_goals"] in ("", None):
+        if r["home_goals"] is None or r["away_goals"] is None:
             continue
         r["home_goals"] = int(r["home_goals"])
         r["away_goals"] = int(r["away_goals"])
@@ -64,13 +60,11 @@ def load_completed_matches():
 def build():
     matches = load_completed_matches()
     if not matches:
-        sys.exit("No completed matches found in raw_matches.csv.")
+        sys.exit("No completed matches found in database.")
 
-    # Running history of PRIOR matches only. Keyed by season so PPG and form do
-    # not bleed across season boundaries. H2H is keyed by team pair, across seasons.
-    season_team_points = defaultdict(lambda: defaultdict(list))   # season -> team -> [pts,...]
-    season_team_form = defaultdict(lambda: defaultdict(deque))    # season -> team -> deque[(pts, opp_ppg)]
-    h2h_history = defaultdict(list)                              # (teamA,teamB) -> [(season,home,pts_h,pts_a),...]
+    season_team_points = defaultdict(lambda: defaultdict(list))
+    season_team_form   = defaultdict(lambda: defaultdict(deque))
+    h2h_history        = defaultdict(list)
 
     def ppg_now(season, team):
         pts = season_team_points[season][team]
@@ -80,18 +74,17 @@ def build():
 
     def league_avg_ppg(season):
         all_pts = [p for team in season_team_points[season].values() for p in team]
-        if len(all_pts) < 10:  # too early in the season to trust
+        if len(all_pts) < 10:
             return config.LEAGUE_AVG_PPG_FALLBACK
         return sum(all_pts) / len(all_pts)
 
     def form_now(season, team):
-        """Opponent-adjusted, exponentially-decayed form over the last N matches."""
         window = season_team_form[season][team]
         if not window:
             return None
         avg_ppg = league_avg_ppg(season)
         weighted_sum, weight_total = 0.0, 0.0
-        for i, (pts, opp_ppg) in enumerate(reversed(window)):  # i=0 is most recent
+        for i, (pts, opp_ppg) in enumerate(reversed(window)):
             w = config.FORM_DECAY ** i
             opp_factor = (opp_ppg / avg_ppg) if (opp_ppg and avg_ppg) else 1.0
             weighted_sum += w * pts * opp_factor
@@ -110,44 +103,41 @@ def build():
         return diff, len(relevant)
 
     def diff(a, b):
-        return "" if (a is None or b is None) else round(a - b, 4)
+        return None if (a is None or b is None) else round(a - b, 4)
 
     out_rows = []
     for m in matches:
         season, home, away = m["season"], m["home_team"], m["away_team"]
         hg, ag = m["home_goals"], m["away_goals"]
 
-        # ---- features from history BEFORE this match ----------------------
-        home_ppg, home_mp = ppg_now(season, home)
-        away_ppg, away_mp = ppg_now(season, away)
-        home_form = form_now(season, home)
-        away_form = form_now(season, away)
-        h2h_diff, h2h_n = h2h_diff_now(home, away, season)
+        home_ppg,  home_mp  = ppg_now(season, home)
+        away_ppg,  away_mp  = ppg_now(season, away)
+        home_form            = form_now(season, home)
+        away_form            = form_now(season, away)
+        h2hd, h2h_n          = h2h_diff_now(home, away, season)
 
         result = "H" if hg > ag else ("D" if hg == ag else "A")
 
         out_rows.append({
-            "fixture_id": m["fixture_id"],
-            "season": season,
-            "date": m["date"],
-            "home_team": home,
-            "away_team": away,
-            "home_ppg": round(home_ppg, 4) if home_ppg is not None else "",
-            "away_ppg": round(away_ppg, 4) if away_ppg is not None else "",
-            "ppg_diff": diff(home_ppg, away_ppg),
+            "fixture_id":          m["fixture_id"],
+            "season":              season,
+            "date":                m["date"],
+            "home_team":           home,
+            "away_team":           away,
+            "home_ppg":            round(home_ppg, 4) if home_ppg is not None else None,
+            "away_ppg":            round(away_ppg, 4) if away_ppg is not None else None,
+            "ppg_diff":            diff(home_ppg, away_ppg),
             "home_matches_played": home_mp,
             "away_matches_played": away_mp,
-            "home_form": round(home_form, 4) if home_form is not None else "",
-            "away_form": round(away_form, 4) if away_form is not None else "",
-            "form_diff": diff(home_form, away_form),
-            "h2h_diff": round(h2h_diff, 4),
-            "h2h_matches": h2h_n,
-            "result": result,
+            "home_form":           round(home_form, 4) if home_form is not None else None,
+            "away_form":           round(away_form, 4) if away_form is not None else None,
+            "form_diff":           diff(home_form, away_form),
+            "h2h_diff":            round(h2hd, 4),
+            "h2h_matches":         h2h_n,
+            "result":              result,
         })
 
-        # ---- ONLY NOW record this match into history ----------------------
         hp, ap = points(hg, ag), points(ag, hg)
-        # opponent PPG "as of now", stored so future form calcs can adjust by it
         home_ppg_at_time = home_ppg if home_ppg is not None else config.LEAGUE_AVG_PPG_FALLBACK
         away_ppg_at_time = away_ppg if away_ppg is not None else config.LEAGUE_AVG_PPG_FALLBACK
 
@@ -163,25 +153,17 @@ def build():
 
         h2h_history[tuple(sorted([home, away]))].append((season, home, hp, ap))
 
-    fieldnames = ["fixture_id", "season", "date", "home_team", "away_team",
-                  "home_ppg", "away_ppg", "ppg_diff",
-                  "home_matches_played", "away_matches_played",
-                  "home_form", "away_form", "form_diff",
-                  "h2h_diff", "h2h_matches", "result"]
-    with open(config.CALIBRATION_TABLE, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(out_rows)
+    db.replace_calibration(out_rows)
 
     reliable = sum(1 for r in out_rows
-                   if r["home_matches_played"] >= config.MIN_MATCHES_FOR_PPG
-                   and r["away_matches_played"] >= config.MIN_MATCHES_FOR_PPG)
-    print(f"Wrote {len(out_rows)} matches to {config.CALIBRATION_TABLE}")
-    print(f"  {reliable} have a reliable PPG for both teams "
+                   if (r["home_matches_played"] or 0) >= config.MIN_MATCHES_FOR_PPG
+                   and (r["away_matches_played"] or 0) >= config.MIN_MATCHES_FOR_PPG)
+    print(f"Wrote {len(out_rows)} matches to calibration_table")
+    print(f"  {reliable} have reliable PPG for both teams "
           f"(>= {config.MIN_MATCHES_FOR_PPG} prior matches each)")
-    print(f"  {len(out_rows) - reliable} are early-season rows — "
-          f"keep or filter them at calibration time")
+    print(f"  {len(out_rows) - reliable} are early-season rows")
 
 
 if __name__ == "__main__":
+    db.init_db()
     build()

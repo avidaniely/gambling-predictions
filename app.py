@@ -1,7 +1,7 @@
 """
 Stage 4: local web portal for Ligat Ha'Al match predictions.
 
-Reads data/raw_matches.csv and data/model_weights.json — never touches the API.
+Reads from the SQLite database — never touches the API directly.
 Run pull_data.py, build_features.py, and calibrate.py first.
 
 Usage:
@@ -18,13 +18,15 @@ import sys
 from collections import defaultdict, deque
 
 try:
-    from flask import Flask, render_template, request
+    from flask import Flask, Response, render_template, request
 except ImportError:
     sys.exit("app.py needs Flask.  Install:  pip install flask")
 
 import config
+import db
 
 app = Flask(__name__)
+db.init_db()  # create tables + migrate CSVs on first run
 
 COMPLETED = {"FT", "AET", "PEN"}
 
@@ -46,17 +48,12 @@ def _pts(gf, ga):
 
 
 def load_matches():
-    try:
-        with open(config.RAW_MATCHES, encoding="utf-8") as f:
-            rows = list(csv.DictReader(f))
-    except FileNotFoundError:
-        return []
+    rows = db.fetch_all_matches()
     for r in rows:
         r["season"] = int(r["season"])
-        if r["home_goals"] not in ("", None) and r["away_goals"] not in ("", None):
+        if r["home_goals"] is not None and r["away_goals"] is not None:
             r["home_goals"] = int(r["home_goals"])
             r["away_goals"] = int(r["away_goals"])
-    rows.sort(key=lambda r: (r["date"], str(r["fixture_id"])))
     return rows
 
 
@@ -69,19 +66,13 @@ def load_model():
 
 
 def build_state(matches):
-    """
-    Walk completed matches chronologically.
-    Returns:
-        states      = {season: {team: {ppg, form, played, wins, draws, losses, gf, ga, points, last5}}}
-        h2h_history = {(teamA, teamB): [(season, home_team, home_pts, away_pts), ...]}
-    """
-    s_pts  = defaultdict(lambda: defaultdict(list))
-    s_form = defaultdict(lambda: defaultdict(deque))
-    s_wdl  = defaultdict(lambda: defaultdict(lambda: [0, 0, 0]))  # [W, D, L]
-    s_gf   = defaultdict(lambda: defaultdict(int))
-    s_ga   = defaultdict(lambda: defaultdict(int))
+    s_pts   = defaultdict(lambda: defaultdict(list))
+    s_form  = defaultdict(lambda: defaultdict(deque))
+    s_wdl   = defaultdict(lambda: defaultdict(lambda: [0, 0, 0]))
+    s_gf    = defaultdict(lambda: defaultdict(int))
+    s_ga    = defaultdict(lambda: defaultdict(int))
     s_last5 = defaultdict(lambda: defaultdict(list))
-    h2h    = defaultdict(list)
+    h2h     = defaultdict(list)
 
     def league_avg(season):
         all_pts = [p for pts in s_pts[season].values() for p in pts]
@@ -128,7 +119,6 @@ def build_state(matches):
         while len(s_form[season][away]) > config.FORM_WINDOW:
             s_form[season][away].popleft()
 
-        # W/D/L and goals
         if hp == 3:
             s_wdl[season][home][0] += 1
         elif hp == 1:
@@ -147,7 +137,6 @@ def build_state(matches):
         s_gf[season][away] += ag
         s_ga[season][away] += hg
 
-        # last-5 form letters
         home_letter = "W" if hp == 3 else ("D" if hp == 1 else "L")
         away_letter = "W" if ap == 3 else ("D" if ap == 1 else "L")
         s_last5[season][home].append(home_letter)
@@ -186,9 +175,9 @@ def get_features(home, away, season, states, h2h_history):
     home_form = hs.get("form")
     away_form = aws.get("form")
 
-    key     = tuple(sorted([home, away]))
-    cutoff  = season - config.H2H_SEASONS_BACK
-    rel     = [m for m in h2h_history[key] if m[0] >= cutoff]
+    key    = tuple(sorted([home, away]))
+    cutoff = season - config.H2H_SEASONS_BACK
+    rel    = [m for m in h2h_history[key] if m[0] >= cutoff]
     if rel:
         h_pts = [m[2] if m[1] == home else m[3] for m in rel]
         a_pts = [m[3] if m[1] == home else m[2] for m in rel]
@@ -212,12 +201,6 @@ def get_features(home, away, season, states, h2h_history):
 
 
 def predict_probs(features, mot_diff, inj_diff, model):
-    """
-    Returns {H, D, A: probability}.
-    mot_diff  = home_motivation - away_motivation  (positive = home more motivated)
-    inj_diff  = away_injury - home_injury          (positive = home less injured)
-    Both are added to H's raw score and subtracted from A's before softmax.
-    """
     coef      = model["coef"]
     intercept = model["intercept"]
     w_mot     = model["manual_weights"]["motivation_diff"]
@@ -280,7 +263,6 @@ def predict():
     states, h2h_history = build_state(matches)
     teams = sorted(states.get(latest_season, {}).keys())
 
-    # defaults for the form
     form_vals = {
         "home": request.args.get("home", ""),
         "away": request.args.get("away", ""),
@@ -347,9 +329,28 @@ def predict():
     )
 
 
+# ── export routes ─────────────────────────────────────────────────────────────
+
+@app.route("/export/matches")
+def export_matches():
+    return Response(
+        db.export_matches_csv(),
+        mimetype="text/csv",
+        headers={"Content-Disposition": "attachment; filename=raw_matches.csv"},
+    )
+
+
+@app.route("/export/calibration")
+def export_calibration():
+    return Response(
+        db.export_calibration_csv(),
+        mimetype="text/csv",
+        headers={"Content-Disposition": "attachment; filename=calibration_table.csv"},
+    )
+
+
 # ── FootyStats column aliases ─────────────────────────────────────────────────
-# FootyStats CSVs use different column names across exports. Each entry is a
-# list of candidates tried in order — first match wins.
+
 _COL = {
     "id":         ["id", "match_id"],
     "date":       ["date_GMT", "date", "Date"],
@@ -361,12 +362,10 @@ _COL = {
     "round":      ["Game Week", "game_week", "round", "Round", "matchday"],
 }
 
-# FootyStats status values that mean the match is finished
 _FOOTYSTATS_COMPLETE = {"complete", "complete (not inc. extra time)", "1", "true"}
 
 
 def _pick(row, key):
-    """Return the value for logical key from a FootyStats row, or None."""
     for col in _COL[key]:
         if col in row:
             return row[col]
@@ -374,7 +373,6 @@ def _pick(row, key):
 
 
 def _footystats_to_raw(rows, season):
-    """Convert a list of FootyStats CSV dicts to raw_matches.csv format."""
     out = []
     for r in rows:
         home = _pick(r, "home_team")
@@ -388,14 +386,12 @@ def _footystats_to_raw(rows, season):
         hg = _pick(r, "home_goals")
         ag = _pick(r, "away_goals")
         try:
-            hg = int(float(hg)) if hg not in (None, "", "None") else ""
-            ag = int(float(ag)) if ag not in (None, "", "None") else ""
+            hg = int(float(hg)) if hg not in (None, "", "None") else None
+            ag = int(float(ag)) if ag not in (None, "", "None") else None
         except (ValueError, TypeError):
-            hg, ag = "", ""
+            hg, ag = None, None
 
-        date = (_pick(r, "date") or "").strip()
-
-        # stable ID: hash of season+date+teams so it never clashes with API-Football ids
+        date   = (_pick(r, "date") or "").strip()
         raw_id = _pick(r, "id")
         if raw_id:
             fixture_id = f"fs_{season}_{raw_id}"
@@ -403,13 +399,11 @@ def _footystats_to_raw(rows, season):
             h = hashlib.md5(f"{season}{date}{home}{away}".encode()).hexdigest()[:8]
             fixture_id = f"fs_{h}"
 
-        round_ = _pick(r, "round") or ""
-
         out.append({
             "fixture_id":   fixture_id,
             "season":       season,
             "date":         date,
-            "round":        round_,
+            "round":        _pick(r, "round") or "",
             "status":       status,
             "home_team":    home,
             "home_team_id": "",
@@ -422,9 +416,8 @@ def _footystats_to_raw(rows, season):
 
 
 def _check_cols(header):
-    """Return a list of missing logical keys whose candidates aren't in header."""
     missing = []
-    for key in ("home_team", "away_team", "date"):   # only truly required
+    for key in ("home_team", "away_team", "date"):
         if not any(c in header for c in _COL[key]):
             missing.append(key)
     return missing
@@ -436,43 +429,17 @@ def import_thesportsdb():
     season = int(request.form.get("season", 2025))
     sdb_result = None
     try:
-        rows  = sdb.pull_season(season)
+        rows = sdb.pull_season(season)
         if not rows:
             sdb_result = {"error": "No data returned from TheSportsDB for that season."}
         else:
-            existing = []
-            try:
-                with open(config.RAW_MATCHES, encoding="utf-8") as f:
-                    existing = list(csv.DictReader(f))
-            except FileNotFoundError:
-                pass
-
-            seen  = {(r["date"][:10], r["home_team"], r["away_team"]) for r in existing}
-            added = 0
-            for r in rows:
-                key = (r["date"][:10], r["home_team"], r["away_team"])
-                if key not in seen:
-                    existing.append(r)
-                    seen.add(key)
-                    added += 1
-
-            skipped = len(rows) - added
-
+            added, skipped = db.insert_matches(rows)
             if added > 0:
-                existing.sort(key=lambda r: (r["date"], str(r["fixture_id"])))
-                fieldnames = ["fixture_id", "season", "date", "round", "status",
-                              "home_team", "home_team_id", "away_team", "away_team_id",
-                              "home_goals", "away_goals"]
-                with open(config.RAW_MATCHES, "w", newline="", encoding="utf-8") as wf:
-                    writer = csv.DictWriter(wf, fieldnames=fieldnames)
-                    writer.writeheader()
-                    writer.writerows(existing)
                 subprocess.run([sys.executable, "build_features.py"], check=True)
-
             rounds = len({r["round"] for r in rows})
+            total = len(db.fetch_all_matches())
             sdb_result = {"added": added, "skipped": skipped,
-                          "total": len(existing), "rounds": rounds}
-
+                          "total": total, "rounds": rounds}
     except Exception as e:
         sdb_result = {"error": str(e)}
 
@@ -485,17 +452,17 @@ def import_data():
     result = None
 
     if request.method == "POST":
-        f = request.files.get("csv_file")
+        f      = request.files.get("csv_file")
         season = int(request.form.get("season", 2025))
 
         if not f or not f.filename:
             result = {"error": "No file selected."}
         else:
             try:
-                text = f.read().decode("utf-8-sig")  # utf-8-sig strips BOM if present
+                text   = f.read().decode("utf-8-sig")
                 reader = csv.DictReader(io.StringIO(text))
                 fs_rows = list(reader)
-                header = reader.fieldnames or []
+                header  = reader.fieldnames or []
 
                 missing = _check_cols(header)
                 if missing:
@@ -506,49 +473,18 @@ def import_data():
                     }
                 else:
                     new_rows = _footystats_to_raw(fs_rows, season)
+                    added, skipped = db.insert_matches(new_rows)
 
-                    # load existing data and build a dedup key set
-                    existing = []
-                    try:
-                        with open(config.RAW_MATCHES, encoding="utf-8") as ef:
-                            existing = list(csv.DictReader(ef))
-                    except FileNotFoundError:
-                        pass
-
-                    seen = {
-                        (r["date"][:10], r["home_team"], r["away_team"])
-                        for r in existing
-                    }
-
-                    added, skipped, sample = 0, 0, []
-                    for r in new_rows:
-                        key = (r["date"][:10], r["home_team"], r["away_team"])
-                        if key in seen:
-                            skipped += 1
-                        else:
-                            existing.append(r)
-                            seen.add(key)
-                            added += 1
-                            if len(sample) < 8:
-                                sample.append(r)
-
+                    sample = []
                     if added > 0:
-                        existing.sort(key=lambda r: (r["date"], str(r["fixture_id"])))
-                        fieldnames = ["fixture_id", "season", "date", "round", "status",
-                                      "home_team", "home_team_id", "away_team", "away_team_id",
-                                      "home_goals", "away_goals"]
-                        with open(config.RAW_MATCHES, "w", newline="", encoding="utf-8") as wf:
-                            writer = csv.DictWriter(wf, fieldnames=fieldnames)
-                            writer.writeheader()
-                            writer.writerows(existing)
-
-                        # rebuild calibration table automatically
+                        sample = new_rows[:8]
                         subprocess.run([sys.executable, "build_features.py"], check=True)
 
+                    total = len(db.fetch_all_matches())
                     result = {
                         "added":   added,
                         "skipped": skipped,
-                        "total":   len(existing),
+                        "total":   total,
                         "sample":  sample,
                     }
 

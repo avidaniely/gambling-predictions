@@ -3,14 +3,13 @@ Alternative data source: TheSportsDB (free, no key needed).
 Use this to pull seasons that API-Football's free tier doesn't cover (e.g. 2025/26).
 
 TheSportsDB returns matches round-by-round. We pull until a round comes back empty.
-Results are merged into data/raw_matches.csv (duplicates skipped by date+teams key).
+Results are upserted into the SQLite database (duplicates skipped by date+teams key).
 After running this, re-run build_features.py and calibrate.py.
 
 Usage:
-    python pull_thesportsdb.py               # pulls config.THESPORTSDB_SEASON
+    python pull_thesportsdb.py               # pulls season 2025
     python pull_thesportsdb.py 2025          # pulls season 2025/26
 """
-import csv
 import json
 import sys
 import time
@@ -18,14 +17,12 @@ import urllib.error
 import urllib.request
 
 import config
+import db
 
-LEAGUE_ID   = 4644          # Israeli Premier League on TheSportsDB
+LEAGUE_ID   = 4644
 BASE_URL    = "https://www.thesportsdb.com/api/v1/json/123"
-MAX_ROUNDS  = 50            # safety cap — more than any Israeli season will have
+MAX_ROUNDS  = 50
 
-# TheSportsDB uses different spellings for some clubs.
-# Values must match the API-Football names already in raw_matches.csv so that
-# H2H history is preserved across data sources.
 NAME_MAP = {
     "FC Ashdod":                  "Ashdod",
     "Hapoel Be'er Sheva":         "Hapoel Beer Sheva",
@@ -64,7 +61,7 @@ def pull_season(season_year):
 
     rows = []
     for round_num in range(1, MAX_ROUNDS + 1):
-        data  = _get(f"eventsround.php?id={LEAGUE_ID}&r={round_num}&s={season_str}")
+        data = _get(f"eventsround.php?id={LEAGUE_ID}&r={round_num}&s={season_str}")
         events = data.get("events") or []
         if not events:
             print(f"  Round {round_num}: empty — done ({round_num - 1} rounds pulled)")
@@ -84,57 +81,28 @@ def pull_season(season_year):
                 "home_team_id": e.get("idHomeTeam", ""),
                 "away_team":    _norm(e["strAwayTeam"]),
                 "away_team_id": e.get("idAwayTeam", ""),
-                "home_goals":   int(hg) if hg is not None else "",
-                "away_goals":   int(ag) if ag is not None else "",
+                "home_goals":   int(hg) if hg is not None else None,
+                "away_goals":   int(ag) if ag is not None else None,
             })
         print(f"  Round {round_num}: {len(events)} events")
-        time.sleep(2.5)  # 30 req/min free limit = 1 per 2s; 2.5s gives comfortable headroom
+        time.sleep(2.5)
 
     return rows
 
 
-def merge_and_save(new_rows):
-    existing = []
-    try:
-        with open(config.RAW_MATCHES, encoding="utf-8") as f:
-            existing = list(csv.DictReader(f))
-    except FileNotFoundError:
-        pass
-
-    seen = {(r["date"][:10], r["home_team"], r["away_team"]) for r in existing}
-
-    added = 0
-    for r in new_rows:
-        key = (r["date"][:10], r["home_team"], r["away_team"])
-        if key not in seen:
-            existing.append(r)
-            seen.add(key)
-            added += 1
-
-    existing.sort(key=lambda r: (r["date"], str(r["fixture_id"])))
-
-    fieldnames = ["fixture_id", "season", "date", "round", "status",
-                  "home_team", "home_team_id", "away_team", "away_team_id",
-                  "home_goals", "away_goals"]
-    with open(config.RAW_MATCHES, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(existing)
-
-    completed = sum(1 for r in new_rows if r["status"] == "FT")
-    print(f"\nAdded {added} new rows ({len(new_rows) - added} already existed).")
-    print(f"{completed} of {len(new_rows)} pulled matches are completed.")
-    print(f"Total in {config.RAW_MATCHES}: {len(existing)}")
-    if added:
-        print(f"\nNext steps:")
-        print(f"  python build_features.py")
-        print(f"  python calibrate.py")
-
-
 if __name__ == "__main__":
+    db.init_db()
     season_year = int(sys.argv[1]) if len(sys.argv) > 1 else 2025
     rows = pull_season(season_year)
-    if rows:
-        merge_and_save(rows)
-    else:
+    if not rows:
         print("No data returned.")
+        sys.exit(0)
+
+    added, skipped = db.insert_matches(rows)
+    completed = sum(1 for r in rows if r["status"] == "FT")
+    print(f"\nAdded {added} new rows ({skipped} already existed).")
+    print(f"{completed} of {len(rows)} pulled matches are completed.")
+    if added:
+        print("\nNext steps:")
+        print("  python build_features.py")
+        print("  python calibrate.py")

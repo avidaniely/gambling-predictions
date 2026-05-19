@@ -1,6 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
 
+{# ── Export / Download ── #}
+<div class="card">
+  <h2>Export Data (CSV)</h2>
+  <p style="font-size:0.88rem; color:#555; margin-bottom:1rem;">
+    Download the current database contents as CSV files.
+  </p>
+  <div style="display:flex; gap:1rem;">
+    <a href="/export/matches" class="btn" style="text-decoration:none;">⬇ raw_matches.csv</a>
+    <a href="/export/calibration" class="btn" style="text-decoration:none; background:#555;">⬇ calibration_table.csv</a>
+  </div>
+</div>
+
 {# ── TheSportsDB pull ── #}
 <div class="card">
   <h2>Pull Current Season from TheSportsDB</h2>
@@ -13,7 +25,7 @@
   <pre style="background:#f4f4f4; border:1px solid #ddd; border-radius:5px; padding:0.75rem 1rem; font-size:0.9rem; margin-bottom:0.75rem;">python pull_thesportsdb.py 2025</pre>
   <p style="font-size:0.82rem; color:#666;">
     Change <code>2025</code> to the season start year if needed. The script pulls round-by-round,
-    merges into <code>data/raw_matches.csv</code>, and rebuilds the calibration table automatically.
+    merges into the SQLite database, and rebuilds the calibration table automatically.
     Then run <code>python calibrate.py</code> to update the model weights.
   </p>
 
@@ -24,7 +36,7 @@
     <div class="alert alert-info" style="margin-top:1rem;">
       <strong>{{ sdb_result.added }}</strong> new matches added &nbsp;·&nbsp;
       <strong>{{ sdb_result.skipped }}</strong> already existed &nbsp;·&nbsp;
-      <strong>{{ sdb_result.total }}</strong> total in raw_matches.csv
+      <strong>{{ sdb_result.total }}</strong> total in database
       &nbsp;·&nbsp; {{ sdb_result.rounds }} rounds pulled
       {% if sdb_result.added > 0 %}
       <br><strong>Next:</strong> run <code>python calibrate.py</code> in your terminal to update the model weights.
@@ -88,7 +100,7 @@
     <div style="display:flex; gap:2rem; margin-bottom:1rem; font-size:0.9rem;">
       <div><strong>{{ result.added }}</strong> new matches added</div>
       <div><strong>{{ result.skipped }}</strong> already existed (skipped)</div>
-      <div><strong>{{ result.total }}</strong> total in raw_matches.csv</div>
+      <div><strong>{{ result.total }}</strong> total in database</div>
     </div>
 
     {% if result.added > 0 %}

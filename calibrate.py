@@ -16,7 +16,6 @@ Outputs:
 Usage:
     python calibrate.py
 """
-import csv
 import json
 import sys
 from collections import Counter, defaultdict
@@ -32,21 +31,20 @@ except ImportError:
     )
 
 import config
+import db
 
 FEATURES = ["ppg_diff", "form_diff", "h2h_diff"]
 
 
 def load_reliable_rows():
-    try:
-        with open(config.CALIBRATION_TABLE, encoding="utf-8") as f:
-            rows = list(csv.DictReader(f))
-    except FileNotFoundError:
-        sys.exit(f"{config.CALIBRATION_TABLE} not found — run build_features.py first.")
+    rows = db.fetch_calibration()
+    if not rows:
+        sys.exit("No calibration data — run build_features.py first.")
 
     reliable, dropped = [], 0
     for r in rows:
-        if (int(r["home_matches_played"]) < config.MIN_MATCHES_FOR_PPG
-                or int(r["away_matches_played"]) < config.MIN_MATCHES_FOR_PPG
+        if ((r["home_matches_played"] or 0) < config.MIN_MATCHES_FOR_PPG
+                or (r["away_matches_played"] or 0) < config.MIN_MATCHES_FOR_PPG
                 or not r["ppg_diff"] or not r["form_diff"]):
             dropped += 1
             continue
@@ -145,6 +143,7 @@ def save_weights(model, n_trained):
 
 
 if __name__ == "__main__":
+    db.init_db()
     rows = load_reliable_rows()
     X, y, seasons = to_arrays(rows)
     model = fit_model(X, y)
