@@ -410,7 +410,7 @@ def build_summary(features, form_vals, mot_diff, inj_diff, model, home="הבית
     match_bonus = ((DERBY_BONUS   if form_vals["derby"]   else 0)
                    + (RIVALRY_BONUS if form_vals["rivalry"] else 0))
     home_mot = form_vals["home_stake"] + match_bonus
-    away_mot = form_vals["away_stake"] + match_bonus
+    away_mot = form_vals["away_stake"]
     logit_mot = w_mot * mot_diff
     mot_note  = "" if w_mot != 0 else " Weight is 0.0 — inactive. Tune motivation_diff in model_weights.json."
     if w_mot == 0:
@@ -558,7 +558,7 @@ def predict():
             match_bonus = ((DERBY_BONUS   if form_vals["derby"]   else 0)
                            + (RIVALRY_BONUS if form_vals["rivalry"] else 0))
             home_mot = form_vals["home_stake"] + match_bonus
-            away_mot = form_vals["away_stake"] + match_bonus
+            away_mot = form_vals["away_stake"]
             mot_diff = home_mot - away_mot
             inj_diff = form_vals["away_injury"] - form_vals["home_injury"]
 
