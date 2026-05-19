@@ -267,6 +267,125 @@ def get_features(home, away, season, states, h2h_history):
     }
 
 
+def build_summary(features, form_vals, mot_diff, inj_diff, model):
+    """
+    Return a list of dicts describing how each of the 6 factors
+    contributed to the prediction, expressed in plain language.
+    """
+    coef      = model["coef"]
+    intercept = model["intercept"]
+    w_mot     = model["manual_weights"]["motivation_diff"]
+    w_inj     = model["manual_weights"]["injury_diff"]
+
+    def _dir(logit_h):
+        if logit_h > 0.05:   return "home"
+        if logit_h < -0.05:  return "away"
+        return "neutral"
+
+    items = []
+
+    # 1 — Home advantage (regression intercept)
+    logit_ha = intercept.get("H", 0)
+    items.append({
+        "name":     "Home advantage",
+        "values":   f"intercept {logit_ha:+.3f}",
+        "sentence": (f"Every home match starts with +{logit_ha:.3f} added to the home logit — "
+                     "calibrated from historical home/away win rates across all seasons."),
+        "direction": "home" if logit_ha > 0 else "neutral",
+        "logit_h":  logit_ha,
+        "inactive": False,
+    })
+
+    # 2 — Table strength (PPG)
+    ppg_diff  = features["ppg_diff"]
+    logit_ppg = coef["H"]["ppg_diff"] * ppg_diff
+    home_ppg  = features.get("home_ppg")
+    away_ppg  = features.get("away_ppg")
+    ppg_vals  = (f"Home {home_ppg:.2f} PPG vs away {away_ppg:.2f} PPG (diff {ppg_diff:+.2f})"
+                 if home_ppg is not None and away_ppg is not None
+                 else "Insufficient data — early season")
+    items.append({
+        "name":     "Table strength (PPG)",
+        "values":   ppg_vals,
+        "sentence": (f"PPG diff {ppg_diff:+.2f} × model weight {coef['H']['ppg_diff']:+.3f} "
+                     f"= {logit_ppg:+.3f} to home logit."),
+        "direction": _dir(logit_ppg),
+        "logit_h":  logit_ppg,
+        "inactive": False,
+    })
+
+    # 3 — Recent form
+    form_diff  = features["form_diff"]
+    logit_form = coef["H"]["form_diff"] * form_diff
+    home_form  = features.get("home_form")
+    away_form  = features.get("away_form")
+    form_vals_str = (f"Home form {home_form:.2f} vs away form {away_form:.2f} "
+                     f"(diff {form_diff:+.2f}, opponent-adjusted, last 5 matches)"
+                     if home_form is not None and away_form is not None
+                     else "Insufficient data — early season")
+    items.append({
+        "name":     "Recent form",
+        "values":   form_vals_str,
+        "sentence": (f"Form diff {form_diff:+.2f} × model weight {coef['H']['form_diff']:+.3f} "
+                     f"= {logit_form:+.3f} to home logit."),
+        "direction": _dir(logit_form),
+        "logit_h":  logit_form,
+        "inactive": False,
+    })
+
+    # 4 — Head-to-head
+    h2h_diff  = features["h2h_diff"]
+    h2h_n     = features["h2h_n"]
+    logit_h2h = coef["H"]["h2h_diff"] * h2h_diff
+    h2h_vals  = (f"{h2h_n} recent meeting{'s' if h2h_n != 1 else ''}, "
+                 f"home avg {h2h_diff:+.2f} pts/match advantage"
+                 if h2h_n > 0 else "No recent H2H data — defaulted to 0")
+    items.append({
+        "name":     "Head-to-head",
+        "values":   h2h_vals,
+        "sentence": (f"H2H diff {h2h_diff:+.2f} × model weight {coef['H']['h2h_diff']:+.3f} "
+                     f"= {logit_h2h:+.3f} to home logit."
+                     if h2h_n > 0 else "No H2H history in the window — zero contribution."),
+        "direction": _dir(logit_h2h) if h2h_n > 0 else "neutral",
+        "logit_h":  logit_h2h,
+        "inactive": False,
+    })
+
+    # 5 — Motivation
+    home_mot = (form_vals["home_stake"]
+                + (DERBY_BONUS   if form_vals["home_derby"]   else 0)
+                + (RIVALRY_BONUS if form_vals["home_rivalry"] else 0))
+    away_mot = (form_vals["away_stake"]
+                + (DERBY_BONUS   if form_vals["away_derby"]   else 0)
+                + (RIVALRY_BONUS if form_vals["away_rivalry"] else 0))
+    logit_mot = w_mot * mot_diff
+    mot_note  = "" if w_mot != 0 else " Weight is 0.0 — inactive. Tune motivation_diff in model_weights.json."
+    items.append({
+        "name":     "Motivation",
+        "values":   f"Home score {home_mot} vs away score {away_mot} (diff {mot_diff:+d})",
+        "sentence": (f"Diff {mot_diff:+d} × manual weight {w_mot} = {logit_mot:+.3f} to home logit.{mot_note}"),
+        "direction": _dir(logit_mot) if w_mot != 0 else "neutral",
+        "logit_h":  logit_mot,
+        "inactive": w_mot == 0,
+    })
+
+    # 6 — Injuries
+    logit_inj = w_inj * inj_diff
+    inj_note  = "" if w_inj != 0 else " Weight is 0.0 — inactive. Tune injury_diff in model_weights.json."
+    items.append({
+        "name":     "Injuries / absences",
+        "values":   (f"Home severity {form_vals['home_injury']}/10, "
+                     f"away severity {form_vals['away_injury']}/10 "
+                     f"(net diff away−home: {inj_diff:+d})"),
+        "sentence": (f"Net diff {inj_diff:+d} × manual weight {w_inj} = {logit_inj:+.3f} to home logit.{inj_note}"),
+        "direction": _dir(logit_inj) if w_inj != 0 else "neutral",
+        "logit_h":  logit_inj,
+        "inactive": w_inj == 0,
+    })
+
+    return items
+
+
 def predict_probs(features, mot_diff, inj_diff, model):
     coef      = model["coef"]
     intercept = model["intercept"]
@@ -343,6 +462,7 @@ def predict():
 
     features   = None
     prediction = None
+    summary    = None
     mot_diff   = 0
     inj_diff   = 0
 
@@ -376,6 +496,7 @@ def predict():
             inj_diff = form_vals["away_injury"] - form_vals["home_injury"]
 
             prediction = predict_probs(features, mot_diff, inj_diff, model)
+            summary    = build_summary(features, form_vals, mot_diff, inj_diff, model)
 
     return render_template(
         "predict.html",
@@ -387,6 +508,7 @@ def predict():
         rivalry_bonus=RIVALRY_BONUS,
         features=features,
         prediction=prediction,
+        summary=summary,
         mot_diff=mot_diff,
         inj_diff=inj_diff,
         min_mp=config.MIN_MATCHES_FOR_PPG,

@@ -160,19 +160,45 @@
     </div>
   </div>
 
-  {% if mot_diff != 0 or inj_diff != 0 %}
-  <div style="margin-top:1rem; font-size:0.82rem; color:#666;">
-    Manual adjustments applied —
-    motivation diff: {{ "%+d"|format(mot_diff|int) }}
-    &nbsp;·&nbsp;
-    injury diff (away − home): {{ "%+d"|format(inj_diff|int) }}
-    &nbsp;·&nbsp;
-    manual weights: mot={{ model_weights.motivation_diff }}, inj={{ model_weights.injury_diff }}
-    {% if model_weights.motivation_diff == 0 and model_weights.injury_diff == 0 %}
-    <span style="color:#c07000;">(both at 0.0 — edit data/model_weights.json to tune)</span>
-    {% endif %}
+</div>
+
+{% if summary %}
+<div class="card">
+  <h2>How this prediction was calculated</h2>
+  <table style="font-size:0.88rem;">
+    <thead>
+      <tr>
+        <th style="width:18%;">Factor</th>
+        <th>Values</th>
+        <th style="width:10%; text-align:center;">Direction</th>
+        <th>Explanation</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for f in summary %}
+      <tr style="{% if f.inactive %}color:#aaa;{% endif %}">
+        <td><strong>{{ f.name }}</strong></td>
+        <td style="font-size:0.82rem; color:{% if f.inactive %}#bbb{% else %}#444{% endif %};">{{ f.values }}</td>
+        <td style="text-align:center;">
+          {% if f.inactive %}
+            <span style="font-size:0.75rem; background:#eee; color:#999; padding:2px 7px; border-radius:10px;">inactive</span>
+          {% elif f.direction == 'home' %}
+            <span style="font-size:0.75rem; background:#d4edda; color:#155724; padding:2px 7px; border-radius:10px; white-space:nowrap;">↑ home</span>
+          {% elif f.direction == 'away' %}
+            <span style="font-size:0.75rem; background:#f8d7da; color:#721c24; padding:2px 7px; border-radius:10px; white-space:nowrap;">↓ away</span>
+          {% else %}
+            <span style="font-size:0.75rem; background:#e2e3e5; color:#555; padding:2px 7px; border-radius:10px;">≈ neutral</span>
+          {% endif %}
+        </td>
+        <td style="font-size:0.82rem; color:{% if f.inactive %}#bbb{% else %}#555{% endif %};">{{ f.sentence }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div style="margin-top:0.75rem; font-size:0.78rem; color:#999;">
+    Logit scores are summed and passed through softmax to produce the H / D / A percentages.
+    Positive logit → boosts home win probability; negative → boosts away win probability.
   </div>
-  {% endif %}
 </div>
 {% endif %}
 
