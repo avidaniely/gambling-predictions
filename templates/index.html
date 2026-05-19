@@ -2,21 +2,21 @@
 {% block content %}
 
 <div class="card">
-  <h2>{{ season }}/{{ season + 1 }} Season Standings</h2>
+  <h2>{{ t.standings_title.format(season=season, next=season+1) }}</h2>
   <table>
     <thead>
       <tr>
-        <th>#</th>
-        <th>Team</th>
-        <th class="num">P</th>
-        <th class="num">W</th>
-        <th class="num">D</th>
-        <th class="num">L</th>
-        <th class="num">GF</th>
-        <th class="num">GA</th>
-        <th class="num">Pts</th>
-        <th class="num">PPG</th>
-        <th>Form (last 5)</th>
+        <th>{{ t.col_pos }}</th>
+        <th>{{ t.col_team }}</th>
+        <th class="num">{{ t.col_played }}</th>
+        <th class="num">{{ t.col_wins }}</th>
+        <th class="num">{{ t.col_draws }}</th>
+        <th class="num">{{ t.col_losses }}</th>
+        <th class="num">{{ t.col_gf }}</th>
+        <th class="num">{{ t.col_ga }}</th>
+        <th class="num">{{ t.col_pts }}</th>
+        <th class="num">{{ t.col_ppg }}</th>
+        <th>{{ t.col_form }}</th>
       </tr>
     </thead>
     <tbody>

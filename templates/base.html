@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ lang }}" dir="{{ 'rtl' if lang == 'he' else 'ltr' }}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ligat Ha'Al Predictor</title>
+<title>{{ t.site_title }}</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: system-ui, -apple-system, sans-serif; background: #f0f4f0; color: #1a1a1a; }
 
 header { background: #1a5c2a; color: white; padding: 0.9rem 2rem; display: flex; align-items: center; gap: 2rem; }
-header h1 { font-size: 1.3rem; letter-spacing: 0.02em; }
+header h1 { font-size: 1.3rem; letter-spacing: 0.02em; white-space: nowrap; }
+nav { display: flex; gap: 0.5rem; align-items: center; }
 nav a { color: #a8d5b5; text-decoration: none; font-size: 0.88rem; }
 nav a:hover { color: white; }
 nav a.active { color: white; font-weight: 600; }
+.lang-switch { margin-inline-start: auto; color: #a8d5b5; text-decoration: none; font-size: 0.85rem; font-weight: 600; padding: 0.2rem 0.55rem; border: 1px solid #4a8c5e; border-radius: 4px; white-space: nowrap; }
+.lang-switch:hover { color: white; border-color: #a8d5b5; }
 
 main { max-width: 960px; margin: 2rem auto; padding: 0 1rem; }
 
@@ -20,8 +23,8 @@ main { max-width: 960px; margin: 2rem auto; padding: 0 1rem; }
 h2 { font-size: 1.1rem; color: #1a5c2a; margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 2px solid #e0ebe2; }
 
 table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-th { text-align: left; padding: 0.5rem 0.75rem; background: #f6f9f6; color: #555; font-weight: 600; border-bottom: 2px solid #e0e0e0; }
-th.num, td.num { text-align: right; }
+th { text-align: start; padding: 0.5rem 0.75rem; background: #f6f9f6; color: #555; font-weight: 600; border-bottom: 2px solid #e0e0e0; }
+th.num, td.num { text-align: end; }
 td { padding: 0.45rem 0.75rem; border-bottom: 1px solid #f2f2f2; }
 tr:last-child td { border-bottom: none; }
 tr:hover td { background: #fafff9; }
@@ -69,8 +72,8 @@ select:focus, input:focus { outline: 2px solid #1a5c2a; border-color: #1a5c2a; }
 .feat-warn { font-size: 0.72rem; color: #c07000; margin-top: 0.1rem; }
 
 .alert { padding: 0.75rem 1rem; border-radius: 5px; font-size: 0.88rem; margin-bottom: 1rem; }
-.alert-info { background: #e8f4ec; color: #1a5c2a; border-left: 3px solid #1a5c2a; }
-.alert-warn { background: #fff8e6; color: #8a6000; border-left: 3px solid #f5a623; }
+.alert-info { background: #e8f4ec; color: #1a5c2a; border-inline-start: 3px solid #1a5c2a; }
+.alert-warn { background: #fff8e6; color: #8a6000; border-inline-start: 3px solid #f5a623; }
 
 /* feature edge badges */
 .edge-home { display: inline-block; font-size: 0.8rem; font-weight: 600; color: #155724; background: #d4edda; padding: 2px 9px; border-radius: 10px; white-space: nowrap; }
@@ -80,14 +83,17 @@ select:focus, input:focus { outline: 2px solid #1a5c2a; border-color: #1a5c2a; }
 </head>
 <body>
 <header>
-  <h1>⚽ Ligat Ha'Al Predictor</h1>
+  <h1>⚽ {{ t.site_title }}</h1>
   <nav>
-    <a href="/" {% if active=='home' %}class="active"{% endif %}>Standings</a>
+    <a href="/" {% if active=='home' %}class="active"{% endif %}>{{ t.nav_standings }}</a>
     &nbsp;·&nbsp;
-    <a href="/predict" {% if active=='predict' %}class="active"{% endif %}>Predict</a>
+    <a href="/predict" {% if active=='predict' %}class="active"{% endif %}>{{ t.nav_predict }}</a>
     &nbsp;·&nbsp;
-    <a href="/import" {% if active=='import' %}class="active"{% endif %}>Import Data</a>
+    <a href="/import" {% if active=='import' %}class="active"{% endif %}>{{ t.nav_import }}</a>
   </nav>
+  <a class="lang-switch"
+     href="/set-lang/{{ 'en' if lang == 'he' else 'he' }}"
+     title="{{ t.lang_toggle_title }}">{{ t.lang_toggle }}</a>
 </header>
 <main>
   {% block content %}{% endblock %}

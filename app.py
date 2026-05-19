@@ -21,15 +21,34 @@ from collections import defaultdict, deque
 from datetime import datetime
 
 try:
-    from flask import Flask, Response, jsonify, render_template, request
+    from flask import Flask, Response, jsonify, make_response, redirect, render_template, request
 except ImportError:
     sys.exit("app.py needs Flask.  Install:  pip install flask")
 
 import config
 import db
+from translations import TRANSLATIONS
 
 app = Flask(__name__)
 db.init_db()  # create tables + migrate CSVs on first run
+
+
+@app.context_processor
+def inject_i18n():
+    lang = request.cookies.get("lang", "he")
+    if lang not in TRANSLATIONS:
+        lang = "he"
+    return {"t": TRANSLATIONS[lang], "lang": lang}
+
+
+@app.route("/set-lang/<lang>")
+def set_lang(lang):
+    if lang not in TRANSLATIONS:
+        lang = "he"
+    resp = make_response(redirect(request.referrer or "/"))
+    resp.set_cookie("lang", lang, max_age=365 * 24 * 3600)
+    return resp
+
 
 # ── background refresh state ──────────────────────────────────────────────────
 # Single in-memory state (safe with --workers 1 --threads 4).
@@ -98,11 +117,11 @@ def refresh_status():
 COMPLETED = {"FT", "AET", "PEN"}
 
 STAKE_OPTIONS = [
-    (10, "Title race / Relegation survival"),
-    (7,  "European qualification"),
-    (6,  "Playoff spot"),
-    (5,  "Mid-table (no clear objective)"),
-    (2,  "Nothing at stake"),
+    (10, "stake_10"),
+    (7,  "stake_7"),
+    (6,  "stake_6"),
+    (5,  "stake_5"),
+    (2,  "stake_2"),
 ]
 DERBY_BONUS   = 2
 RIVALRY_BONUS = 1
@@ -288,6 +307,7 @@ def build_summary(features, form_vals, mot_diff, inj_diff, model):
     logit_ha = intercept.get("H", 0)
     items.append({
         "name":     "Home advantage",
+        "name_key": "factor_home_adv",
         "values":   f"intercept {logit_ha:+.3f}",
         "sentence": (f"Every home match starts with +{logit_ha:.3f} added to the home logit — "
                      "calibrated from historical home/away win rates across all seasons."),
@@ -306,6 +326,7 @@ def build_summary(features, form_vals, mot_diff, inj_diff, model):
                  else "Insufficient data — early season")
     items.append({
         "name":     "Table strength (PPG)",
+        "name_key": "factor_ppg_strength",
         "values":   ppg_vals,
         "sentence": (f"PPG diff {ppg_diff:+.2f} × model weight {coef['H']['ppg_diff']:+.3f} "
                      f"= {logit_ppg:+.3f} to home logit."),
@@ -325,6 +346,7 @@ def build_summary(features, form_vals, mot_diff, inj_diff, model):
                      else "Insufficient data — early season")
     items.append({
         "name":     "Recent form",
+        "name_key": "factor_form_bd",
         "values":   form_vals_str,
         "sentence": (f"Form diff {form_diff:+.2f} × model weight {coef['H']['form_diff']:+.3f} "
                      f"= {logit_form:+.3f} to home logit."),
@@ -342,6 +364,7 @@ def build_summary(features, form_vals, mot_diff, inj_diff, model):
                  if h2h_n > 0 else "No recent H2H data — defaulted to 0")
     items.append({
         "name":     "Head-to-head",
+        "name_key": "factor_h2h_bd",
         "values":   h2h_vals,
         "sentence": (f"H2H diff {h2h_diff:+.2f} × model weight {coef['H']['h2h_diff']:+.3f} "
                      f"= {logit_h2h:+.3f} to home logit."
@@ -362,6 +385,7 @@ def build_summary(features, form_vals, mot_diff, inj_diff, model):
     mot_note  = "" if w_mot != 0 else " Weight is 0.0 — inactive. Tune motivation_diff in model_weights.json."
     items.append({
         "name":     "Motivation",
+        "name_key": "factor_motivation",
         "values":   f"Home score {home_mot} vs away score {away_mot} (diff {mot_diff:+d})",
         "sentence": (f"Diff {mot_diff:+d} × manual weight {w_mot} = {logit_mot:+.3f} to home logit.{mot_note}"),
         "direction": _dir(logit_mot) if w_mot != 0 else "neutral",
@@ -374,6 +398,7 @@ def build_summary(features, form_vals, mot_diff, inj_diff, model):
     inj_note  = "" if w_inj != 0 else " Weight is 0.0 — inactive. Tune injury_diff in model_weights.json."
     items.append({
         "name":     "Injuries / absences",
+        "name_key": "factor_injuries",
         "values":   (f"Home severity {form_vals['home_injury']}/10, "
                      f"away severity {form_vals['away_injury']}/10 "
                      f"(net diff away−home: {inj_diff:+d})"),

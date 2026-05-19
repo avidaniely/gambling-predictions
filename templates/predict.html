@@ -2,27 +2,27 @@
 {% block content %}
 
 <div class="card">
-  <h2>Prediction Form</h2>
+  <h2>{{ t.predict_title }}</h2>
 
   <form method="post" action="/predict">
 
     {# ── team selectors ── #}
     <div class="grid2" style="margin-bottom:1.25rem;">
       <div class="field">
-        <label>Home Team</label>
+        <label>{{ t.home_team }}</label>
         <select name="home" required>
-          <option value="">— select —</option>
-          {% for t in teams %}
-          <option value="{{ t }}" {% if t == form.home %}selected{% endif %}>{{ t }}</option>
+          <option value="">{{ t.select_team }}</option>
+          {% for t_name in teams %}
+          <option value="{{ t_name }}" {% if t_name == form.home %}selected{% endif %}>{{ t_name }}</option>
           {% endfor %}
         </select>
       </div>
       <div class="field">
-        <label>Away Team</label>
+        <label>{{ t.away_team }}</label>
         <select name="away" required>
-          <option value="">— select —</option>
-          {% for t in teams %}
-          <option value="{{ t }}" {% if t == form.away %}selected{% endif %}>{{ t }}</option>
+          <option value="">{{ t.select_team }}</option>
+          {% for t_name in teams %}
+          <option value="{{ t_name }}" {% if t_name == form.away %}selected{% endif %}>{{ t_name }}</option>
           {% endfor %}
         </select>
       </div>
@@ -31,14 +31,14 @@
     {# ── automatic features (shown after a prediction) ── #}
     {% if features %}
     <div style="margin-bottom:1.5rem;">
-      <div class="section-head" style="margin-bottom:0.6rem;">Match Data</div>
+      <div class="section-head" style="margin-bottom:0.6rem;">{{ t.match_data_head }}</div>
       <table style="font-size:0.9rem;">
         <thead>
           <tr>
-            <th style="width:22%;">Factor</th>
-            <th class="num">🏠 {{ form.home }}</th>
-            <th class="num">✈ {{ form.away }}</th>
-            <th style="width:22%; text-align:center;">Edge</th>
+            <th style="width:22%;">{{ t.factor_col }}</th>
+            <th class="num">{{ t.home_col }} {{ form.home }}</th>
+            <th class="num">{{ t.away_col }} {{ form.away }}</th>
+            <th style="width:22%; text-align:center;">{{ t.edge_col }}</th>
           </tr>
         </thead>
         <tbody>
@@ -46,11 +46,11 @@
           {# PPG #}
           <tr>
             <td>
-              Season PPG
-              <span title="Points Per Game — average league points earned per match this season (Win=3, Draw=1, Loss=0). Higher = stronger team on paper."
+              {{ t.factor_ppg }}
+              <span title="{{ t.ppg_tooltip }}"
                     style="cursor:help; color:#999; font-size:0.8rem; border-bottom:1px dotted #999;">?</span>
               {% if features.home_played < min_mp or features.away_played < min_mp %}
-              <div style="font-size:0.75rem; color:#c07000;">⚠ early season (&lt;{{ min_mp }} matches)</div>
+              <div style="font-size:0.75rem; color:#c07000;">{{ t.early_season_warn.format(min_mp=min_mp) }}</div>
               {% endif %}
             </td>
             <td class="num">
@@ -67,21 +67,21 @@
             </td>
             <td style="text-align:center;">
               {% if features.ppg_diff > 0.1 %}
-                <span class="edge-home">→ Home +{{ "%.2f"|format(features.ppg_diff) }}</span>
+                <span class="edge-home">{{ t.edge_home }} +{{ "%.2f"|format(features.ppg_diff) }}</span>
               {% elif features.ppg_diff < -0.1 %}
-                <span class="edge-away">→ Away +{{ "%.2f"|format(-features.ppg_diff) }}</span>
+                <span class="edge-away">{{ t.edge_away }} +{{ "%.2f"|format(-features.ppg_diff) }}</span>
               {% else %}
-                <span class="edge-neu">≈ Even</span>
+                <span class="edge-neu">{{ t.edge_even }}</span>
               {% endif %}
             </td>
           </tr>
 
           {# Form #}
           <tr>
-            <td>Recent form
-              <span title="Average points per match over the last 5 games, weighted so recent results count more (decay 0.8) and adjusted for opponent strength — a win against a top team counts more than a win against a bottom team."
+            <td>{{ t.factor_form }}
+              <span title="{{ t.form_tooltip }}"
                     style="cursor:help; color:#999; font-size:0.8rem; border-bottom:1px dotted #999;">?</span>
-              <br><span style="font-size:0.75rem; color:#999;">last 5, opp-adjusted</span></td>
+              <br><span style="font-size:0.75rem; color:#999;">{{ t.form_subtitle }}</span></td>
             <td class="num">
               {% if features.home_form is not none %}
                 <strong>{{ "%.2f"|format(features.home_form) }}</strong>
@@ -94,37 +94,37 @@
             </td>
             <td style="text-align:center;">
               {% if features.form_diff > 0.1 %}
-                <span class="edge-home">→ Home +{{ "%.2f"|format(features.form_diff) }}</span>
+                <span class="edge-home">{{ t.edge_home }} +{{ "%.2f"|format(features.form_diff) }}</span>
               {% elif features.form_diff < -0.1 %}
-                <span class="edge-away">→ Away +{{ "%.2f"|format(-features.form_diff) }}</span>
+                <span class="edge-away">{{ t.edge_away }} +{{ "%.2f"|format(-features.form_diff) }}</span>
               {% else %}
-                <span class="edge-neu">≈ Even</span>
+                <span class="edge-neu">{{ t.edge_even }}</span>
               {% endif %}
             </td>
           </tr>
 
           {# H2H #}
           <tr>
-            <td>Head-to-head
-              <span title="Average points earned per match in recent meetings between these two teams. Only the current season plus last season are counted — older results are ignored as squads change too much."
+            <td>{{ t.factor_h2h }}
+              <span title="{{ t.h2h_tooltip }}"
                     style="cursor:help; color:#999; font-size:0.8rem; border-bottom:1px dotted #999;">?</span>
-              <br><span style="font-size:0.75rem; color:#999;">{{ features.h2h_n }} recent meeting{{ 's' if features.h2h_n != 1 else '' }}</span></td>
+              <br><span style="font-size:0.75rem; color:#999;">{{ features.h2h_n }} {{ t.h2h_meetings if features.h2h_n != 1 else t.h2h_meeting }}</span></td>
             <td class="num" colspan="2" style="text-align:center; color:#888; font-size:0.82rem;">
               {% if features.h2h_n == 0 %}
-                No recent meetings
+                {{ t.no_meetings }}
               {% else %}
-                Home averaged {{ "%+.2f"|format(features.h2h_diff) }} pts/match vs away
+                {{ t.h2h_avg.format(diff="%+.2f" | format(features.h2h_diff)) }}
               {% endif %}
             </td>
             <td style="text-align:center;">
               {% if features.h2h_n == 0 %}
-                <span class="edge-neu">≈ No data</span>
+                <span class="edge-neu">{{ t.edge_no_data }}</span>
               {% elif features.h2h_diff > 0.1 %}
-                <span class="edge-home">→ Home</span>
+                <span class="edge-home">{{ t.edge_home }}</span>
               {% elif features.h2h_diff < -0.1 %}
-                <span class="edge-away">→ Away</span>
+                <span class="edge-away">{{ t.edge_away }}</span>
               {% else %}
-                <span class="edge-neu">≈ Even</span>
+                <span class="edge-neu">{{ t.edge_even }}</span>
               {% endif %}
             </td>
           </tr>
@@ -135,81 +135,77 @@
     {% endif %}
 
     {# ── motivation ── #}
-    <div class="section-head" style="margin-bottom:0.75rem;">Motivation</div>
+    <div class="section-head" style="margin-bottom:0.75rem;">{{ t.motivation_head }}</div>
     <div class="grid2" style="margin-bottom:1rem;">
 
       <div>
-        <div class="team-col-label home-label">🏠 Home: {{ form.home or "Home team" }}</div>
+        <div class="team-col-label home-label">{{ t.home_prefix }}: {{ form.home or t.home_team }}</div>
         <div class="field">
-          <label>What's at stake?</label>
+          <label>{{ t.stake_label }}</label>
           <select name="home_stake">
-            {% for val, label in stake_options %}
-            <option value="{{ val }}" {% if form.home_stake|int == val %}selected{% endif %}>{{ label }} ({{ val }})</option>
+            {% for val, key in stake_options %}
+            <option value="{{ val }}" {% if form.home_stake|int == val %}selected{% endif %}>{{ t[key] }} ({{ val }})</option>
             {% endfor %}
           </select>
         </div>
         <label class="check-row">
           <input type="checkbox" name="home_derby" value="1" {% if form.home_derby %}checked{% endif %}>
-          Derby match (+{{ derby_bonus }})
+          {{ t.derby_label.format(bonus=derby_bonus) }}
         </label>
         <label class="check-row">
           <input type="checkbox" name="home_rivalry" value="1" {% if form.home_rivalry %}checked{% endif %}>
-          Historical rivalry (+{{ rivalry_bonus }})
+          {{ t.rivalry_label.format(bonus=rivalry_bonus) }}
         </label>
       </div>
 
       <div>
-        <div class="team-col-label away-label">✈ Away: {{ form.away or "Away team" }}</div>
+        <div class="team-col-label away-label">{{ t.away_prefix }}: {{ form.away or t.away_team }}</div>
         <div class="field">
-          <label>What's at stake?</label>
+          <label>{{ t.stake_label }}</label>
           <select name="away_stake">
-            {% for val, label in stake_options %}
-            <option value="{{ val }}" {% if form.away_stake|int == val %}selected{% endif %}>{{ label }} ({{ val }})</option>
+            {% for val, key in stake_options %}
+            <option value="{{ val }}" {% if form.away_stake|int == val %}selected{% endif %}>{{ t[key] }} ({{ val }})</option>
             {% endfor %}
           </select>
         </div>
         <label class="check-row">
           <input type="checkbox" name="away_derby" value="1" {% if form.away_derby %}checked{% endif %}>
-          Derby match (+{{ derby_bonus }})
+          {{ t.derby_label.format(bonus=derby_bonus) }}
         </label>
         <label class="check-row">
           <input type="checkbox" name="away_rivalry" value="1" {% if form.away_rivalry %}checked{% endif %}>
-          Historical rivalry (+{{ rivalry_bonus }})
+          {{ t.rivalry_label.format(bonus=rivalry_bonus) }}
         </label>
       </div>
     </div>
 
     {# ── injuries ── #}
-    <div class="section-head" style="margin-bottom:0.75rem;">Injury / Absence Severity</div>
+    <div class="section-head" style="margin-bottom:0.75rem;">{{ t.injury_head }}</div>
     <div class="grid2" style="margin-bottom:1.5rem;">
       <div>
         <div class="field">
-          <label>🏠 Home team absence severity (0–10)</label>
+          <label>{{ t.home_injury_lbl }}</label>
           <input type="number" name="home_injury" min="0" max="10" value="{{ form.home_injury or 0 }}">
-          <div class="hint">
-            0 = full squad &nbsp;·&nbsp; 2–3 = fringe players out &nbsp;·&nbsp;
-            4–5 = one key player, no replacement &nbsp;·&nbsp;
-            7–8 = multiple starters incl. key position &nbsp;·&nbsp; 9–10 = crisis
-          </div>
+          <div class="hint">{{ t.injury_hint }}</div>
         </div>
       </div>
       <div>
         <div class="field">
-          <label>✈ Away team absence severity (0–10)</label>
+          <label>{{ t.away_injury_lbl }}</label>
           <input type="number" name="away_injury" min="0" max="10" value="{{ form.away_injury or 0 }}">
-          <div class="hint">Rate what changed since their last match to avoid double-counting form.</div>
+          <div class="hint">{{ t.injury_hint2 }}</div>
         </div>
       </div>
     </div>
 
-    <button class="btn" type="submit">Calculate Prediction</button>
+    <button class="btn" type="submit">{{ t.calc_btn }}</button>
   </form>
 </div>
 
 {# ── prediction result ── #}
 {% if prediction %}
 <div class="card">
-  <h2>Prediction: {{ form.home }} vs {{ form.away }}</h2>
+  <h2>{{ t.result_title.format(home=form.home, away=form.away) }}</h2>
 
   <div class="prob-section">
     <div class="prob-bar">
@@ -224,9 +220,9 @@
       </div>
     </div>
     <div class="prob-labels">
-      <div><strong>Home win</strong><br>{{ (prediction.H * 100)|round(1) }}%</div>
-      <div><strong>Draw</strong><br>{{ (prediction.D * 100)|round(1) }}%</div>
-      <div><strong>Away win</strong><br>{{ (prediction.A * 100)|round(1) }}%</div>
+      <div><strong>{{ t.home_win }}</strong><br>{{ (prediction.H * 100)|round(1) }}%</div>
+      <div><strong>{{ t.draw }}</strong><br>{{ (prediction.D * 100)|round(1) }}%</div>
+      <div><strong>{{ t.away_win }}</strong><br>{{ (prediction.A * 100)|round(1) }}%</div>
     </div>
   </div>
 
@@ -234,30 +230,30 @@
 
 {% if summary %}
 <div class="card">
-  <h2>How this prediction was calculated</h2>
+  <h2>{{ t.breakdown_title }}</h2>
   <table style="font-size:0.88rem;">
     <thead>
       <tr>
-        <th style="width:18%;">Factor</th>
-        <th>Values</th>
-        <th style="width:10%; text-align:center;">Direction</th>
-        <th>Explanation</th>
+        <th style="width:18%;">{{ t.bd_factor }}</th>
+        <th>{{ t.bd_values }}</th>
+        <th style="width:10%; text-align:center;">{{ t.bd_direction }}</th>
+        <th>{{ t.bd_explanation }}</th>
       </tr>
     </thead>
     <tbody>
       {% for f in summary %}
       <tr style="{% if f.inactive %}color:#aaa;{% endif %}">
-        <td><strong>{{ f.name }}</strong></td>
+        <td><strong>{{ t[f.name_key] }}</strong></td>
         <td style="font-size:0.82rem; color:{% if f.inactive %}#bbb{% else %}#444{% endif %};">{{ f.values }}</td>
         <td style="text-align:center;">
           {% if f.inactive %}
-            <span style="font-size:0.75rem; background:#eee; color:#999; padding:2px 7px; border-radius:10px;">inactive</span>
+            <span style="font-size:0.75rem; background:#eee; color:#999; padding:2px 7px; border-radius:10px;">{{ t.bd_inactive }}</span>
           {% elif f.direction == 'home' %}
-            <span style="font-size:0.75rem; background:#d4edda; color:#155724; padding:2px 7px; border-radius:10px; white-space:nowrap;">↑ home</span>
+            <span style="font-size:0.75rem; background:#d4edda; color:#155724; padding:2px 7px; border-radius:10px; white-space:nowrap;">{{ t.bd_home }}</span>
           {% elif f.direction == 'away' %}
-            <span style="font-size:0.75rem; background:#f8d7da; color:#721c24; padding:2px 7px; border-radius:10px; white-space:nowrap;">↓ away</span>
+            <span style="font-size:0.75rem; background:#f8d7da; color:#721c24; padding:2px 7px; border-radius:10px; white-space:nowrap;">{{ t.bd_away }}</span>
           {% else %}
-            <span style="font-size:0.75rem; background:#e2e3e5; color:#555; padding:2px 7px; border-radius:10px;">≈ neutral</span>
+            <span style="font-size:0.75rem; background:#e2e3e5; color:#555; padding:2px 7px; border-radius:10px;">{{ t.bd_neutral }}</span>
           {% endif %}
         </td>
         <td style="font-size:0.82rem; color:{% if f.inactive %}#bbb{% else %}#555{% endif %};">{{ f.sentence }}</td>
@@ -266,8 +262,7 @@
     </tbody>
   </table>
   <div style="margin-top:0.75rem; font-size:0.78rem; color:#999;">
-    Logit scores are summed and passed through softmax to produce the H / D / A percentages.
-    Positive logit → boosts home win probability; negative → boosts away win probability.
+    {{ t.bd_footer }}
   </div>
 </div>
 {% endif %}
