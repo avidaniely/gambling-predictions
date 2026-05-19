@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card">
+  <h2>{{ season }}/{{ season + 1 }} Season Standings</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Team</th>
+        <th class="num">P</th>
+        <th class="num">W</th>
+        <th class="num">D</th>
+        <th class="num">L</th>
+        <th class="num">GF</th>
+        <th class="num">GA</th>
+        <th class="num">Pts</th>
+        <th class="num">PPG</th>
+        <th>Form (last 5)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in standings %}
+      <tr>
+        <td class="rank">{{ loop.index }}</td>
+        <td><strong>{{ row.team }}</strong></td>
+        <td class="num">{{ row.played }}</td>
+        <td class="num">{{ row.wins }}</td>
+        <td class="num">{{ row.draws }}</td>
+        <td class="num">{{ row.losses }}</td>
+        <td class="num">{{ row.gf }}</td>
+        <td class="num">{{ row.ga }}</td>
+        <td class="num"><strong>{{ row.points }}</strong></td>
+        <td class="num">{{ "%.2f"|format(row.ppg) }}</td>
+        <td class="form-dots">
+          {% for r in row.last5 %}
+            {% if r == 'W' %}<span class="w">W</span>
+            {% elif r == 'D' %}<span class="d">D</span>
+            {% else %}<span class="l">L</span>{% endif %}
+          {% endfor %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <h2>Make a Prediction</h2>
+  <p style="font-size:0.88rem; color:#555; margin-bottom:1rem;">
+    Select two teams from the {{ season }}/{{ season+1 }} season. The automatic features (PPG, form, H2H)
+    are computed from completed results. Add motivation and injury context below.
+  </p>
+  <form method="get" action="/predict">
+    <div class="grid2">
+      <div class="field">
+        <label>Home Team</label>
+        <select name="home" required>
+          <option value="">— select —</option>
+          {% for t in teams %}
+          <option value="{{ t }}">{{ t }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="field">
+        <label>Away Team</label>
+        <select name="away" required>
+          <option value="">— select —</option>
+          {% for t in teams %}
+          <option value="{{ t }}">{{ t }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+    <button class="btn" type="submit">Go to Prediction Form →</button>
+  </form>
+</div>
+
+{% endblock %}

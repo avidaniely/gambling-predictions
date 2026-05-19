@@ -1,0 +1,961 @@
+fixture_id,season,date,round,status,home_team,home_team_id,away_team,away_team_id,home_goals,away_goals
+865835,2022,2022-08-20T15:00:00+00:00,Regular Season - 1,FT,Hapoel Haifa,2253,Hapoel Tel Aviv,4501,2,0
+865840,2022,2022-08-20T16:00:00+00:00,Regular Season - 1,FT,Hapoel Katamon,4486,Hapoel Hadera,4500,1,1
+865837,2022,2022-08-20T17:15:00+00:00,Regular Season - 1,FT,Maccabi Netanya,4505,Beitar Jerusalem,657,4,1
+865841,2022,2022-08-21T17:15:00+00:00,Regular Season - 1,FT,Maccabi Tel Aviv,604,Maccabi Bnei Raina,6186,5,0
+865839,2022,2022-08-22T16:00:00+00:00,Regular Season - 1,FT,Sektzia Nes Tziona,4499,Ironi Kiryat Shmona,4510,0,2
+865844,2022,2022-08-27T15:00:00+00:00,Regular Season - 2,FT,Ironi Kiryat Shmona,4510,Hapoel Katamon,4486,1,1
+865848,2022,2022-08-27T16:15:00+00:00,Regular Season - 2,FT,Hapoel Tel Aviv,4501,Bnei Sakhnin,4481,0,2
+865847,2022,2022-08-27T17:00:00+00:00,Regular Season - 2,FT,Maccabi Haifa,4195,Maccabi Netanya,4505,4,1
+865845,2022,2022-08-27T17:15:00+00:00,Regular Season - 2,FT,Ashdod,4507,Sektzia Nes Tziona,4499,1,0
+865842,2022,2022-08-28T16:15:00+00:00,Regular Season - 2,FT,Maccabi Bnei Raina,6186,Hapoel Haifa,2253,1,1
+865846,2022,2022-08-28T17:15:00+00:00,Regular Season - 2,FT,Beitar Jerusalem,657,Hapoel Beer Sheva,563,0,5
+865843,2022,2022-08-29T17:15:00+00:00,Regular Season - 2,FT,Hapoel Hadera,4500,Maccabi Tel Aviv,604,0,6
+865836,2022,2022-08-30T17:15:00+00:00,Regular Season - 1,FT,Bnei Sakhnin,4481,Maccabi Haifa,4195,0,1
+865838,2022,2022-08-31T16:45:00+00:00,Regular Season - 1,FT,Hapoel Beer Sheva,563,Ashdod,4507,1,2
+865854,2022,2022-09-03T15:00:00+00:00,Regular Season - 3,FT,Maccabi Tel Aviv,604,Ironi Kiryat Shmona,4510,3,1
+865853,2022,2022-09-03T16:00:00+00:00,Regular Season - 3,FT,Hapoel Katamon,4486,Ashdod,4507,3,0
+865849,2022,2022-09-03T17:00:00+00:00,Regular Season - 3,FT,Hapoel Haifa,2253,Bnei Sakhnin,4481,1,2
+865851,2022,2022-09-03T17:15:00+00:00,Regular Season - 3,FT,Hapoel Beer Sheva,563,Maccabi Haifa,4195,1,2
+865855,2022,2022-09-04T16:00:00+00:00,Regular Season - 3,FT,Maccabi Bnei Raina,6186,Hapoel Hadera,4500,1,2
+865852,2022,2022-09-04T17:15:00+00:00,Regular Season - 3,FT,Sektzia Nes Tziona,4499,Beitar Jerusalem,657,0,3
+865850,2022,2022-09-05T17:15:00+00:00,Regular Season - 3,FT,Maccabi Netanya,4505,Hapoel Tel Aviv,4501,0,2
+865860,2022,2022-09-10T15:00:00+00:00,Regular Season - 4,FT,Maccabi Haifa,4195,Sektzia Nes Tziona,4499,3,1
+865856,2022,2022-09-10T16:30:00+00:00,Regular Season - 4,FT,Hapoel Hadera,4500,Hapoel Haifa,2253,1,1
+865862,2022,2022-09-10T16:30:00+00:00,Regular Season - 4,FT,Bnei Sakhnin,4481,Maccabi Netanya,4505,0,0
+865858,2022,2022-09-10T17:15:00+00:00,Regular Season - 4,FT,Ashdod,4507,Maccabi Tel Aviv,604,0,0
+865857,2022,2022-09-11T16:00:00+00:00,Regular Season - 4,FT,Ironi Kiryat Shmona,4510,Maccabi Bnei Raina,6186,1,1
+865861,2022,2022-09-11T17:15:00+00:00,Regular Season - 4,FT,Hapoel Tel Aviv,4501,Hapoel Beer Sheva,563,2,3
+865859,2022,2022-09-12T17:30:00+00:00,Regular Season - 4,FT,Beitar Jerusalem,657,Hapoel Katamon,4486,0,1
+865865,2022,2022-09-17T15:00:00+00:00,Regular Season - 5,FT,Sektzia Nes Tziona,4499,Hapoel Tel Aviv,4501,4,3
+865868,2022,2022-09-17T16:30:00+00:00,Regular Season - 5,FT,Maccabi Bnei Raina,6186,Ashdod,4507,1,1
+865863,2022,2022-09-17T17:00:00+00:00,Regular Season - 5,FT,Hapoel Haifa,2253,Maccabi Netanya,4505,0,0
+865867,2022,2022-09-17T17:30:00+00:00,Regular Season - 5,FT,Maccabi Tel Aviv,604,Beitar Jerusalem,657,4,0
+865869,2022,2022-09-18T16:00:00+00:00,Regular Season - 5,FT,Hapoel Hadera,4500,Ironi Kiryat Shmona,4510,1,1
+865864,2022,2022-09-18T17:00:00+00:00,Regular Season - 5,FT,Hapoel Beer Sheva,563,Bnei Sakhnin,4481,1,0
+865866,2022,2022-09-18T17:15:00+00:00,Regular Season - 5,FT,Hapoel Katamon,4486,Maccabi Haifa,4195,3,0
+865870,2022,2022-10-01T15:00:00+00:00,Regular Season - 6,FT,Ironi Kiryat Shmona,4510,Hapoel Haifa,2253,1,1
+865871,2022,2022-10-01T16:15:00+00:00,Regular Season - 6,FT,Ashdod,4507,Hapoel Hadera,4500,1,1
+865876,2022,2022-10-01T17:00:00+00:00,Regular Season - 6,FT,Maccabi Netanya,4505,Hapoel Beer Sheva,563,1,2
+865873,2022,2022-10-01T17:30:00+00:00,Regular Season - 6,FT,Maccabi Haifa,4195,Maccabi Tel Aviv,604,2,0
+865875,2022,2022-10-02T16:00:00+00:00,Regular Season - 6,FT,Bnei Sakhnin,4481,Sektzia Nes Tziona,4499,2,0
+865874,2022,2022-10-02T17:15:00+00:00,Regular Season - 6,FT,Hapoel Tel Aviv,4501,Hapoel Katamon,4486,1,3
+865872,2022,2022-10-03T17:15:00+00:00,Regular Season - 6,FT,Beitar Jerusalem,657,Maccabi Bnei Raina,6186,2,3
+865878,2022,2022-10-08T15:00:00+00:00,Regular Season - 7,FT,Sektzia Nes Tziona,4499,Maccabi Netanya,4505,1,1
+865879,2022,2022-10-08T16:00:00+00:00,Regular Season - 7,FT,Hapoel Katamon,4486,Bnei Sakhnin,4481,1,2
+865882,2022,2022-10-08T16:30:00+00:00,Regular Season - 7,FT,Hapoel Hadera,4500,Beitar Jerusalem,657,2,1
+865881,2022,2022-10-08T17:15:00+00:00,Regular Season - 7,FT,Maccabi Bnei Raina,6186,Maccabi Haifa,4195,1,0
+865883,2022,2022-10-10T16:00:00+00:00,Regular Season - 7,FT,Ironi Kiryat Shmona,4510,Ashdod,4507,1,1
+865968,2022,2022-10-10T17:00:00+00:00,Regular Season - 7,FT,Hapoel Beer Sheva,563,Hapoel Haifa,2253,2,2
+865880,2022,2022-10-10T17:30:00+00:00,Regular Season - 7,FT,Maccabi Tel Aviv,604,Hapoel Tel Aviv,4501,3,0
+865887,2022,2022-10-15T14:30:00+00:00,Regular Season - 8,FT,Hapoel Tel Aviv,4501,Maccabi Bnei Raina,6186,2,0
+865884,2022,2022-10-15T16:00:00+00:00,Regular Season - 8,FT,Ashdod,4507,Hapoel Haifa,2253,4,0
+865885,2022,2022-10-15T16:45:00+00:00,Regular Season - 8,FT,Beitar Jerusalem,657,Ironi Kiryat Shmona,4510,2,0
+865888,2022,2022-10-15T17:15:00+00:00,Regular Season - 8,FT,Bnei Sakhnin,4481,Maccabi Tel Aviv,604,0,1
+865889,2022,2022-10-17T16:30:00+00:00,Regular Season - 8,FT,Maccabi Netanya,4505,Hapoel Katamon,4486,0,2
+865890,2022,2022-10-17T17:00:00+00:00,Regular Season - 8,FT,Hapoel Beer Sheva,563,Sektzia Nes Tziona,4499,1,1
+865886,2022,2022-10-17T17:30:00+00:00,Regular Season - 8,FT,Maccabi Haifa,4195,Hapoel Hadera,4500,1,0
+865892,2022,2022-10-22T14:30:00+00:00,Regular Season - 9,FT,Hapoel Katamon,4486,Hapoel Beer Sheva,563,1,4
+865891,2022,2022-10-22T15:45:00+00:00,Regular Season - 9,FT,Hapoel Haifa,2253,Sektzia Nes Tziona,4499,0,1
+865897,2022,2022-10-22T16:45:00+00:00,Regular Season - 9,FT,Ashdod,4507,Beitar Jerusalem,657,0,2
+865896,2022,2022-10-22T17:15:00+00:00,Regular Season - 9,FT,Ironi Kiryat Shmona,4510,Maccabi Haifa,4195,2,3
+865894,2022,2022-10-23T16:00:00+00:00,Regular Season - 9,FT,Maccabi Bnei Raina,6186,Bnei Sakhnin,4481,2,0
+865895,2022,2022-10-23T18:00:00+00:00,Regular Season - 9,FT,Hapoel Hadera,4500,Hapoel Tel Aviv,4501,0,0
+865893,2022,2022-10-24T17:30:00+00:00,Regular Season - 9,FT,Maccabi Tel Aviv,604,Maccabi Netanya,4505,3,0
+865899,2022,2022-10-29T14:00:00+00:00,Regular Season - 10,FT,Maccabi Haifa,4195,Ashdod,4507,3,1
+865901,2022,2022-10-29T15:45:00+00:00,Regular Season - 10,FT,Bnei Sakhnin,4481,Hapoel Hadera,4500,1,4
+865904,2022,2022-10-29T15:45:00+00:00,Regular Season - 10,FT,Sektzia Nes Tziona,4499,Hapoel Katamon,4486,0,2
+865902,2022,2022-10-29T16:30:00+00:00,Regular Season - 10,FT,Maccabi Netanya,4505,Maccabi Bnei Raina,6186,2,1
+865898,2022,2022-10-29T17:15:00+00:00,Regular Season - 10,FT,Beitar Jerusalem,657,Hapoel Haifa,2253,0,0
+865900,2022,2022-10-30T18:15:00+00:00,Regular Season - 10,FT,Hapoel Tel Aviv,4501,Ironi Kiryat Shmona,4510,2,1
+865903,2022,2022-10-31T18:30:00+00:00,Regular Season - 10,FT,Hapoel Beer Sheva,563,Maccabi Tel Aviv,604,2,0
+865906,2022,2022-11-05T13:00:00+00:00,Regular Season - 11,FT,Maccabi Tel Aviv,604,Sektzia Nes Tziona,4499,1,1
+865908,2022,2022-11-05T15:30:00+00:00,Regular Season - 11,FT,Hapoel Hadera,4500,Maccabi Netanya,4505,3,1
+865905,2022,2022-11-05T16:00:00+00:00,Regular Season - 11,FT,Hapoel Haifa,2253,Hapoel Katamon,4486,1,0
+865909,2022,2022-11-05T16:00:00+00:00,Regular Season - 11,FT,Ironi Kiryat Shmona,4510,Bnei Sakhnin,4481,1,1
+865910,2022,2022-11-05T17:30:00+00:00,Regular Season - 11,FT,Ashdod,4507,Hapoel Tel Aviv,4501,1,0
+865907,2022,2022-11-06T18:15:00+00:00,Regular Season - 11,FT,Maccabi Bnei Raina,6186,Hapoel Beer Sheva,563,0,3
+865911,2022,2022-11-06T18:30:00+00:00,Regular Season - 11,FT,Beitar Jerusalem,657,Maccabi Haifa,4195,1,4
+865914,2022,2022-11-08T17:00:00+00:00,Regular Season - 12,FT,Bnei Sakhnin,4481,Ashdod,4507,1,1
+865915,2022,2022-11-08T18:00:00+00:00,Regular Season - 12,FT,Maccabi Netanya,4505,Ironi Kiryat Shmona,4510,1,0
+865918,2022,2022-11-08T18:15:00+00:00,Regular Season - 12,FT,Hapoel Katamon,4486,Maccabi Tel Aviv,604,0,3
+865917,2022,2022-11-09T17:00:00+00:00,Regular Season - 12,FT,Sektzia Nes Tziona,4499,Maccabi Bnei Raina,6186,3,3
+865916,2022,2022-11-09T18:00:00+00:00,Regular Season - 12,FT,Hapoel Beer Sheva,563,Hapoel Hadera,4500,3,0
+865913,2022,2022-11-09T18:15:00+00:00,Regular Season - 12,FT,Hapoel Tel Aviv,4501,Beitar Jerusalem,657,2,1
+865912,2022,2022-11-09T18:30:00+00:00,Regular Season - 12,FT,Hapoel Haifa,2253,Maccabi Haifa,4195,0,1
+865923,2022,2022-11-12T13:00:00+00:00,Regular Season - 13,FT,Ashdod,4507,Maccabi Netanya,4505,2,3
+865921,2022,2022-11-12T15:30:00+00:00,Regular Season - 13,FT,Hapoel Hadera,4500,Sektzia Nes Tziona,4499,0,0
+865919,2022,2022-11-12T17:30:00+00:00,Regular Season - 13,FT,Maccabi Tel Aviv,604,Hapoel Haifa,2253,1,0
+865920,2022,2022-11-13T17:00:00+00:00,Regular Season - 13,FT,Maccabi Bnei Raina,6186,Hapoel Katamon,4486,0,2
+865922,2022,2022-11-13T18:00:00+00:00,Regular Season - 13,FT,Ironi Kiryat Shmona,4510,Hapoel Beer Sheva,563,0,2
+865925,2022,2022-11-13T18:30:00+00:00,Regular Season - 13,FT,Maccabi Haifa,4195,Hapoel Tel Aviv,4501,5,2
+865924,2022,2022-11-14T18:15:00+00:00,Regular Season - 13,FT,Beitar Jerusalem,657,Bnei Sakhnin,4481,2,1
+865926,2022,2022-12-17T13:00:00+00:00,Regular Season - 14,FT,Hapoel Tel Aviv,4501,Hapoel Haifa,2253,3,3
+865931,2022,2022-12-17T13:00:00+00:00,Regular Season - 14,FT,Hapoel Hadera,4500,Hapoel Katamon,4486,0,0
+865928,2022,2022-12-17T18:30:00+00:00,Regular Season - 14,FT,Beitar Jerusalem,657,Maccabi Netanya,4505,6,3
+865929,2022,2022-12-17T18:30:00+00:00,Regular Season - 14,FT,Ashdod,4507,Hapoel Beer Sheva,563,0,1
+865930,2022,2022-12-19T17:00:00+00:00,Regular Season - 14,FT,Ironi Kiryat Shmona,4510,Sektzia Nes Tziona,4499,3,3
+865932,2022,2022-12-19T18:15:00+00:00,Regular Season - 14,FT,Maccabi Bnei Raina,6186,Maccabi Tel Aviv,604,0,2
+865927,2022,2022-12-19T18:30:00+00:00,Regular Season - 14,FT,Maccabi Haifa,4195,Bnei Sakhnin,4481,3,1
+865934,2022,2022-12-24T13:00:00+00:00,Regular Season - 15,FT,Maccabi Tel Aviv,604,Hapoel Hadera,4500,5,0
+865935,2022,2022-12-24T15:30:00+00:00,Regular Season - 15,FT,Hapoel Katamon,4486,Ironi Kiryat Shmona,4510,1,1
+865933,2022,2022-12-24T16:00:00+00:00,Regular Season - 15,FT,Hapoel Haifa,2253,Maccabi Bnei Raina,6186,0,0
+865936,2022,2022-12-24T16:00:00+00:00,Regular Season - 15,FT,Sektzia Nes Tziona,4499,Ashdod,4507,2,0
+865937,2022,2022-12-24T17:30:00+00:00,Regular Season - 15,FT,Hapoel Beer Sheva,563,Beitar Jerusalem,657,3,2
+865939,2022,2022-12-25T18:15:00+00:00,Regular Season - 15,FT,Bnei Sakhnin,4481,Hapoel Tel Aviv,4501,1,1
+865938,2022,2022-12-26T18:30:00+00:00,Regular Season - 15,FT,Maccabi Netanya,4505,Maccabi Haifa,4195,0,2
+865943,2022,2022-12-31T13:00:00+00:00,Regular Season - 16,FT,Beitar Jerusalem,657,Sektzia Nes Tziona,4499,3,2
+865941,2022,2022-12-31T15:30:00+00:00,Regular Season - 16,FT,Hapoel Tel Aviv,4501,Maccabi Netanya,4505,1,1
+865940,2022,2022-12-31T16:00:00+00:00,Regular Season - 16,FT,Bnei Sakhnin,4481,Hapoel Haifa,2253,1,2
+865944,2022,2022-12-31T17:10:00+00:00,Regular Season - 16,FT,Ashdod,4507,Hapoel Katamon,4486,1,1
+865945,2022,2022-12-31T17:30:00+00:00,Regular Season - 16,FT,Ironi Kiryat Shmona,4510,Maccabi Tel Aviv,604,1,1
+865946,2022,2023-01-01T17:00:00+00:00,Regular Season - 16,FT,Hapoel Hadera,4500,Maccabi Bnei Raina,6186,2,2
+865942,2022,2023-01-01T18:30:00+00:00,Regular Season - 16,FT,Maccabi Haifa,4195,Hapoel Beer Sheva,563,2,0
+865953,2022,2023-01-07T13:00:00+00:00,Regular Season - 17,FT,Maccabi Netanya,4505,Bnei Sakhnin,4481,0,0
+865949,2022,2023-01-07T15:30:00+00:00,Regular Season - 17,FT,Maccabi Tel Aviv,604,Ashdod,4507,3,0
+865947,2022,2023-01-07T16:00:00+00:00,Regular Season - 17,FT,Hapoel Haifa,2253,Hapoel Hadera,4500,3,0
+865950,2022,2023-01-07T17:30:00+00:00,Regular Season - 17,FT,Hapoel Katamon,4486,Beitar Jerusalem,657,1,1
+865948,2022,2023-01-08T17:00:00+00:00,Regular Season - 17,FT,Maccabi Bnei Raina,6186,Ironi Kiryat Shmona,4510,0,1
+865951,2022,2023-01-08T18:15:00+00:00,Regular Season - 17,FT,Sektzia Nes Tziona,4499,Maccabi Haifa,4195,0,2
+865952,2022,2023-01-09T18:30:00+00:00,Regular Season - 17,FT,Hapoel Beer Sheva,563,Hapoel Tel Aviv,4501,6,0
+865956,2022,2023-01-14T13:00:00+00:00,Regular Season - 18,FT,Hapoel Tel Aviv,4501,Sektzia Nes Tziona,4499,1,1
+865960,2022,2023-01-14T15:30:00+00:00,Regular Season - 18,FT,Ironi Kiryat Shmona,4510,Hapoel Hadera,4500,2,2
+865959,2022,2023-01-14T16:00:00+00:00,Regular Season - 18,FT,Ashdod,4507,Maccabi Bnei Raina,6186,3,0
+865954,2022,2023-01-14T17:00:00+00:00,Regular Season - 18,FT,Maccabi Netanya,4505,Hapoel Haifa,2253,1,0
+865957,2022,2023-01-15T18:15:00+00:00,Regular Season - 18,FT,Maccabi Haifa,4195,Hapoel Katamon,4486,2,1
+865958,2022,2023-01-16T18:30:00+00:00,Regular Season - 18,FT,Beitar Jerusalem,657,Maccabi Tel Aviv,604,2,2
+865965,2022,2023-01-21T13:00:00+00:00,Regular Season - 19,FT,Hapoel Katamon,4486,Hapoel Tel Aviv,4501,0,0
+865961,2022,2023-01-21T15:30:00+00:00,Regular Season - 19,FT,Hapoel Haifa,2253,Ironi Kiryat Shmona,4510,1,0
+865962,2022,2023-01-21T16:00:00+00:00,Regular Season - 19,FT,Hapoel Hadera,4500,Ashdod,4507,0,2
+865966,2022,2023-01-21T16:00:00+00:00,Regular Season - 19,FT,Sektzia Nes Tziona,4499,Bnei Sakhnin,4481,0,0
+865963,2022,2023-01-21T17:30:00+00:00,Regular Season - 19,FT,Maccabi Bnei Raina,6186,Beitar Jerusalem,657,0,2
+865967,2022,2023-01-22T18:15:00+00:00,Regular Season - 19,FT,Hapoel Beer Sheva,563,Maccabi Netanya,4505,2,2
+865964,2022,2023-01-23T18:30:00+00:00,Regular Season - 19,FT,Maccabi Tel Aviv,604,Maccabi Haifa,4195,3,0
+865972,2022,2023-01-28T13:00:00+00:00,Regular Season - 20,FT,Maccabi Haifa,4195,Maccabi Bnei Raina,6186,0,0
+865974,2022,2023-01-28T15:30:00+00:00,Regular Season - 20,FT,Ashdod,4507,Ironi Kiryat Shmona,4510,1,1
+865969,2022,2023-01-28T16:00:00+00:00,Regular Season - 20,FT,Maccabi Netanya,4505,Sektzia Nes Tziona,4499,3,0
+865973,2022,2023-01-28T17:30:00+00:00,Regular Season - 20,FT,Beitar Jerusalem,657,Hapoel Hadera,4500,0,2
+865971,2022,2023-01-28T18:00:00+00:00,Regular Season - 20,FT,Hapoel Tel Aviv,4501,Maccabi Tel Aviv,604,0,0
+865877,2022,2023-01-29T18:15:00+00:00,Regular Season - 20,FT,Hapoel Haifa,2253,Hapoel Beer Sheva,563,0,1
+865970,2022,2023-01-30T18:00:00+00:00,Regular Season - 20,FT,Bnei Sakhnin,4481,Hapoel Katamon,4486,2,1
+865981,2022,2023-02-04T13:00:00+00:00,Regular Season - 21,FT,Sektzia Nes Tziona,4499,Hapoel Beer Sheva,563,0,1
+865979,2022,2023-02-04T15:30:00+00:00,Regular Season - 21,FT,Maccabi Tel Aviv,604,Bnei Sakhnin,4481,1,1
+865975,2022,2023-02-04T16:00:00+00:00,Regular Season - 21,FT,Hapoel Haifa,2253,Ashdod,4507,1,1
+865980,2022,2023-02-04T16:00:00+00:00,Regular Season - 21,FT,Hapoel Katamon,4486,Maccabi Netanya,4505,0,2
+865976,2022,2023-02-04T17:30:00+00:00,Regular Season - 21,FT,Ironi Kiryat Shmona,4510,Beitar Jerusalem,657,0,3
+865978,2022,2023-02-05T18:15:00+00:00,Regular Season - 21,FT,Maccabi Bnei Raina,6186,Hapoel Tel Aviv,4501,1,1
+865955,2022,2023-02-08T17:45:00+00:00,Regular Season - 18,FT,Bnei Sakhnin,4481,Hapoel Beer Sheva,563,0,1
+865977,2022,2023-02-08T18:30:00+00:00,Regular Season - 21,FT,Hapoel Hadera,4500,Maccabi Haifa,4195,1,1
+865988,2022,2023-02-11T13:00:00+00:00,Regular Season - 22,FT,Beitar Jerusalem,657,Ashdod,4507,2,1
+865983,2022,2023-02-11T15:30:00+00:00,Regular Season - 22,FT,Hapoel Beer Sheva,563,Hapoel Katamon,4486,0,0
+865982,2022,2023-02-11T16:30:00+00:00,Regular Season - 22,FT,Sektzia Nes Tziona,4499,Hapoel Haifa,2253,0,2
+865985,2022,2023-02-11T16:30:00+00:00,Regular Season - 22,FT,Bnei Sakhnin,4481,Maccabi Bnei Raina,6186,1,1
+865987,2022,2023-02-11T17:30:00+00:00,Regular Season - 22,FT,Maccabi Haifa,4195,Ironi Kiryat Shmona,4510,2,0
+865986,2022,2023-02-12T18:15:00+00:00,Regular Season - 22,FT,Hapoel Tel Aviv,4501,Hapoel Hadera,4500,0,0
+865984,2022,2023-02-13T18:30:00+00:00,Regular Season - 22,FT,Maccabi Netanya,4505,Maccabi Tel Aviv,604,2,1
+865991,2022,2023-02-18T13:00:00+00:00,Regular Season - 23,FT,Ironi Kiryat Shmona,4510,Hapoel Tel Aviv,4501,0,1
+865993,2022,2023-02-18T15:30:00+00:00,Regular Season - 23,FT,Maccabi Bnei Raina,6186,Maccabi Netanya,4505,1,2
+865992,2022,2023-02-18T16:30:00+00:00,Regular Season - 23,FT,Hapoel Hadera,4500,Bnei Sakhnin,4481,1,3
+865995,2022,2023-02-18T16:30:00+00:00,Regular Season - 23,FT,Hapoel Katamon,4486,Sektzia Nes Tziona,4499,1,0
+865990,2022,2023-02-18T17:30:00+00:00,Regular Season - 23,FT,Ashdod,4507,Maccabi Haifa,4195,3,1
+865989,2022,2023-02-19T18:15:00+00:00,Regular Season - 23,FT,Hapoel Haifa,2253,Beitar Jerusalem,657,0,0
+865994,2022,2023-02-20T18:30:00+00:00,Regular Season - 23,FT,Maccabi Tel Aviv,604,Hapoel Beer Sheva,563,1,0
+866001,2022,2023-02-25T13:00:00+00:00,Regular Season - 24,FT,Hapoel Tel Aviv,4501,Ashdod,4507,1,2
+865997,2022,2023-02-25T15:30:00+00:00,Regular Season - 24,FT,Sektzia Nes Tziona,4499,Maccabi Tel Aviv,604,0,2
+866000,2022,2023-02-25T16:30:00+00:00,Regular Season - 24,FT,Bnei Sakhnin,4481,Ironi Kiryat Shmona,4510,1,3
+865999,2022,2023-02-25T17:00:00+00:00,Regular Season - 24,FT,Maccabi Netanya,4505,Hapoel Hadera,4500,1,0
+866002,2022,2023-02-25T18:00:00+00:00,Regular Season - 24,FT,Maccabi Haifa,4195,Beitar Jerusalem,657,2,1
+865996,2022,2023-02-26T18:15:00+00:00,Regular Season - 24,FT,Hapoel Katamon,4486,Hapoel Haifa,2253,2,2
+865998,2022,2023-02-27T18:00:00+00:00,Regular Season - 24,FT,Hapoel Beer Sheva,563,Maccabi Bnei Raina,6186,2,0
+866006,2022,2023-03-04T13:00:00+00:00,Regular Season - 25,FT,Ironi Kiryat Shmona,4510,Maccabi Netanya,4505,2,2
+866007,2022,2023-03-04T15:30:00+00:00,Regular Season - 25,FT,Hapoel Hadera,4500,Hapoel Beer Sheva,563,0,3
+866005,2022,2023-03-04T16:30:00+00:00,Regular Season - 25,FT,Ashdod,4507,Bnei Sakhnin,4481,1,1
+866008,2022,2023-03-04T16:30:00+00:00,Regular Season - 25,FT,Maccabi Bnei Raina,6186,Sektzia Nes Tziona,4499,3,2
+866009,2022,2023-03-04T17:30:00+00:00,Regular Season - 25,FT,Maccabi Tel Aviv,604,Hapoel Katamon,4486,1,2
+866004,2022,2023-03-05T18:15:00+00:00,Regular Season - 25,FT,Beitar Jerusalem,657,Hapoel Tel Aviv,4501,1,3
+866003,2022,2023-03-06T18:30:00+00:00,Regular Season - 25,FT,Maccabi Haifa,4195,Hapoel Haifa,2253,4,1
+866010,2022,2023-03-11T13:00:00+00:00,Regular Season - 26,FT,Hapoel Haifa,2253,Maccabi Tel Aviv,604,1,1
+866011,2022,2023-03-11T15:30:00+00:00,Regular Season - 26,FT,Hapoel Katamon,4486,Maccabi Bnei Raina,6186,0,1
+866012,2022,2023-03-11T16:30:00+00:00,Regular Season - 26,FT,Sektzia Nes Tziona,4499,Hapoel Hadera,4500,1,3
+866014,2022,2023-03-11T17:30:00+00:00,Regular Season - 26,FT,Maccabi Netanya,4505,Ashdod,4507,0,2
+866015,2022,2023-03-11T17:30:00+00:00,Regular Season - 26,FT,Bnei Sakhnin,4481,Beitar Jerusalem,657,2,0
+866013,2022,2023-03-12T18:15:00+00:00,Regular Season - 26,FT,Hapoel Beer Sheva,563,Ironi Kiryat Shmona,4510,2,1
+866016,2022,2023-03-13T18:30:00+00:00,Regular Season - 26,FT,Hapoel Tel Aviv,4501,Maccabi Haifa,4195,0,1
+1014703,2022,2023-03-18T13:00:00+00:00,Championship Round - 1,FT,Hapoel Beer Sheva,563,Hapoel Katamon,4486,1,0
+1014704,2022,2023-03-18T15:30:00+00:00,Championship Round - 1,FT,Maccabi Tel Aviv,604,Maccabi Netanya,4505,2,0
+1014733,2022,2023-03-18T16:30:00+00:00,Relegation Round - 1,FT,Hapoel Hadera,4500,Sektzia Nes Tziona,4499,1,2
+1014732,2022,2023-03-18T17:30:00+00:00,Relegation Round - 1,FT,Beitar Jerusalem,657,Hapoel Tel Aviv,4501,2,1
+1014702,2022,2023-03-18T18:00:00+00:00,Championship Round - 1,FT,Maccabi Haifa,4195,Ashdod,4507,2,1
+1014735,2022,2023-03-19T17:00:00+00:00,Relegation Round - 1,FT,Bnei Sakhnin,4481,Maccabi Bnei Raina,6186,2,2
+1014734,2022,2023-03-19T18:15:00+00:00,Relegation Round - 1,FT,Hapoel Haifa,2253,Ironi Kiryat Shmona,4510,1,1
+1014736,2022,2023-04-01T13:00:00+00:00,Relegation Round - 2,FT,Hapoel Tel Aviv,4501,Sektzia Nes Tziona,4499,2,1
+1014706,2022,2023-04-01T15:30:00+00:00,Championship Round - 2,FT,Hapoel Katamon,4486,Maccabi Tel Aviv,604,0,2
+1014705,2022,2023-04-01T17:00:00+00:00,Championship Round - 2,FT,Ashdod,4507,Maccabi Netanya,4505,3,2
+1014707,2022,2023-04-01T17:00:00+00:00,Championship Round - 2,FT,Maccabi Haifa,4195,Hapoel Beer Sheva,563,1,0
+1014737,2022,2023-04-02T17:30:00+00:00,Relegation Round - 2,FT,Maccabi Bnei Raina,6186,Hapoel Hadera,4500,1,1
+1014738,2022,2023-04-02T17:30:00+00:00,Relegation Round - 2,FT,Ironi Kiryat Shmona,4510,Bnei Sakhnin,4481,2,2
+1014739,2022,2023-04-03T17:15:00+00:00,Relegation Round - 2,FT,Beitar Jerusalem,657,Hapoel Haifa,2253,2,0
+1014710,2022,2023-04-04T16:45:00+00:00,Championship Round - 3,FT,Maccabi Netanya,4505,Hapoel Katamon,4486,0,2
+1014708,2022,2023-04-04T17:00:00+00:00,Championship Round - 3,FT,Hapoel Beer Sheva,563,Ashdod,4507,3,1
+1014709,2022,2023-04-04T17:30:00+00:00,Championship Round - 3,FT,Maccabi Tel Aviv,604,Maccabi Haifa,4195,1,1
+1014711,2022,2023-04-08T14:30:00+00:00,Championship Round - 4,FT,Ashdod,4507,Hapoel Katamon,4486,0,1
+1014712,2022,2023-04-08T17:00:00+00:00,Championship Round - 4,FT,Maccabi Haifa,4195,Maccabi Netanya,4505,4,1
+1014713,2022,2023-04-10T17:30:00+00:00,Championship Round - 4,FT,Hapoel Beer Sheva,563,Maccabi Tel Aviv,604,1,2
+1014740,2022,2023-04-15T13:00:00+00:00,Relegation Round - 3,FT,Hapoel Haifa,2253,Hapoel Tel Aviv,4501,1,0
+1014716,2022,2023-04-15T15:30:00+00:00,Championship Round - 5,FT,Hapoel Katamon,4486,Maccabi Haifa,4195,2,1
+1014714,2022,2023-04-15T17:00:00+00:00,Championship Round - 5,FT,Maccabi Tel Aviv,604,Ashdod,4507,1,1
+1014741,2022,2023-04-15T17:00:00+00:00,Relegation Round - 3,FT,Hapoel Hadera,4500,Ironi Kiryat Shmona,4510,1,1
+1014743,2022,2023-04-15T17:00:00+00:00,Relegation Round - 3,FT,Sektzia Nes Tziona,4499,Maccabi Bnei Raina,6186,1,2
+1014742,2022,2023-04-16T17:15:00+00:00,Relegation Round - 3,FT,Bnei Sakhnin,4481,Beitar Jerusalem,657,4,3
+1014715,2022,2023-04-16T17:30:00+00:00,Championship Round - 5,FT,Maccabi Netanya,4505,Hapoel Beer Sheva,563,1,1
+1014744,2022,2023-04-22T13:00:00+00:00,Relegation Round - 4,FT,Hapoel Tel Aviv,4501,Maccabi Bnei Raina,6186,1,2
+1014718,2022,2023-04-22T15:30:00+00:00,Championship Round - 6,FT,Hapoel Katamon,4486,Hapoel Beer Sheva,563,1,2
+1014719,2022,2023-04-22T17:00:00+00:00,Championship Round - 6,FT,Maccabi Netanya,4505,Maccabi Tel Aviv,604,0,0
+1014746,2022,2023-04-22T17:00:00+00:00,Relegation Round - 4,FT,Ironi Kiryat Shmona,4510,Sektzia Nes Tziona,4499,1,1
+1014747,2022,2023-04-22T17:00:00+00:00,Relegation Round - 4,FT,Hapoel Haifa,2253,Bnei Sakhnin,4481,2,2
+1014745,2022,2023-04-23T17:15:00+00:00,Relegation Round - 4,FT,Beitar Jerusalem,657,Hapoel Hadera,4500,2,1
+1014717,2022,2023-04-23T17:30:00+00:00,Championship Round - 6,FT,Ashdod,4507,Maccabi Haifa,4195,1,2
+1014751,2022,2023-04-29T14:00:00+00:00,Relegation Round - 5,FT,Maccabi Bnei Raina,6186,Ironi Kiryat Shmona,4510,1,3
+1014720,2022,2023-04-29T15:30:00+00:00,Championship Round - 7,FT,Maccabi Netanya,4505,Ashdod,4507,2,0
+1014721,2022,2023-04-29T17:00:00+00:00,Championship Round - 7,FT,Maccabi Tel Aviv,604,Hapoel Katamon,4486,2,1
+1014750,2022,2023-04-29T17:00:00+00:00,Relegation Round - 5,FT,Sektzia Nes Tziona,4499,Beitar Jerusalem,657,1,3
+1014749,2022,2023-04-30T16:00:00+00:00,Relegation Round - 5,FT,Hapoel Hadera,4500,Hapoel Haifa,2253,1,2
+1014748,2022,2023-04-30T17:15:00+00:00,Relegation Round - 5,FT,Bnei Sakhnin,4481,Hapoel Tel Aviv,4501,0,1
+1014722,2022,2023-05-01T17:30:00+00:00,Championship Round - 7,FT,Hapoel Beer Sheva,563,Maccabi Haifa,4195,2,1
+1014755,2022,2023-05-06T13:30:00+00:00,Relegation Round - 6,FT,Hapoel Haifa,2253,Sektzia Nes Tziona,4499,0,1
+1014752,2022,2023-05-06T15:45:00+00:00,Relegation Round - 6,FT,Hapoel Tel Aviv,4501,Ironi Kiryat Shmona,4510,2,2
+1014753,2022,2023-05-06T15:45:00+00:00,Relegation Round - 6,FT,Bnei Sakhnin,4481,Hapoel Hadera,4500,2,3
+1014754,2022,2023-05-06T15:45:00+00:00,Relegation Round - 6,FT,Beitar Jerusalem,657,Maccabi Bnei Raina,6186,0,1
+1014725,2022,2023-05-07T17:15:00+00:00,Championship Round - 8,FT,Hapoel Katamon,4486,Maccabi Netanya,4505,1,4
+1014723,2022,2023-05-08T17:30:00+00:00,Championship Round - 8,FT,Ashdod,4507,Hapoel Beer Sheva,563,0,1
+1014724,2022,2023-05-08T17:30:00+00:00,Championship Round - 8,FT,Maccabi Haifa,4195,Maccabi Tel Aviv,604,3,1
+1014757,2022,2023-05-13T13:45:00+00:00,Relegation Round - 7,FT,Sektzia Nes Tziona,4499,Bnei Sakhnin,4481,1,1
+1014756,2022,2023-05-13T16:00:00+00:00,Relegation Round - 7,FT,Hapoel Hadera,4500,Hapoel Tel Aviv,4501,1,2
+1014758,2022,2023-05-13T16:00:00+00:00,Relegation Round - 7,FT,Maccabi Bnei Raina,6186,Hapoel Haifa,2253,0,4
+1014759,2022,2023-05-13T16:10:00+00:00,Relegation Round - 7,FT,Ironi Kiryat Shmona,4510,Beitar Jerusalem,657,3,2
+1014726,2022,2023-05-14T17:15:00+00:00,Championship Round - 9,FT,Hapoel Katamon,4486,Ashdod,4507,0,1
+1014727,2022,2023-05-15T17:30:00+00:00,Championship Round - 9,FT,Maccabi Netanya,4505,Maccabi Haifa,4195,1,5
+1014728,2022,2023-05-15T17:30:00+00:00,Championship Round - 9,FT,Maccabi Tel Aviv,604,Hapoel Beer Sheva,563,3,0
+1014729,2022,2023-05-20T17:30:00+00:00,Championship Round - 10,FT,Ashdod,4507,Maccabi Tel Aviv,604,1,2
+1014730,2022,2023-05-20T17:30:00+00:00,Championship Round - 10,FT,Hapoel Beer Sheva,563,Maccabi Netanya,4505,2,0
+1014731,2022,2023-05-20T17:30:00+00:00,Championship Round - 10,FT,Maccabi Haifa,4195,Hapoel Katamon,4486,5,0
+1036999,2023,2023-08-26T16:00:00+00:00,Regular Season - 1,FT,Bnei Sakhnin,4481,Hapoel Tel Aviv,4501,1,1
+1036997,2023,2023-08-26T16:15:00+00:00,Regular Season - 1,FT,Maccabi Petah Tikva,4495,Hapoel Katamon,4486,1,1
+1037000,2023,2023-08-26T17:00:00+00:00,Regular Season - 1,FT,Maccabi Netanya,4505,Maccabi Bnei Raina,6186,1,1
+1037001,2023,2023-08-26T17:00:00+00:00,Regular Season - 1,FT,Hapoel Beer Sheva,563,Hapoel Hadera,4500,3,0
+1037002,2023,2023-08-27T17:15:00+00:00,Regular Season - 1,FT,Maccabi Tel Aviv,604,Ashdod,4507,4,1
+1037003,2023,2023-08-28T17:00:00+00:00,Regular Season - 1,FT,Beitar Jerusalem,657,Hapoel Haifa,2253,1,2
+1037007,2023,2023-09-02T16:00:00+00:00,Regular Season - 2,FT,Maccabi Bnei Raina,6186,Hapoel Beer Sheva,563,1,1
+1037009,2023,2023-09-02T16:00:00+00:00,Regular Season - 2,FT,Hapoel Petah Tikva,4488,Bnei Sakhnin,4481,1,1
+1037004,2023,2023-09-02T17:00:00+00:00,Regular Season - 2,FT,Hapoel Haifa,2253,Maccabi Petah Tikva,4495,2,2
+1037008,2023,2023-09-02T17:00:00+00:00,Regular Season - 2,FT,Hapoel Tel Aviv,4501,Maccabi Netanya,4505,2,0
+1037010,2023,2023-09-03T17:00:00+00:00,Regular Season - 2,FT,Hapoel Katamon,4486,Maccabi Haifa,4195,1,2
+1037006,2023,2023-09-03T17:30:00+00:00,Regular Season - 2,FT,Hapoel Hadera,4500,Maccabi Tel Aviv,604,0,3
+1037005,2023,2023-09-04T17:00:00+00:00,Regular Season - 2,FT,Ashdod,4507,Beitar Jerusalem,657,1,2
+1037012,2023,2023-09-17T16:30:00+00:00,Regular Season - 3,FT,Bnei Sakhnin,4481,Hapoel Katamon,4486,2,1
+1037015,2023,2023-09-17T16:45:00+00:00,Regular Season - 3,FT,Maccabi Tel Aviv,604,Maccabi Bnei Raina,6186,1,1
+1037017,2023,2023-09-17T16:45:00+00:00,Regular Season - 3,FT,Hapoel Haifa,2253,Ashdod,4507,2,0
+1037011,2023,2023-09-17T17:00:00+00:00,Regular Season - 3,FT,Maccabi Petah Tikva,4495,Maccabi Haifa,4195,3,2
+1037013,2023,2023-09-17T17:00:00+00:00,Regular Season - 3,FT,Maccabi Netanya,4505,Hapoel Petah Tikva,4488,4,1
+1037016,2023,2023-09-18T17:00:00+00:00,Regular Season - 3,FT,Beitar Jerusalem,657,Hapoel Hadera,4500,2,0
+1037014,2023,2023-09-18T17:30:00+00:00,Regular Season - 3,FT,Hapoel Beer Sheva,563,Hapoel Tel Aviv,4501,0,0
+1037022,2023,2023-09-23T15:00:00+00:00,Regular Season - 4,FT,Hapoel Petah Tikva,4488,Hapoel Beer Sheva,563,1,0
+1037019,2023,2023-09-23T16:30:00+00:00,Regular Season - 4,FT,Hapoel Hadera,4500,Hapoel Haifa,2253,1,2
+1037018,2023,2023-09-23T16:45:00+00:00,Regular Season - 4,FT,Ashdod,4507,Maccabi Petah Tikva,4495,1,1
+1037023,2023,2023-09-23T16:45:00+00:00,Regular Season - 4,FT,Hapoel Katamon,4486,Maccabi Netanya,4505,1,1
+1037020,2023,2023-09-23T17:00:00+00:00,Regular Season - 4,FT,Maccabi Bnei Raina,6186,Beitar Jerusalem,657,2,1
+1037021,2023,2023-09-26T17:30:00+00:00,Regular Season - 4,FT,Hapoel Tel Aviv,4501,Maccabi Tel Aviv,604,0,5
+1037024,2023,2023-09-27T17:00:00+00:00,Regular Season - 4,FT,Maccabi Haifa,4195,Bnei Sakhnin,4481,1,1
+1037028,2023,2023-09-30T14:45:00+00:00,Regular Season - 5,FT,Maccabi Tel Aviv,604,Hapoel Petah Tikva,4488,2,0
+1037025,2023,2023-09-30T16:30:00+00:00,Regular Season - 5,FT,Maccabi Petah Tikva,4495,Bnei Sakhnin,4481,5,1
+1037030,2023,2023-09-30T16:45:00+00:00,Regular Season - 5,FT,Hapoel Haifa,2253,Maccabi Bnei Raina,6186,1,2
+1037031,2023,2023-09-30T16:45:00+00:00,Regular Season - 5,FT,Ashdod,4507,Hapoel Hadera,4500,0,1
+1037027,2023,2023-09-30T17:00:00+00:00,Regular Season - 5,FT,Hapoel Beer Sheva,563,Hapoel Katamon,4486,3,0
+1037026,2023,2023-10-01T17:15:00+00:00,Regular Season - 5,FT,Maccabi Netanya,4505,Maccabi Haifa,4195,2,3
+1037029,2023,2023-10-02T17:30:00+00:00,Regular Season - 5,FT,Beitar Jerusalem,657,Hapoel Tel Aviv,4501,0,3
+1036998,2023,2023-11-25T18:00:00+00:00,Regular Season - 1,FT,Maccabi Haifa,4195,Hapoel Petah Tikva,4488,2,1
+1037034,2023,2023-12-02T13:00:00+00:00,Regular Season - 6,FT,Hapoel Tel Aviv,4501,Hapoel Haifa,2253,0,1
+1037032,2023,2023-12-02T14:45:00+00:00,Regular Season - 6,FT,Hapoel Hadera,4500,Maccabi Petah Tikva,4495,3,0
+1037038,2023,2023-12-02T15:30:00+00:00,Regular Season - 6,FT,Bnei Sakhnin,4481,Maccabi Netanya,4505,1,1
+1037033,2023,2023-12-02T17:00:00+00:00,Regular Season - 6,FT,Maccabi Bnei Raina,6186,Ashdod,4507,0,0
+1037035,2023,2023-12-02T17:30:00+00:00,Regular Season - 6,FT,Hapoel Petah Tikva,4488,Beitar Jerusalem,657,1,0
+1037036,2023,2023-12-03T18:00:00+00:00,Regular Season - 6,FT,Hapoel Katamon,4486,Maccabi Tel Aviv,604,1,2
+1037037,2023,2023-12-03T18:30:00+00:00,Regular Season - 6,FT,Maccabi Haifa,4195,Hapoel Beer Sheva,563,1,0
+1037039,2023,2023-12-05T17:00:00+00:00,Regular Season - 7,FT,Maccabi Petah Tikva,4495,Maccabi Netanya,4505,1,0
+1037045,2023,2023-12-05T17:00:00+00:00,Regular Season - 7,FT,Hapoel Hadera,4500,Maccabi Bnei Raina,6186,0,2
+1037043,2023,2023-12-05T17:45:00+00:00,Regular Season - 7,FT,Hapoel Haifa,2253,Hapoel Petah Tikva,4488,1,1
+1037044,2023,2023-12-05T18:00:00+00:00,Regular Season - 7,FT,Ashdod,4507,Hapoel Tel Aviv,4501,2,1
+1037040,2023,2023-12-06T17:45:00+00:00,Regular Season - 7,FT,Hapoel Beer Sheva,563,Bnei Sakhnin,4481,1,2
+1037042,2023,2023-12-06T18:00:00+00:00,Regular Season - 7,FT,Beitar Jerusalem,657,Hapoel Katamon,4486,1,0
+1037048,2023,2023-12-09T13:00:00+00:00,Regular Season - 8,FT,Hapoel Petah Tikva,4488,Ashdod,4507,1,1
+1037046,2023,2023-12-09T15:30:00+00:00,Regular Season - 8,FT,Maccabi Bnei Raina,6186,Maccabi Petah Tikva,4495,3,0
+1037047,2023,2023-12-09T17:30:00+00:00,Regular Season - 8,FT,Hapoel Tel Aviv,4501,Hapoel Hadera,4500,1,1
+1037049,2023,2023-12-10T17:30:00+00:00,Regular Season - 8,FT,Hapoel Katamon,4486,Hapoel Haifa,2253,0,1
+1037051,2023,2023-12-10T18:00:00+00:00,Regular Season - 8,FT,Bnei Sakhnin,4481,Maccabi Tel Aviv,604,2,3
+1037050,2023,2023-12-10T18:30:00+00:00,Regular Season - 8,FT,Maccabi Haifa,4195,Beitar Jerusalem,657,1,1
+1037052,2023,2023-12-11T18:00:00+00:00,Regular Season - 8,FT,Maccabi Netanya,4505,Hapoel Beer Sheva,563,1,0
+1037059,2023,2023-12-16T13:00:00+00:00,Regular Season - 9,FT,Maccabi Bnei Raina,6186,Hapoel Tel Aviv,4501,1,2
+1037053,2023,2023-12-16T16:00:00+00:00,Regular Season - 9,FT,Maccabi Petah Tikva,4495,Hapoel Beer Sheva,563,1,4
+1037057,2023,2023-12-16T16:00:00+00:00,Regular Season - 9,FT,Ashdod,4507,Hapoel Katamon,4486,2,0
+1037058,2023,2023-12-16T16:00:00+00:00,Regular Season - 9,FT,Hapoel Hadera,4500,Hapoel Petah Tikva,4488,1,0
+1037055,2023,2023-12-16T17:30:00+00:00,Regular Season - 9,FT,Beitar Jerusalem,657,Bnei Sakhnin,4481,1,1
+1037054,2023,2023-12-17T18:00:00+00:00,Regular Season - 9,FT,Maccabi Tel Aviv,604,Maccabi Netanya,4505,2,1
+1037056,2023,2023-12-17T18:30:00+00:00,Regular Season - 9,FT,Hapoel Haifa,2253,Maccabi Haifa,4195,0,3
+1037061,2023,2023-12-19T17:00:00+00:00,Regular Season - 10,FT,Hapoel Petah Tikva,4488,Maccabi Bnei Raina,6186,0,1
+1037062,2023,2023-12-19T17:30:00+00:00,Regular Season - 10,FT,Hapoel Katamon,4486,Hapoel Hadera,4500,1,0
+1037060,2023,2023-12-19T18:00:00+00:00,Regular Season - 10,FT,Hapoel Tel Aviv,4501,Maccabi Petah Tikva,4495,2,0
+1037064,2023,2023-12-20T17:00:00+00:00,Regular Season - 10,FT,Bnei Sakhnin,4481,Hapoel Haifa,2253,1,1
+1037065,2023,2023-12-20T17:45:00+00:00,Regular Season - 10,FT,Maccabi Netanya,4505,Beitar Jerusalem,657,0,3
+1037063,2023,2023-12-20T18:00:00+00:00,Regular Season - 10,FT,Maccabi Haifa,4195,Ashdod,4507,4,0
+1037066,2023,2023-12-20T18:30:00+00:00,Regular Season - 10,FT,Hapoel Beer Sheva,563,Maccabi Tel Aviv,604,0,1
+1037073,2023,2023-12-23T13:00:00+00:00,Regular Season - 11,FT,Hapoel Tel Aviv,4501,Hapoel Petah Tikva,4488,4,1
+1037069,2023,2023-12-23T16:00:00+00:00,Regular Season - 11,FT,Hapoel Haifa,2253,Maccabi Netanya,4505,2,1
+1037070,2023,2023-12-23T16:00:00+00:00,Regular Season - 11,FT,Ashdod,4507,Bnei Sakhnin,4481,0,1
+1037072,2023,2023-12-23T16:00:00+00:00,Regular Season - 11,FT,Maccabi Bnei Raina,6186,Hapoel Katamon,4486,1,1
+1037068,2023,2023-12-23T17:30:00+00:00,Regular Season - 11,FT,Beitar Jerusalem,657,Hapoel Beer Sheva,563,4,4
+1037067,2023,2023-12-24T18:00:00+00:00,Regular Season - 11,FT,Maccabi Petah Tikva,4495,Maccabi Tel Aviv,604,1,2
+1037071,2023,2023-12-24T18:30:00+00:00,Regular Season - 11,FT,Hapoel Hadera,4500,Maccabi Haifa,4195,1,5
+1037078,2023,2023-12-26T17:00:00+00:00,Regular Season - 12,FT,Maccabi Netanya,4505,Ashdod,4507,1,0
+1037075,2023,2023-12-26T17:45:00+00:00,Regular Season - 12,FT,Hapoel Katamon,4486,Hapoel Tel Aviv,4501,2,1
+1037079,2023,2023-12-26T18:00:00+00:00,Regular Season - 12,FT,Hapoel Beer Sheva,563,Hapoel Haifa,2253,4,0
+1037077,2023,2023-12-27T17:00:00+00:00,Regular Season - 12,FT,Bnei Sakhnin,4481,Hapoel Hadera,4500,0,1
+1037074,2023,2023-12-27T17:45:00+00:00,Regular Season - 12,FT,Maccabi Petah Tikva,4495,Hapoel Petah Tikva,4488,2,0
+1037076,2023,2023-12-27T18:00:00+00:00,Regular Season - 12,FT,Maccabi Haifa,4195,Maccabi Bnei Raina,6186,1,0
+1037080,2023,2023-12-27T18:30:00+00:00,Regular Season - 12,FT,Maccabi Tel Aviv,604,Beitar Jerusalem,657,1,0
+1037087,2023,2023-12-30T13:00:00+00:00,Regular Season - 13,FT,Hapoel Petah Tikva,4488,Hapoel Katamon,4486,1,2
+1037084,2023,2023-12-30T16:00:00+00:00,Regular Season - 13,FT,Hapoel Hadera,4500,Maccabi Netanya,4505,1,4
+1037085,2023,2023-12-30T16:00:00+00:00,Regular Season - 13,FT,Maccabi Bnei Raina,6186,Bnei Sakhnin,4481,0,1
+1037083,2023,2023-12-30T17:30:00+00:00,Regular Season - 13,FT,Ashdod,4507,Hapoel Beer Sheva,563,1,3
+1037081,2023,2023-12-31T17:45:00+00:00,Regular Season - 13,FT,Beitar Jerusalem,657,Maccabi Petah Tikva,4495,3,2
+1037082,2023,2023-12-31T18:00:00+00:00,Regular Season - 13,FT,Hapoel Haifa,2253,Maccabi Tel Aviv,604,0,1
+1037086,2023,2023-12-31T18:30:00+00:00,Regular Season - 13,FT,Hapoel Tel Aviv,4501,Maccabi Haifa,4195,0,0
+1037091,2023,2024-01-02T17:00:00+00:00,Regular Season - 14,FT,Maccabi Bnei Raina,6186,Maccabi Netanya,4505,1,3
+1037092,2023,2024-01-02T18:00:00+00:00,Regular Season - 14,FT,Hapoel Hadera,4500,Hapoel Beer Sheva,563,0,2
+1037088,2023,2024-01-03T17:00:00+00:00,Regular Season - 14,FT,Hapoel Katamon,4486,Maccabi Petah Tikva,4495,3,1
+1037090,2023,2024-01-03T17:45:00+00:00,Regular Season - 14,FT,Hapoel Tel Aviv,4501,Bnei Sakhnin,4481,3,3
+1037093,2023,2024-01-03T18:00:00+00:00,Regular Season - 14,FT,Ashdod,4507,Maccabi Tel Aviv,604,1,4
+1037089,2023,2024-01-03T18:15:00+00:00,Regular Season - 14,FT,Hapoel Petah Tikva,4488,Maccabi Haifa,4195,2,2
+1037094,2023,2024-01-04T18:30:00+00:00,Regular Season - 14,FT,Hapoel Haifa,2253,Beitar Jerusalem,657,3,2
+1037098,2023,2024-01-06T13:00:00+00:00,Regular Season - 15,FT,Hapoel Beer Sheva,563,Maccabi Bnei Raina,6186,4,2
+1037100,2023,2024-01-06T16:00:00+00:00,Regular Season - 15,FT,Bnei Sakhnin,4481,Hapoel Petah Tikva,4488,0,0
+1037099,2023,2024-01-06T17:30:00+00:00,Regular Season - 15,FT,Maccabi Netanya,4505,Hapoel Tel Aviv,4501,2,1
+1037097,2023,2024-01-07T18:00:00+00:00,Regular Season - 15,FT,Maccabi Tel Aviv,604,Hapoel Hadera,4500,1,1
+1037101,2023,2024-01-07T18:30:00+00:00,Regular Season - 15,FT,Maccabi Haifa,4195,Hapoel Katamon,4486,2,1
+1037095,2023,2024-01-08T17:00:00+00:00,Regular Season - 15,FT,Maccabi Petah Tikva,4495,Hapoel Haifa,2253,0,3
+1037096,2023,2024-01-08T18:00:00+00:00,Regular Season - 15,FT,Beitar Jerusalem,657,Ashdod,4507,1,1
+1037041,2023,2024-01-10T18:30:00+00:00,Regular Season - 7,FT,Maccabi Tel Aviv,604,Maccabi Haifa,4195,0,1
+1037107,2023,2024-01-13T13:00:00+00:00,Regular Season - 16,FT,Hapoel Hadera,4500,Beitar Jerusalem,657,0,3
+1037103,2023,2024-01-13T16:00:00+00:00,Regular Season - 16,FT,Hapoel Katamon,4486,Bnei Sakhnin,4481,0,0
+1037104,2023,2024-01-13T16:00:00+00:00,Regular Season - 16,FT,Hapoel Petah Tikva,4488,Maccabi Netanya,4505,2,0
+1037108,2023,2024-01-13T16:00:00+00:00,Regular Season - 16,FT,Ashdod,4507,Hapoel Haifa,2253,0,1
+1037105,2023,2024-01-13T17:30:00+00:00,Regular Season - 16,FT,Hapoel Tel Aviv,4501,Hapoel Beer Sheva,563,0,4
+1037106,2023,2024-01-14T18:00:00+00:00,Regular Season - 16,FT,Maccabi Bnei Raina,6186,Maccabi Tel Aviv,604,2,2
+1037102,2023,2024-01-14T18:30:00+00:00,Regular Season - 16,FT,Maccabi Haifa,4195,Maccabi Petah Tikva,4495,5,0
+1037110,2023,2024-01-16T17:00:00+00:00,Regular Season - 17,FT,Hapoel Haifa,2253,Hapoel Hadera,4500,2,0
+1037114,2023,2024-01-16T17:45:00+00:00,Regular Season - 17,FT,Maccabi Netanya,4505,Hapoel Katamon,4486,2,1
+1037113,2023,2024-01-16T18:00:00+00:00,Regular Season - 17,FT,Hapoel Beer Sheva,563,Hapoel Petah Tikva,4488,2,0
+1037109,2023,2024-01-17T17:00:00+00:00,Regular Season - 17,FT,Maccabi Petah Tikva,4495,Ashdod,4507,1,2
+1037111,2023,2024-01-17T17:45:00+00:00,Regular Season - 17,FT,Beitar Jerusalem,657,Maccabi Bnei Raina,6186,1,2
+1037115,2023,2024-01-17T18:00:00+00:00,Regular Season - 17,FT,Bnei Sakhnin,4481,Maccabi Haifa,4195,0,3
+1037112,2023,2024-01-17T18:30:00+00:00,Regular Season - 17,FT,Maccabi Tel Aviv,604,Hapoel Tel Aviv,4501,4,2
+1037122,2023,2024-01-20T13:00:00+00:00,Regular Season - 18,FT,Hapoel Hadera,4500,Ashdod,4507,1,1
+1037121,2023,2024-01-20T15:30:00+00:00,Regular Season - 18,FT,Maccabi Bnei Raina,6186,Hapoel Haifa,2253,0,0
+1037118,2023,2024-01-20T17:30:00+00:00,Regular Season - 18,FT,Hapoel Katamon,4486,Hapoel Beer Sheva,563,0,1
+1037116,2023,2024-01-21T17:00:00+00:00,Regular Season - 18,FT,Bnei Sakhnin,4481,Maccabi Petah Tikva,4495,1,1
+1037119,2023,2024-01-21T18:00:00+00:00,Regular Season - 18,FT,Hapoel Petah Tikva,4488,Maccabi Tel Aviv,604,0,0
+1037117,2023,2024-01-21T18:30:00+00:00,Regular Season - 18,FT,Maccabi Haifa,4195,Maccabi Netanya,4505,4,0
+1037120,2023,2024-01-22T18:00:00+00:00,Regular Season - 18,FT,Hapoel Tel Aviv,4501,Beitar Jerusalem,657,0,1
+1037124,2023,2024-01-30T17:00:00+00:00,Regular Season - 19,FT,Ashdod,4507,Maccabi Bnei Raina,6186,1,0
+1037129,2023,2024-01-30T17:45:00+00:00,Regular Season - 19,FT,Maccabi Netanya,4505,Bnei Sakhnin,4481,0,1
+1037126,2023,2024-01-30T18:00:00+00:00,Regular Season - 19,FT,Beitar Jerusalem,657,Hapoel Petah Tikva,4488,2,2
+1037123,2023,2024-01-31T17:00:00+00:00,Regular Season - 19,FT,Maccabi Petah Tikva,4495,Hapoel Hadera,4500,1,0
+1037125,2023,2024-01-31T17:45:00+00:00,Regular Season - 19,FT,Hapoel Haifa,2253,Hapoel Tel Aviv,4501,4,3
+1037127,2023,2024-01-31T18:00:00+00:00,Regular Season - 19,FT,Maccabi Tel Aviv,604,Hapoel Katamon,4486,2,1
+1037128,2023,2024-01-31T18:30:00+00:00,Regular Season - 19,FT,Hapoel Beer Sheva,563,Maccabi Haifa,4195,2,1
+1037130,2023,2024-02-03T13:00:00+00:00,Regular Season - 20,FT,Maccabi Netanya,4505,Maccabi Petah Tikva,4495,0,1
+1037131,2023,2024-02-03T15:30:00+00:00,Regular Season - 20,FT,Bnei Sakhnin,4481,Hapoel Beer Sheva,563,0,2
+1037134,2023,2024-02-03T16:00:00+00:00,Regular Season - 20,FT,Hapoel Petah Tikva,4488,Hapoel Haifa,2253,0,2
+1037135,2023,2024-02-03T17:30:00+00:00,Regular Season - 20,FT,Hapoel Tel Aviv,4501,Ashdod,4507,3,1
+1037136,2023,2024-02-04T17:00:00+00:00,Regular Season - 20,FT,Maccabi Bnei Raina,6186,Hapoel Hadera,4500,2,1
+1037133,2023,2024-02-04T18:00:00+00:00,Regular Season - 20,FT,Hapoel Katamon,4486,Beitar Jerusalem,657,2,1
+1037132,2023,2024-02-05T18:30:00+00:00,Regular Season - 20,FT,Maccabi Haifa,4195,Maccabi Tel Aviv,604,2,0
+1037142,2023,2024-02-10T13:00:00+00:00,Regular Season - 21,FT,Maccabi Tel Aviv,604,Bnei Sakhnin,4481,1,1
+1037138,2023,2024-02-10T15:30:00+00:00,Regular Season - 21,FT,Hapoel Hadera,4500,Hapoel Tel Aviv,4501,1,0
+1037137,2023,2024-02-10T16:00:00+00:00,Regular Season - 21,FT,Maccabi Petah Tikva,4495,Maccabi Bnei Raina,6186,1,0
+1037139,2023,2024-02-10T16:00:00+00:00,Regular Season - 21,FT,Ashdod,4507,Hapoel Petah Tikva,4488,2,0
+1037141,2023,2024-02-10T18:00:00+00:00,Regular Season - 21,FT,Beitar Jerusalem,657,Maccabi Haifa,4195,0,2
+1037143,2023,2024-02-11T18:00:00+00:00,Regular Season - 21,FT,Hapoel Beer Sheva,563,Maccabi Netanya,4505,2,0
+1037140,2023,2024-02-12T18:00:00+00:00,Regular Season - 21,FT,Hapoel Haifa,2253,Hapoel Katamon,4486,2,3
+1037150,2023,2024-02-17T13:00:00+00:00,Regular Season - 22,FT,Hapoel Tel Aviv,4501,Maccabi Bnei Raina,6186,0,0
+1037144,2023,2024-02-17T15:30:00+00:00,Regular Season - 22,FT,Hapoel Beer Sheva,563,Maccabi Petah Tikva,4495,1,1
+1037148,2023,2024-02-17T16:30:00+00:00,Regular Season - 22,FT,Hapoel Katamon,4486,Ashdod,4507,1,1
+1037149,2023,2024-02-17T16:30:00+00:00,Regular Season - 22,FT,Hapoel Petah Tikva,4488,Hapoel Hadera,4500,0,2
+1037146,2023,2024-02-17T17:30:00+00:00,Regular Season - 22,FT,Bnei Sakhnin,4481,Beitar Jerusalem,657,2,1
+1037147,2023,2024-02-18T18:30:00+00:00,Regular Season - 22,FT,Maccabi Haifa,4195,Hapoel Haifa,2253,1,1
+1037145,2023,2024-02-19T18:00:00+00:00,Regular Season - 22,FT,Maccabi Netanya,4505,Maccabi Tel Aviv,604,1,5
+1037151,2023,2024-02-24T13:00:00+00:00,Regular Season - 23,FT,Maccabi Petah Tikva,4495,Hapoel Tel Aviv,4501,3,0
+1037155,2023,2024-02-24T15:30:00+00:00,Regular Season - 23,FT,Hapoel Haifa,2253,Bnei Sakhnin,4481,1,2
+1037153,2023,2024-02-24T16:30:00+00:00,Regular Season - 23,FT,Hapoel Hadera,4500,Hapoel Katamon,4486,1,1
+1037156,2023,2024-02-24T17:30:00+00:00,Regular Season - 23,FT,Beitar Jerusalem,657,Maccabi Netanya,4505,0,0
+1037157,2023,2024-02-24T18:00:00+00:00,Regular Season - 23,FT,Maccabi Tel Aviv,604,Hapoel Beer Sheva,563,1,0
+1037154,2023,2024-02-25T18:00:00+00:00,Regular Season - 23,FT,Ashdod,4507,Maccabi Haifa,4195,0,5
+1037152,2023,2024-02-26T18:00:00+00:00,Regular Season - 23,FT,Maccabi Bnei Raina,6186,Hapoel Petah Tikva,4488,1,1
+1037160,2023,2024-03-02T13:00:00+00:00,Regular Season - 24,FT,Maccabi Netanya,4505,Hapoel Haifa,2253,1,2
+1037161,2023,2024-03-02T16:30:00+00:00,Regular Season - 24,FT,Bnei Sakhnin,4481,Ashdod,4507,1,1
+1037163,2023,2024-03-02T16:30:00+00:00,Regular Season - 24,FT,Hapoel Katamon,4486,Maccabi Bnei Raina,6186,1,0
+1037158,2023,2024-03-02T17:30:00+00:00,Regular Season - 24,FT,Maccabi Tel Aviv,604,Maccabi Petah Tikva,4495,4,0
+1037162,2023,2024-03-03T18:00:00+00:00,Regular Season - 24,FT,Maccabi Haifa,4195,Hapoel Hadera,4500,1,0
+1037164,2023,2024-03-04T18:00:00+00:00,Regular Season - 24,FT,Hapoel Petah Tikva,4488,Hapoel Tel Aviv,4501,0,0
+1037159,2023,2024-03-04T18:30:00+00:00,Regular Season - 24,FT,Hapoel Beer Sheva,563,Beitar Jerusalem,657,1,0
+1037165,2023,2024-03-09T13:00:00+00:00,Regular Season - 25,FT,Hapoel Petah Tikva,4488,Maccabi Petah Tikva,4495,2,2
+1037168,2023,2024-03-09T15:30:00+00:00,Regular Season - 25,FT,Hapoel Hadera,4500,Bnei Sakhnin,4481,1,0
+1037169,2023,2024-03-09T16:30:00+00:00,Regular Season - 25,FT,Ashdod,4507,Maccabi Netanya,4505,0,2
+1037166,2023,2024-03-09T17:30:00+00:00,Regular Season - 25,FT,Hapoel Tel Aviv,4501,Hapoel Katamon,4486,0,0
+1037167,2023,2024-03-10T18:00:00+00:00,Regular Season - 25,FT,Maccabi Bnei Raina,6186,Maccabi Haifa,4195,2,1
+1037171,2023,2024-03-10T18:30:00+00:00,Regular Season - 25,FT,Beitar Jerusalem,657,Maccabi Tel Aviv,604,0,1
+1037170,2023,2024-03-11T18:00:00+00:00,Regular Season - 25,FT,Hapoel Haifa,2253,Hapoel Beer Sheva,563,1,0
+1037178,2023,2024-03-16T13:00:00+00:00,Regular Season - 26,FT,Hapoel Katamon,4486,Hapoel Petah Tikva,4488,3,2
+1037174,2023,2024-03-16T15:30:00+00:00,Regular Season - 26,FT,Hapoel Beer Sheva,563,Ashdod,4507,1,0
+1037175,2023,2024-03-16T16:30:00+00:00,Regular Season - 26,FT,Maccabi Netanya,4505,Hapoel Hadera,4500,1,3
+1037172,2023,2024-03-16T17:30:00+00:00,Regular Season - 26,FT,Maccabi Petah Tikva,4495,Beitar Jerusalem,657,0,3
+1037176,2023,2024-03-16T17:30:00+00:00,Regular Season - 26,FT,Bnei Sakhnin,4481,Maccabi Bnei Raina,6186,0,0
+1037173,2023,2024-03-17T18:00:00+00:00,Regular Season - 26,FT,Maccabi Tel Aviv,604,Hapoel Haifa,2253,3,1
+1037177,2023,2024-03-17T18:30:00+00:00,Regular Season - 26,FT,Maccabi Haifa,4195,Hapoel Tel Aviv,4501,0,0
+1187433,2023,2024-03-30T13:00:00+00:00,Championship Round - 1,FT,Hapoel Beer Sheva,563,Hapoel Haifa,2253,2,1
+1187439,2023,2024-03-30T14:00:00+00:00,Relegation Round - 1,FT,Hapoel Hadera,4500,Hapoel Petah Tikva,4488,1,1
+1187440,2023,2024-03-30T16:30:00+00:00,Relegation Round - 1,FT,Maccabi Petah Tikva,4495,Ashdod,4507,0,1
+1187434,2023,2024-03-30T17:00:00+00:00,Championship Round - 1,FT,Maccabi Tel Aviv,604,Bnei Sakhnin,4481,2,0
+1189965,2023,2024-03-31T17:00:00+00:00,Relegation Round - 1,FT,Maccabi Netanya,4505,Beitar Jerusalem,657,0,3
+1187435,2023,2024-03-31T17:30:00+00:00,Championship Round - 1,FT,Maccabi Haifa,4195,Maccabi Bnei Raina,6186,1,2
+1189966,2023,2024-04-01T17:00:00+00:00,Relegation Round - 1,FT,Hapoel Katamon,4486,Hapoel Tel Aviv,4501,2,0
+1187436,2023,2024-04-06T17:00:00+00:00,Championship Round - 2,FT,Bnei Sakhnin,4481,Hapoel Haifa,2253,2,1
+1187437,2023,2024-04-07T17:15:00+00:00,Championship Round - 2,FT,Maccabi Bnei Raina,6186,Hapoel Beer Sheva,563,1,0
+1187438,2023,2024-04-08T17:30:00+00:00,Championship Round - 2,FT,Maccabi Tel Aviv,604,Maccabi Haifa,4195,1,1
+1189968,2023,2024-04-13T12:30:00+00:00,Relegation Round - 2,FT,Beitar Jerusalem,657,Hapoel Hadera,4500,0,1
+1189945,2023,2024-04-13T14:45:00+00:00,Championship Round - 3,FT,Maccabi Haifa,4195,Bnei Sakhnin,4481,1,0
+1189967,2023,2024-04-13T17:00:00+00:00,Relegation Round - 2,FT,Hapoel Tel Aviv,4501,Hapoel Petah Tikva,4488,1,1
+1189970,2023,2024-04-14T16:00:00+00:00,Relegation Round - 2,FT,Hapoel Katamon,4486,Maccabi Petah Tikva,4495,2,0
+1189947,2023,2024-04-14T16:45:00+00:00,Championship Round - 3,FT,Hapoel Haifa,2253,Maccabi Bnei Raina,6186,2,0
+1189969,2023,2024-04-14T17:00:00+00:00,Relegation Round - 2,FT,Ashdod,4507,Maccabi Netanya,4505,0,0
+1189946,2023,2024-04-15T17:30:00+00:00,Championship Round - 3,FT,Hapoel Beer Sheva,563,Maccabi Tel Aviv,604,1,0
+1189949,2023,2024-04-20T14:00:00+00:00,Championship Round - 4,FT,Maccabi Tel Aviv,604,Hapoel Haifa,2253,4,0
+1189948,2023,2024-04-20T15:00:00+00:00,Championship Round - 4,FT,Bnei Sakhnin,4481,Maccabi Bnei Raina,6186,0,2
+1189972,2023,2024-04-20T15:00:00+00:00,Relegation Round - 3,FT,Maccabi Netanya,4505,Hapoel Katamon,4486,1,0
+1189950,2023,2024-04-20T17:00:00+00:00,Championship Round - 4,FT,Maccabi Haifa,4195,Hapoel Beer Sheva,563,4,1
+1189971,2023,2024-04-20T17:00:00+00:00,Relegation Round - 3,FT,Maccabi Petah Tikva,4495,Hapoel Tel Aviv,4501,4,2
+1189973,2023,2024-04-21T16:00:00+00:00,Relegation Round - 3,FT,Hapoel Hadera,4500,Ashdod,4507,2,2
+1189974,2023,2024-04-21T17:15:00+00:00,Relegation Round - 3,FT,Hapoel Petah Tikva,4488,Beitar Jerusalem,657,0,2
+1189953,2023,2024-04-27T14:00:00+00:00,Championship Round - 5,FT,Maccabi Bnei Raina,6186,Maccabi Tel Aviv,604,2,3
+1189977,2023,2024-04-27T14:30:00+00:00,Relegation Round - 4,FT,Hapoel Katamon,4486,Hapoel Hadera,4500,2,1
+1189978,2023,2024-04-27T15:00:00+00:00,Relegation Round - 4,FT,Maccabi Petah Tikva,4495,Maccabi Netanya,4505,0,2
+1189975,2023,2024-04-27T17:00:00+00:00,Relegation Round - 4,FT,Hapoel Tel Aviv,4501,Beitar Jerusalem,657,1,5
+1189976,2023,2024-04-27T17:00:00+00:00,Relegation Round - 4,FT,Ashdod,4507,Hapoel Petah Tikva,4488,1,0
+1189951,2023,2024-04-29T17:00:00+00:00,Championship Round - 5,FT,Hapoel Beer Sheva,563,Bnei Sakhnin,4481,2,1
+1189952,2023,2024-04-29T17:30:00+00:00,Championship Round - 5,FT,Hapoel Haifa,2253,Maccabi Haifa,4195,0,2
+1189979,2023,2024-05-04T14:00:00+00:00,Relegation Round - 5,FT,Maccabi Netanya,4505,Hapoel Tel Aviv,4501,0,1
+1190032,2023,2024-05-04T15:00:00+00:00,Championship Round - 6,FT,Hapoel Haifa,2253,Hapoel Beer Sheva,563,2,0
+1189955,2023,2024-05-04T17:00:00+00:00,Championship Round - 6,FT,Maccabi Bnei Raina,6186,Maccabi Haifa,4195,1,5
+1189981,2023,2024-05-04T17:00:00+00:00,Relegation Round - 5,FT,Hapoel Petah Tikva,4488,Hapoel Katamon,4486,1,0
+1189954,2023,2024-05-06T17:30:00+00:00,Championship Round - 6,FT,Bnei Sakhnin,4481,Maccabi Tel Aviv,604,1,1
+1189980,2023,2024-05-06T17:30:00+00:00,Relegation Round - 5,FT,Hapoel Hadera,4500,Maccabi Petah Tikva,4495,0,4
+1189982,2023,2024-05-06T17:30:00+00:00,Relegation Round - 5,FT,Beitar Jerusalem,657,Ashdod,4507,0,0
+1189956,2023,2024-05-09T16:30:00+00:00,Championship Round - 7,FT,Hapoel Haifa,2253,Bnei Sakhnin,4481,1,2
+1190033,2023,2024-05-09T16:30:00+00:00,Championship Round - 7,FT,Hapoel Beer Sheva,563,Maccabi Bnei Raina,6186,2,1
+1189983,2023,2024-05-11T15:00:00+00:00,Relegation Round - 6,FT,Hapoel Tel Aviv,4501,Ashdod,4507,0,2
+1189984,2023,2024-05-11T15:00:00+00:00,Relegation Round - 6,FT,Hapoel Katamon,4486,Beitar Jerusalem,657,3,0
+1189985,2023,2024-05-11T15:00:00+00:00,Relegation Round - 6,FT,Maccabi Petah Tikva,4495,Hapoel Petah Tikva,4488,4,1
+1189986,2023,2024-05-11T15:00:00+00:00,Relegation Round - 6,FT,Maccabi Netanya,4505,Hapoel Hadera,4500,1,2
+1189957,2023,2024-05-11T17:30:00+00:00,Championship Round - 7,FT,Maccabi Haifa,4195,Maccabi Tel Aviv,604,0,1
+1189987,2023,2024-05-18T15:00:00+00:00,Relegation Round - 7,FT,Hapoel Hadera,4500,Hapoel Tel Aviv,4501,0,1
+1189990,2023,2024-05-18T15:00:00+00:00,Relegation Round - 7,FT,Ashdod,4507,Hapoel Katamon,4486,3,1
+1189958,2023,2024-05-18T17:30:00+00:00,Championship Round - 8,FT,Bnei Sakhnin,4481,Maccabi Haifa,4195,1,2
+1189959,2023,2024-05-18T17:30:00+00:00,Championship Round - 8,FT,Maccabi Tel Aviv,604,Hapoel Beer Sheva,563,3,0
+1189960,2023,2024-05-18T17:30:00+00:00,Championship Round - 8,FT,Maccabi Bnei Raina,6186,Hapoel Haifa,2253,0,1
+1189988,2023,2024-05-19T17:00:00+00:00,Relegation Round - 7,FT,Hapoel Petah Tikva,4488,Maccabi Netanya,4505,1,3
+1189989,2023,2024-05-20T17:00:00+00:00,Relegation Round - 7,FT,Beitar Jerusalem,657,Maccabi Petah Tikva,4495,1,1
+1189961,2023,2024-05-21T17:30:00+00:00,Championship Round - 9,FT,Maccabi Bnei Raina,6186,Bnei Sakhnin,4481,2,2
+1189962,2023,2024-05-21T17:30:00+00:00,Championship Round - 9,FT,Hapoel Haifa,2253,Maccabi Tel Aviv,604,0,3
+1190034,2023,2024-05-21T17:30:00+00:00,Championship Round - 9,FT,Hapoel Beer Sheva,563,Maccabi Haifa,4195,1,4
+1189963,2023,2024-05-25T15:30:00+00:00,Championship Round - 10,FT,Maccabi Haifa,4195,Hapoel Haifa,2253,0,2
+1189964,2023,2024-05-25T15:30:00+00:00,Championship Round - 10,FT,Maccabi Tel Aviv,604,Maccabi Bnei Raina,6186,2,0
+1190035,2023,2024-05-25T15:30:00+00:00,Championship Round - 10,FT,Bnei Sakhnin,4481,Hapoel Beer Sheva,563,4,1
+1214886,2024,2024-08-24T16:00:00+00:00,Regular Season - 1,FT,Maccabi Bnei Raina,6186,Maccabi Netanya,4505,4,3
+1214890,2024,2024-08-24T16:00:00+00:00,Regular Season - 1,FT,Bnei Sakhnin,4481,Maccabi Petah Tikva,4495,2,0
+1214887,2024,2024-08-24T17:00:00+00:00,Regular Season - 1,FT,Maccabi Haifa,4195,Ironi Tiberias,6181,4,0
+1214892,2024,2024-08-24T17:00:00+00:00,Regular Season - 1,FT,Hapoel Hadera,4500,Hapoel Haifa,2253,0,0
+1214888,2024,2024-08-25T17:15:00+00:00,Regular Season - 1,FT,Beitar Jerusalem,657,Ashdod,4507,3,2
+1214889,2024,2024-08-26T17:00:00+00:00,Regular Season - 1,FT,Ironi Kiryat Shmona,4510,Hapoel Beer Sheva,563,0,1
+1214893,2024,2024-08-31T16:00:00+00:00,Regular Season - 2,FT,Hapoel Haifa,2253,Maccabi Bnei Raina,6186,1,3
+1214897,2024,2024-08-31T16:00:00+00:00,Regular Season - 2,FT,Ashdod,4507,Ironi Kiryat Shmona,4510,2,1
+1214894,2024,2024-08-31T17:00:00+00:00,Regular Season - 2,FT,Hapoel Katamon,4486,Hapoel Hadera,4500,1,1
+1214898,2024,2024-08-31T17:00:00+00:00,Regular Season - 2,FT,Ironi Tiberias,6181,Beitar Jerusalem,657,1,0
+1214899,2024,2024-08-31T17:30:00+00:00,Regular Season - 2,FT,Maccabi Netanya,4505,Maccabi Haifa,4195,0,2
+1214896,2024,2024-09-01T17:00:00+00:00,Regular Season - 2,FT,Hapoel Beer Sheva,563,Bnei Sakhnin,4481,0,0
+1214895,2024,2024-09-01T17:15:00+00:00,Regular Season - 2,FT,Maccabi Petah Tikva,4495,Maccabi Tel Aviv,604,0,3
+1214903,2024,2024-09-14T16:30:00+00:00,Regular Season - 3,FT,Bnei Sakhnin,4481,Ashdod,4507,2,2
+1214906,2024,2024-09-14T16:30:00+00:00,Regular Season - 3,FT,Hapoel Haifa,2253,Hapoel Katamon,4486,4,0
+1214900,2024,2024-09-14T17:00:00+00:00,Regular Season - 3,FT,Maccabi Bnei Raina,6186,Maccabi Haifa,4195,2,2
+1214902,2024,2024-09-14T17:00:00+00:00,Regular Season - 3,FT,Ironi Kiryat Shmona,4510,Ironi Tiberias,6181,2,0
+1214904,2024,2024-09-14T17:30:00+00:00,Regular Season - 3,FT,Maccabi Tel Aviv,604,Hapoel Beer Sheva,563,1,0
+1214901,2024,2024-09-15T17:15:00+00:00,Regular Season - 3,FT,Beitar Jerusalem,657,Maccabi Netanya,4505,2,0
+1214905,2024,2024-09-16T17:00:00+00:00,Regular Season - 3,FT,Hapoel Hadera,4500,Maccabi Petah Tikva,4495,0,1
+1214891,2024,2024-09-18T14:30:00+00:00,Regular Season - 1,FT,Maccabi Tel Aviv,604,Hapoel Katamon,4486,2,1
+1214907,2024,2024-09-21T16:30:00+00:00,Regular Season - 4,FT,Hapoel Katamon,4486,Maccabi Bnei Raina,6186,0,1
+1214911,2024,2024-09-21T16:30:00+00:00,Regular Season - 4,FT,Ironi Tiberias,6181,Bnei Sakhnin,4481,1,0
+1214908,2024,2024-09-21T17:00:00+00:00,Regular Season - 4,FT,Maccabi Petah Tikva,4495,Hapoel Haifa,2253,0,0
+1214912,2024,2024-09-21T17:00:00+00:00,Regular Season - 4,FT,Maccabi Netanya,4505,Ironi Kiryat Shmona,4510,2,0
+1214909,2024,2024-09-21T17:30:00+00:00,Regular Season - 4,FT,Hapoel Beer Sheva,563,Hapoel Hadera,4500,2,1
+1214910,2024,2024-09-22T17:15:00+00:00,Regular Season - 4,FT,Ashdod,4507,Maccabi Tel Aviv,604,0,2
+1214915,2024,2024-09-28T16:15:00+00:00,Regular Season - 5,FT,Ironi Kiryat Shmona,4510,Maccabi Haifa,4195,0,4
+1214914,2024,2024-09-28T17:00:00+00:00,Regular Season - 5,FT,Maccabi Bnei Raina,6186,Beitar Jerusalem,657,0,2
+1214920,2024,2024-09-28T17:00:00+00:00,Regular Season - 5,FT,Hapoel Katamon,4486,Maccabi Petah Tikva,4495,4,1
+1215010,2024,2024-09-29T17:00:00+00:00,Regular Season - 5,FT,Hapoel Beer Sheva,563,Hapoel Haifa,2253,3,0
+1214917,2024,2024-09-29T17:30:00+00:00,Regular Season - 5,FT,Maccabi Tel Aviv,604,Ironi Tiberias,6181,1,1
+1214916,2024,2024-09-30T17:00:00+00:00,Regular Season - 5,FT,Bnei Sakhnin,4481,Maccabi Netanya,4505,1,0
+1214918,2024,2024-09-30T17:00:00+00:00,Regular Season - 5,FT,Hapoel Hadera,4500,Ashdod,4507,0,3
+1214923,2024,2024-10-05T16:00:00+00:00,Regular Season - 6,FT,Ashdod,4507,Hapoel Haifa,2253,0,1
+1214926,2024,2024-10-05T16:30:00+00:00,Regular Season - 6,FT,Maccabi Haifa,4195,Bnei Sakhnin,4481,3,0
+1214921,2024,2024-10-05T16:45:00+00:00,Regular Season - 6,FT,Maccabi Petah Tikva,4495,Maccabi Bnei Raina,6186,2,1
+1214924,2024,2024-10-05T17:00:00+00:00,Regular Season - 6,FT,Ironi Tiberias,6181,Hapoel Hadera,4500,1,1
+1214927,2024,2024-10-05T17:00:00+00:00,Regular Season - 6,FT,Beitar Jerusalem,657,Ironi Kiryat Shmona,4510,1,1
+1214922,2024,2024-10-06T17:15:00+00:00,Regular Season - 6,FT,Hapoel Beer Sheva,563,Hapoel Katamon,4486,3,1
+1214925,2024,2024-10-06T17:30:00+00:00,Regular Season - 6,FT,Maccabi Netanya,4505,Maccabi Tel Aviv,604,1,2
+1214928,2024,2024-10-19T15:45:00+00:00,Regular Season - 7,FT,Maccabi Bnei Raina,6186,Ironi Kiryat Shmona,4510,1,0
+1214932,2024,2024-10-19T16:30:00+00:00,Regular Season - 7,FT,Hapoel Haifa,2253,Ironi Tiberias,6181,1,0
+1214930,2024,2024-10-19T17:30:00+00:00,Regular Season - 7,FT,Maccabi Tel Aviv,604,Maccabi Haifa,4195,2,0
+1214933,2024,2024-10-20T17:00:00+00:00,Regular Season - 7,FT,Hapoel Katamon,4486,Ashdod,4507,1,0
+1214934,2024,2024-10-20T17:15:00+00:00,Regular Season - 7,FT,Maccabi Petah Tikva,4495,Hapoel Beer Sheva,563,2,5
+1214931,2024,2024-10-21T17:00:00+00:00,Regular Season - 7,FT,Hapoel Hadera,4500,Maccabi Netanya,4505,2,2
+1215004,2024,2024-10-22T16:30:00+00:00,Regular Season - 4,FT,Beitar Jerusalem,657,Maccabi Haifa,4195,3,2
+1214941,2024,2024-10-26T15:45:00+00:00,Regular Season - 8,FT,Ironi Kiryat Shmona,4510,Bnei Sakhnin,4481,2,1
+1214936,2024,2024-10-26T16:00:00+00:00,Regular Season - 8,FT,Ashdod,4507,Maccabi Petah Tikva,4495,0,0
+1214937,2024,2024-10-26T16:00:00+00:00,Regular Season - 8,FT,Ironi Tiberias,6181,Hapoel Katamon,4486,0,2
+1214935,2024,2024-10-26T16:30:00+00:00,Regular Season - 8,FT,Hapoel Beer Sheva,563,Maccabi Bnei Raina,6186,1,1
+1214938,2024,2024-10-28T18:00:00+00:00,Regular Season - 8,FT,Maccabi Netanya,4505,Hapoel Haifa,2253,0,3
+1214940,2024,2024-10-28T18:00:00+00:00,Regular Season - 8,FT,Beitar Jerusalem,657,Maccabi Tel Aviv,604,3,1
+1214939,2024,2024-10-28T18:30:00+00:00,Regular Season - 8,FT,Maccabi Haifa,4195,Hapoel Hadera,4500,4,2
+1214946,2024,2024-11-02T13:00:00+00:00,Regular Season - 9,FT,Hapoel Katamon,4486,Maccabi Netanya,4505,2,3
+1214943,2024,2024-11-02T15:30:00+00:00,Regular Season - 9,FT,Maccabi Tel Aviv,604,Ironi Kiryat Shmona,4510,0,1
+1214942,2024,2024-11-02T16:00:00+00:00,Regular Season - 9,FT,Maccabi Bnei Raina,6186,Bnei Sakhnin,4481,0,1
+1214947,2024,2024-11-02T16:00:00+00:00,Regular Season - 9,FT,Maccabi Petah Tikva,4495,Ironi Tiberias,6181,0,0
+1214944,2024,2024-11-02T17:30:00+00:00,Regular Season - 9,FT,Hapoel Hadera,4500,Beitar Jerusalem,657,0,4
+1214948,2024,2024-11-03T18:15:00+00:00,Regular Season - 9,FT,Hapoel Beer Sheva,563,Ashdod,4507,3,1
+1214945,2024,2024-11-04T18:30:00+00:00,Regular Season - 9,FT,Hapoel Haifa,2253,Maccabi Haifa,4195,1,4
+1214929,2024,2024-11-05T17:30:00+00:00,Regular Season - 7,FT,Bnei Sakhnin,4481,Beitar Jerusalem,657,2,1
+1215043,2024,2024-11-08T13:00:00+00:00,Regular Season - 10,FT,Hapoel Katamon,4486,Maccabi Haifa,4195,0,0
+1214953,2024,2024-11-09T13:00:00+00:00,Regular Season - 10,FT,Beitar Jerusalem,657,Hapoel Haifa,2253,1,0
+1214950,2024,2024-11-09T15:30:00+00:00,Regular Season - 10,FT,Ironi Tiberias,6181,Hapoel Beer Sheva,563,0,2
+1214949,2024,2024-11-09T16:00:00+00:00,Regular Season - 10,FT,Ashdod,4507,Maccabi Bnei Raina,6186,1,2
+1214954,2024,2024-11-09T16:00:00+00:00,Regular Season - 10,FT,Ironi Kiryat Shmona,4510,Hapoel Hadera,4500,1,1
+1214951,2024,2024-11-10T18:00:00+00:00,Regular Season - 10,FT,Maccabi Netanya,4505,Maccabi Petah Tikva,4495,1,2
+1214955,2024,2024-11-10T18:15:00+00:00,Regular Season - 10,FT,Bnei Sakhnin,4481,Maccabi Tel Aviv,604,0,4
+1215049,2024,2024-11-29T13:00:00+00:00,Regular Season - 11,FT,Ironi Kiryat Shmona,4510,Hapoel Haifa,2253,2,1
+1214960,2024,2024-11-30T13:00:00+00:00,Regular Season - 11,FT,Maccabi Petah Tikva,4495,Maccabi Haifa,4195,1,2
+1214957,2024,2024-11-30T16:00:00+00:00,Regular Season - 11,FT,Hapoel Hadera,4500,Bnei Sakhnin,4481,0,0
+1214962,2024,2024-11-30T16:00:00+00:00,Regular Season - 11,FT,Ashdod,4507,Ironi Tiberias,6181,1,0
+1214961,2024,2024-11-30T17:30:00+00:00,Regular Season - 11,FT,Hapoel Beer Sheva,563,Maccabi Netanya,4505,1,0
+1214959,2024,2024-12-01T18:30:00+00:00,Regular Season - 11,FT,Hapoel Katamon,4486,Beitar Jerusalem,657,3,3
+1214956,2024,2024-12-02T18:00:00+00:00,Regular Season - 11,FT,Maccabi Bnei Raina,6186,Maccabi Tel Aviv,604,1,2
+1214968,2024,2024-12-03T17:45:00+00:00,Regular Season - 12,FT,Bnei Sakhnin,4481,Hapoel Haifa,2253,0,2
+1214964,2024,2024-12-03T18:00:00+00:00,Regular Season - 12,FT,Maccabi Netanya,4505,Ashdod,4507,2,2
+1214967,2024,2024-12-04T17:45:00+00:00,Regular Season - 12,FT,Ironi Kiryat Shmona,4510,Hapoel Katamon,4486,2,0
+1214966,2024,2024-12-04T18:00:00+00:00,Regular Season - 12,FT,Beitar Jerusalem,657,Maccabi Petah Tikva,4495,5,0
+1214965,2024,2024-12-04T18:30:00+00:00,Regular Season - 12,FT,Maccabi Haifa,4195,Hapoel Beer Sheva,563,0,2
+1214963,2024,2024-12-05T17:45:00+00:00,Regular Season - 12,FT,Maccabi Bnei Raina,6186,Ironi Tiberias,6181,1,0
+1214969,2024,2024-12-05T18:00:00+00:00,Regular Season - 12,FT,Maccabi Tel Aviv,604,Hapoel Hadera,4500,2,2
+1214973,2024,2024-12-07T13:00:00+00:00,Regular Season - 13,FT,Maccabi Petah Tikva,4495,Ironi Kiryat Shmona,4510,0,1
+1214975,2024,2024-12-07T17:30:00+00:00,Regular Season - 13,FT,Ashdod,4507,Maccabi Haifa,4195,1,3
+1214972,2024,2024-12-08T18:00:00+00:00,Regular Season - 13,FT,Hapoel Katamon,4486,Bnei Sakhnin,4481,1,0
+1214971,2024,2024-12-08T18:15:00+00:00,Regular Season - 13,FT,Hapoel Haifa,2253,Maccabi Tel Aviv,604,1,1
+1214970,2024,2024-12-09T17:45:00+00:00,Regular Season - 13,FT,Hapoel Hadera,4500,Maccabi Bnei Raina,6186,2,1
+1214976,2024,2024-12-09T18:00:00+00:00,Regular Season - 13,FT,Ironi Tiberias,6181,Maccabi Netanya,4505,2,3
+1214974,2024,2024-12-09T18:30:00+00:00,Regular Season - 13,FT,Hapoel Beer Sheva,563,Beitar Jerusalem,657,4,1
+1214977,2024,2024-12-14T13:00:00+00:00,Regular Season - 14,FT,Maccabi Netanya,4505,Maccabi Bnei Raina,6186,2,0
+1214980,2024,2024-12-14T15:30:00+00:00,Regular Season - 14,FT,Hapoel Beer Sheva,563,Ironi Kiryat Shmona,4510,5,1
+1214981,2024,2024-12-14T16:00:00+00:00,Regular Season - 14,FT,Maccabi Petah Tikva,4495,Bnei Sakhnin,4481,1,1
+1214983,2024,2024-12-14T16:00:00+00:00,Regular Season - 14,FT,Hapoel Haifa,2253,Hapoel Hadera,4500,3,0
+1214979,2024,2024-12-14T17:30:00+00:00,Regular Season - 14,FT,Ashdod,4507,Beitar Jerusalem,657,2,3
+1214978,2024,2024-12-15T18:15:00+00:00,Regular Season - 14,FT,Ironi Tiberias,6181,Maccabi Haifa,4195,0,0
+1214982,2024,2024-12-16T18:30:00+00:00,Regular Season - 14,FT,Hapoel Katamon,4486,Maccabi Tel Aviv,604,2,3
+1214986,2024,2024-12-21T13:00:00+00:00,Regular Season - 15,FT,Maccabi Tel Aviv,604,Maccabi Petah Tikva,4495,3,2
+1214984,2024,2024-12-21T15:30:00+00:00,Regular Season - 15,FT,Maccabi Bnei Raina,6186,Hapoel Haifa,2253,0,2
+1214985,2024,2024-12-21T16:00:00+00:00,Regular Season - 15,FT,Hapoel Hadera,4500,Hapoel Katamon,4486,1,1
+1214987,2024,2024-12-21T17:30:00+00:00,Regular Season - 15,FT,Bnei Sakhnin,4481,Hapoel Beer Sheva,563,0,0
+1214990,2024,2024-12-21T18:00:00+00:00,Regular Season - 15,FT,Maccabi Haifa,4195,Maccabi Netanya,4505,2,1
+1214988,2024,2024-12-22T18:00:00+00:00,Regular Season - 15,FT,Ironi Kiryat Shmona,4510,Ashdod,4507,3,2
+1214989,2024,2024-12-23T18:00:00+00:00,Regular Season - 15,FT,Beitar Jerusalem,657,Ironi Tiberias,6181,1,1
+1214993,2024,2024-12-31T17:30:00+00:00,Regular Season - 16,FT,Ironi Tiberias,6181,Ironi Kiryat Shmona,4510,3,1
+1214996,2024,2024-12-31T17:45:00+00:00,Regular Season - 16,FT,Maccabi Petah Tikva,4495,Hapoel Hadera,4500,0,0
+1214994,2024,2024-12-31T18:00:00+00:00,Regular Season - 16,FT,Ashdod,4507,Bnei Sakhnin,4481,3,5
+1214997,2024,2025-01-01T17:45:00+00:00,Regular Season - 16,FT,Hapoel Katamon,4486,Hapoel Haifa,2253,1,0
+1214992,2024,2025-01-01T18:00:00+00:00,Regular Season - 16,FT,Maccabi Netanya,4505,Beitar Jerusalem,657,3,0
+1214995,2024,2025-01-01T18:30:00+00:00,Regular Season - 16,FT,Hapoel Beer Sheva,563,Maccabi Tel Aviv,604,2,2
+1214991,2024,2025-01-02T18:00:00+00:00,Regular Season - 16,FT,Maccabi Haifa,4195,Maccabi Bnei Raina,6186,2,0
+1214999,2024,2025-01-04T13:00:00+00:00,Regular Season - 17,FT,Hapoel Haifa,2253,Maccabi Petah Tikva,4495,5,1
+1215001,2024,2025-01-04T15:30:00+00:00,Regular Season - 17,FT,Maccabi Tel Aviv,604,Ashdod,4507,5,1
+1215002,2024,2025-01-04T16:00:00+00:00,Regular Season - 17,FT,Bnei Sakhnin,4481,Ironi Tiberias,6181,0,0
+1215000,2024,2025-01-04T17:30:00+00:00,Regular Season - 17,FT,Hapoel Hadera,4500,Hapoel Beer Sheva,563,1,2
+1215003,2024,2025-01-05T18:15:00+00:00,Regular Season - 17,FT,Ironi Kiryat Shmona,4510,Maccabi Netanya,4505,0,1
+1214998,2024,2025-01-06T18:00:00+00:00,Regular Season - 17,FT,Maccabi Bnei Raina,6186,Hapoel Katamon,4486,0,0
+1214913,2024,2025-01-06T18:30:00+00:00,Regular Season - 17,FT,Maccabi Haifa,4195,Beitar Jerusalem,657,1,3
+1215006,2024,2025-01-11T13:00:00+00:00,Regular Season - 18,FT,Maccabi Haifa,4195,Ironi Kiryat Shmona,4510,4,1
+1215005,2024,2025-01-11T16:00:00+00:00,Regular Season - 18,FT,Beitar Jerusalem,657,Maccabi Bnei Raina,6186,1,4
+1215007,2024,2025-01-11T16:00:00+00:00,Regular Season - 18,FT,Maccabi Netanya,4505,Bnei Sakhnin,4481,4,0
+1215011,2024,2025-01-11T16:00:00+00:00,Regular Season - 18,FT,Maccabi Petah Tikva,4495,Hapoel Katamon,4486,2,0
+1215008,2024,2025-01-11T17:30:00+00:00,Regular Season - 18,FT,Ironi Tiberias,6181,Maccabi Tel Aviv,604,2,2
+1215009,2024,2025-01-12T18:00:00+00:00,Regular Season - 18,FT,Ashdod,4507,Hapoel Hadera,4500,1,1
+1214919,2024,2025-01-12T18:30:00+00:00,Regular Season - 18,FT,Hapoel Haifa,2253,Hapoel Beer Sheva,563,0,1
+1215018,2024,2025-01-18T13:00:00+00:00,Regular Season - 19,FT,Ironi Kiryat Shmona,4510,Beitar Jerusalem,657,0,3
+1215017,2024,2025-01-18T15:30:00+00:00,Regular Season - 19,FT,Bnei Sakhnin,4481,Maccabi Haifa,4195,1,1
+1215012,2024,2025-01-18T16:00:00+00:00,Regular Season - 19,FT,Maccabi Bnei Raina,6186,Maccabi Petah Tikva,4495,1,2
+1215016,2024,2025-01-18T18:00:00+00:00,Regular Season - 19,FT,Maccabi Tel Aviv,604,Maccabi Netanya,4505,4,1
+1215013,2024,2025-01-19T18:15:00+00:00,Regular Season - 19,FT,Hapoel Katamon,4486,Hapoel Beer Sheva,563,0,2
+1215014,2024,2025-01-20T18:00:00+00:00,Regular Season - 19,FT,Hapoel Haifa,2253,Ashdod,4507,2,1
+1215015,2024,2025-01-20T18:00:00+00:00,Regular Season - 19,FT,Hapoel Hadera,4500,Ironi Tiberias,6181,1,2
+1215020,2024,2025-01-25T13:00:00+00:00,Regular Season - 20,FT,Beitar Jerusalem,657,Bnei Sakhnin,4481,1,0
+1215023,2024,2025-01-25T15:30:00+00:00,Regular Season - 20,FT,Ironi Tiberias,6181,Hapoel Haifa,2253,1,1
+1215019,2024,2025-01-25T16:00:00+00:00,Regular Season - 20,FT,Ironi Kiryat Shmona,4510,Maccabi Bnei Raina,6186,0,0
+1215024,2024,2025-01-25T16:00:00+00:00,Regular Season - 20,FT,Ashdod,4507,Hapoel Katamon,4486,1,1
+1215025,2024,2025-01-25T17:30:00+00:00,Regular Season - 20,FT,Hapoel Beer Sheva,563,Maccabi Petah Tikva,4495,1,0
+1215022,2024,2025-01-26T18:15:00+00:00,Regular Season - 20,FT,Maccabi Netanya,4505,Hapoel Hadera,4500,2,1
+1215021,2024,2025-01-27T18:30:00+00:00,Regular Season - 20,FT,Maccabi Haifa,4195,Maccabi Tel Aviv,604,1,1
+1215026,2024,2025-02-01T13:00:00+00:00,Regular Season - 21,FT,Maccabi Bnei Raina,6186,Hapoel Beer Sheva,563,1,0
+1215028,2024,2025-02-01T15:30:00+00:00,Regular Season - 21,FT,Hapoel Katamon,4486,Ironi Tiberias,6181,4,0
+1215027,2024,2025-02-01T16:00:00+00:00,Regular Season - 21,FT,Maccabi Petah Tikva,4495,Ashdod,4507,2,2
+1215032,2024,2025-02-01T16:00:00+00:00,Regular Season - 21,FT,Bnei Sakhnin,4481,Ironi Kiryat Shmona,4510,0,1
+1215030,2024,2025-02-01T17:30:00+00:00,Regular Season - 21,FT,Hapoel Hadera,4500,Maccabi Haifa,4195,1,3
+1215029,2024,2025-02-02T18:15:00+00:00,Regular Season - 21,FT,Hapoel Haifa,2253,Maccabi Netanya,4505,1,3
+1215031,2024,2025-02-03T18:30:00+00:00,Regular Season - 21,FT,Maccabi Tel Aviv,604,Beitar Jerusalem,657,1,1
+1215037,2024,2025-02-08T13:00:00+00:00,Regular Season - 22,FT,Maccabi Netanya,4505,Hapoel Katamon,4486,2,1
+1215035,2024,2025-02-08T15:30:00+00:00,Regular Season - 22,FT,Beitar Jerusalem,657,Hapoel Hadera,4500,0,0
+1215033,2024,2025-02-08T16:00:00+00:00,Regular Season - 22,FT,Bnei Sakhnin,4481,Maccabi Bnei Raina,6186,2,0
+1215038,2024,2025-02-08T16:00:00+00:00,Regular Season - 22,FT,Ironi Tiberias,6181,Maccabi Petah Tikva,4495,1,2
+1215039,2024,2025-02-08T17:30:00+00:00,Regular Season - 22,FT,Ashdod,4507,Hapoel Beer Sheva,563,0,2
+1215034,2024,2025-02-09T18:15:00+00:00,Regular Season - 22,FT,Ironi Kiryat Shmona,4510,Maccabi Tel Aviv,604,1,2
+1215036,2024,2025-02-10T18:30:00+00:00,Regular Season - 22,FT,Maccabi Haifa,4195,Hapoel Haifa,2253,1,1
+1215041,2024,2025-02-15T13:00:00+00:00,Regular Season - 23,FT,Hapoel Beer Sheva,563,Ironi Tiberias,6181,4,0
+1215042,2024,2025-02-15T15:30:00+00:00,Regular Season - 23,FT,Maccabi Petah Tikva,4495,Maccabi Netanya,4505,0,1
+1215040,2024,2025-02-15T16:15:00+00:00,Regular Season - 23,FT,Maccabi Bnei Raina,6186,Ashdod,4507,1,4
+1215045,2024,2025-02-15T16:15:00+00:00,Regular Season - 23,FT,Hapoel Hadera,4500,Ironi Kiryat Shmona,4510,0,2
+1215044,2024,2025-02-15T17:30:00+00:00,Regular Season - 23,FT,Hapoel Haifa,2253,Beitar Jerusalem,657,3,2
+1215046,2024,2025-02-16T18:15:00+00:00,Regular Season - 23,FT,Maccabi Tel Aviv,604,Bnei Sakhnin,4481,3,1
+1214952,2024,2025-02-17T18:30:00+00:00,Regular Season - 23,FT,Maccabi Haifa,4195,Hapoel Katamon,4486,3,3
+1215050,2024,2025-02-21T11:30:00+00:00,Regular Season - 24,FT,Beitar Jerusalem,657,Hapoel Katamon,4486,1,1
+1215051,2024,2025-02-22T13:00:00+00:00,Regular Season - 24,FT,Maccabi Haifa,4195,Maccabi Petah Tikva,4495,1,0
+1215047,2024,2025-02-22T15:30:00+00:00,Regular Season - 24,FT,Maccabi Tel Aviv,604,Maccabi Bnei Raina,6186,0,1
+1215053,2024,2025-02-22T16:30:00+00:00,Regular Season - 24,FT,Ironi Tiberias,6181,Ashdod,4507,2,1
+1215052,2024,2025-02-22T17:30:00+00:00,Regular Season - 24,FT,Maccabi Netanya,4505,Hapoel Beer Sheva,563,1,2
+1215048,2024,2025-02-23T18:00:00+00:00,Regular Season - 24,FT,Bnei Sakhnin,4481,Hapoel Hadera,4500,0,1
+1214958,2024,2025-02-24T18:00:00+00:00,Regular Season - 24,FT,Hapoel Haifa,2253,Ironi Kiryat Shmona,4510,4,3
+1215058,2024,2025-03-01T13:00:00+00:00,Regular Season - 25,FT,Hapoel Katamon,4486,Ironi Kiryat Shmona,4510,0,0
+1215055,2024,2025-03-01T15:30:00+00:00,Regular Season - 25,FT,Ashdod,4507,Maccabi Netanya,4505,0,0
+1215060,2024,2025-03-01T17:30:00+00:00,Regular Season - 25,FT,Hapoel Hadera,4500,Maccabi Tel Aviv,604,2,3
+1215054,2024,2025-03-01T18:00:00+00:00,Regular Season - 25,FT,Ironi Tiberias,6181,Maccabi Bnei Raina,6186,1,0
+1215059,2024,2025-03-02T18:00:00+00:00,Regular Season - 25,FT,Hapoel Haifa,2253,Bnei Sakhnin,4481,2,1
+1215057,2024,2025-03-02T18:15:00+00:00,Regular Season - 25,FT,Maccabi Petah Tikva,4495,Beitar Jerusalem,657,1,2
+1215056,2024,2025-03-03T18:30:00+00:00,Regular Season - 25,FT,Hapoel Beer Sheva,563,Maccabi Haifa,4195,3,3
+1215067,2024,2025-03-08T13:00:00+00:00,Regular Season - 26,FT,Maccabi Netanya,4505,Ironi Tiberias,6181,1,1
+1215062,2024,2025-03-08T17:30:00+00:00,Regular Season - 26,FT,Maccabi Tel Aviv,604,Hapoel Haifa,2253,2,0
+1215061,2024,2025-03-08T18:00:00+00:00,Regular Season - 26,FT,Maccabi Bnei Raina,6186,Hapoel Hadera,4500,1,2
+1215063,2024,2025-03-08T18:00:00+00:00,Regular Season - 26,FT,Bnei Sakhnin,4481,Hapoel Katamon,4486,0,2
+1215064,2024,2025-03-09T17:30:00+00:00,Regular Season - 26,FT,Ironi Kiryat Shmona,4510,Maccabi Petah Tikva,4495,2,0
+1215066,2024,2025-03-09T18:15:00+00:00,Regular Season - 26,FT,Maccabi Haifa,4195,Ashdod,4507,1,2
+1215065,2024,2025-03-10T18:30:00+00:00,Regular Season - 26,FT,Beitar Jerusalem,657,Hapoel Beer Sheva,563,1,1
+1360209,2024,2025-03-15T13:00:00+00:00,Championship Round - 1,FT,Hapoel Beer Sheva,563,Maccabi Netanya,4505,2,0
+1360239,2024,2025-03-15T16:30:00+00:00,Relegation Round - 1,FT,Ironi Kiryat Shmona,4510,Maccabi Petah Tikva,4495,2,1
+1360240,2024,2025-03-15T16:30:00+00:00,Relegation Round - 1,FT,Ironi Tiberias,6181,Hapoel Hadera,4500,1,1
+1360210,2024,2025-03-15T17:30:00+00:00,Championship Round - 1,FT,Maccabi Tel Aviv,604,Hapoel Haifa,2253,3,0
+1360241,2024,2025-03-15T18:00:00+00:00,Relegation Round - 1,FT,Hapoel Katamon,4486,Bnei Sakhnin,4481,4,1
+1360242,2024,2025-03-16T18:00:00+00:00,Relegation Round - 1,FT,Maccabi Bnei Raina,6186,Ashdod,4507,1,1
+1360211,2024,2025-03-16T18:30:00+00:00,Championship Round - 1,FT,Maccabi Haifa,4195,Beitar Jerusalem,657,3,3
+1360243,2024,2025-03-29T17:00:00+00:00,Relegation Round - 2,FT,Maccabi Petah Tikva,4495,Hapoel Hadera,4500,4,1
+1360244,2024,2025-03-29T17:00:00+00:00,Relegation Round - 2,FT,Bnei Sakhnin,4481,Ironi Tiberias,6181,2,1
+1360245,2024,2025-03-29T17:00:00+00:00,Relegation Round - 2,FT,Ashdod,4507,Hapoel Katamon,4486,1,1
+1360246,2024,2025-03-29T17:00:00+00:00,Relegation Round - 2,FT,Ironi Kiryat Shmona,4510,Maccabi Bnei Raina,6186,0,3
+1360213,2024,2025-03-29T17:15:00+00:00,Championship Round - 2,FT,Hapoel Haifa,2253,Maccabi Haifa,4195,0,2
+1360212,2024,2025-03-30T17:15:00+00:00,Championship Round - 2,FT,Maccabi Netanya,4505,Beitar Jerusalem,657,0,1
+1360214,2024,2025-03-31T17:30:00+00:00,Championship Round - 2,FT,Hapoel Beer Sheva,563,Maccabi Tel Aviv,604,1,3
+1360217,2024,2025-04-05T17:00:00+00:00,Championship Round - 3,FT,Maccabi Tel Aviv,604,Maccabi Netanya,4505,4,1
+1360247,2024,2025-04-05T17:00:00+00:00,Relegation Round - 3,FT,Maccabi Bnei Raina,6186,Maccabi Petah Tikva,4495,0,2
+1360248,2024,2025-04-05T17:00:00+00:00,Relegation Round - 3,FT,Hapoel Katamon,4486,Ironi Kiryat Shmona,4510,2,0
+1360249,2024,2025-04-06T17:00:00+00:00,Relegation Round - 3,FT,Ironi Tiberias,6181,Ashdod,4507,1,2
+1360215,2024,2025-04-06T17:15:00+00:00,Championship Round - 3,FT,Beitar Jerusalem,657,Hapoel Haifa,2253,0,1
+1360250,2024,2025-04-07T17:00:00+00:00,Relegation Round - 3,FT,Hapoel Hadera,4500,Bnei Sakhnin,4481,0,1
+1360216,2024,2025-04-07T17:30:00+00:00,Championship Round - 3,FT,Maccabi Haifa,4195,Hapoel Beer Sheva,563,0,3
+1360218,2024,2025-04-14T16:00:00+00:00,Championship Round - 4,FT,Maccabi Netanya,4505,Hapoel Haifa,2253,2,2
+1360219,2024,2025-04-14T16:45:00+00:00,Championship Round - 4,FT,Hapoel Beer Sheva,563,Beitar Jerusalem,657,3,1
+1360220,2024,2025-04-14T17:30:00+00:00,Championship Round - 4,FT,Maccabi Tel Aviv,604,Maccabi Haifa,4195,1,1
+1360223,2024,2025-04-19T17:30:00+00:00,Championship Round - 5,FT,Hapoel Haifa,2253,Hapoel Beer Sheva,563,1,2
+1360251,2024,2025-04-19T17:30:00+00:00,Relegation Round - 4,FT,Maccabi Petah Tikva,4495,Bnei Sakhnin,4481,1,2
+1360252,2024,2025-04-19T17:30:00+00:00,Relegation Round - 4,FT,Ashdod,4507,Hapoel Hadera,4500,4,1
+1360253,2024,2025-04-19T17:30:00+00:00,Relegation Round - 4,FT,Ironi Kiryat Shmona,4510,Ironi Tiberias,6181,0,2
+1360254,2024,2025-04-19T17:30:00+00:00,Relegation Round - 4,FT,Maccabi Bnei Raina,6186,Hapoel Katamon,4486,2,1
+1360221,2024,2025-04-20T17:15:00+00:00,Championship Round - 5,FT,Maccabi Haifa,4195,Maccabi Netanya,4505,1,0
+1360222,2024,2025-04-21T17:30:00+00:00,Championship Round - 5,FT,Beitar Jerusalem,657,Maccabi Tel Aviv,604,3,1
+1360225,2024,2025-04-26T17:30:00+00:00,Championship Round - 6,FT,Hapoel Haifa,2253,Maccabi Tel Aviv,604,1,3
+1360255,2024,2025-04-26T17:30:00+00:00,Relegation Round - 5,FT,Hapoel Katamon,4486,Maccabi Petah Tikva,4495,0,0
+1360256,2024,2025-04-26T17:30:00+00:00,Relegation Round - 5,FT,Ironi Tiberias,6181,Maccabi Bnei Raina,6186,2,1
+1360257,2024,2025-04-26T17:30:00+00:00,Relegation Round - 5,FT,Hapoel Hadera,4500,Ironi Kiryat Shmona,4510,1,0
+1360258,2024,2025-04-26T17:30:00+00:00,Relegation Round - 5,FT,Bnei Sakhnin,4481,Ashdod,4507,0,0
+1360224,2024,2025-04-27T17:15:00+00:00,Championship Round - 6,FT,Maccabi Netanya,4505,Hapoel Beer Sheva,563,2,1
+1360226,2024,2025-04-28T17:30:00+00:00,Championship Round - 6,FT,Beitar Jerusalem,657,Maccabi Haifa,4195,1,2
+1360228,2024,2025-05-03T17:30:00+00:00,Championship Round - 7,FT,Maccabi Haifa,4195,Hapoel Haifa,2253,1,5
+1360259,2024,2025-05-03T17:30:00+00:00,Relegation Round - 6,FT,Maccabi Petah Tikva,4495,Ashdod,4507,1,1
+1360260,2024,2025-05-03T17:30:00+00:00,Relegation Round - 6,FT,Ironi Kiryat Shmona,4510,Bnei Sakhnin,4481,0,1
+1360261,2024,2025-05-03T17:30:00+00:00,Relegation Round - 6,FT,Maccabi Bnei Raina,6186,Hapoel Hadera,4500,1,2
+1360262,2024,2025-05-03T17:30:00+00:00,Relegation Round - 6,FT,Hapoel Katamon,4486,Ironi Tiberias,6181,3,1
+1360227,2024,2025-05-04T17:15:00+00:00,Championship Round - 7,FT,Beitar Jerusalem,657,Maccabi Netanya,4505,0,3
+1360229,2024,2025-05-05T17:30:00+00:00,Championship Round - 7,FT,Maccabi Tel Aviv,604,Hapoel Beer Sheva,563,1,1
+1360263,2024,2025-05-10T17:30:00+00:00,Relegation Round - 7,FT,Ironi Tiberias,6181,Maccabi Petah Tikva,4495,0,0
+1360264,2024,2025-05-10T17:30:00+00:00,Relegation Round - 7,FT,Hapoel Hadera,4500,Hapoel Katamon,4486,2,4
+1360265,2024,2025-05-10T17:30:00+00:00,Relegation Round - 7,FT,Bnei Sakhnin,4481,Maccabi Bnei Raina,6186,0,1
+1360266,2024,2025-05-10T17:30:00+00:00,Relegation Round - 7,FT,Ashdod,4507,Ironi Kiryat Shmona,4510,4,2
+1360232,2024,2025-05-11T17:15:00+00:00,Championship Round - 8,FT,Hapoel Haifa,2253,Beitar Jerusalem,657,1,0
+1360230,2024,2025-05-12T17:30:00+00:00,Championship Round - 8,FT,Maccabi Netanya,4505,Maccabi Tel Aviv,604,1,6
+1360231,2024,2025-05-12T17:30:00+00:00,Championship Round - 8,FT,Hapoel Beer Sheva,563,Maccabi Haifa,4195,4,1
+1360233,2024,2025-05-17T17:30:00+00:00,Championship Round - 9,FT,Hapoel Haifa,2253,Maccabi Netanya,4505,1,1
+1360234,2024,2025-05-19T17:30:00+00:00,Championship Round - 9,FT,Beitar Jerusalem,657,Hapoel Beer Sheva,563,1,1
+1360235,2024,2025-05-19T17:30:00+00:00,Championship Round - 9,FT,Maccabi Haifa,4195,Maccabi Tel Aviv,604,0,3
+1360236,2024,2025-05-24T17:30:00+00:00,Championship Round - 10,FT,Maccabi Netanya,4505,Maccabi Haifa,4195,2,3
+1360237,2024,2025-05-24T17:30:00+00:00,Championship Round - 10,FT,Maccabi Tel Aviv,604,Beitar Jerusalem,657,5,0
+1360238,2024,2025-05-24T17:30:00+00:00,Championship Round - 10,FT,Hapoel Beer Sheva,563,Hapoel Haifa,2253,5,0
+sdb_2278656,2025,2025-08-23T17:15:00,Regular Season - 1,FT,Hapoel Jerusalem,141235,Ashdod,135991,1,2
+sdb_2278657,2025,2025-08-23T17:15:00,Regular Season - 1,FT,Hapoel Tel Aviv,134124,Ironi Kiryat Shmona,133950,2,1
+sdb_2278655,2025,2025-08-23T17:30:00,Regular Season - 1,FT,Ironi Tiberias,146401,Hapoel Haifa,135995,1,0
+sdb_2278658,2025,2025-08-23T17:30:00,Regular Season - 1,FT,Maccabi Haifa,134400,Maccabi Bnei Raina,141801,4,0
+sdb_2278654,2025,2025-08-24T17:15:00,Regular Season - 1,FT,Maccabi Netanya,134087,Hapoel Beer Sheva,134799,2,4
+sdb_2278660,2025,2025-08-25T17:00:00,Regular Season - 1,FT,Bnei Sakhnin,135994,Beitar Jerusalem,135992,1,2
+sdb_2278661,2025,2025-08-30T17:15:00,Regular Season - 2,FT,Ironi Kiryat Shmona,133950,Hapoel Petah Tikva,141238,0,0
+sdb_2278663,2025,2025-08-30T17:15:00,Regular Season - 2,FT,Maccabi Bnei Raina,141801,Hapoel Tel Aviv,134124,2,2
+sdb_2278664,2025,2025-08-30T17:15:00,Regular Season - 2,FT,Hapoel Haifa,135995,Hapoel Jerusalem,141235,2,1
+sdb_2278662,2025,2025-08-30T17:30:00,Regular Season - 2,FT,Ashdod,135991,Bnei Sakhnin,135994,1,2
+sdb_2278667,2025,2025-08-30T17:30:00,Regular Season - 2,FT,Hapoel Beer Sheva,134799,Ironi Tiberias,146401,7,0
+sdb_2278666,2025,2025-08-31T17:00:00,Regular Season - 2,FT,Maccabi Tel Aviv,134315,Maccabi Netanya,134087,4,0
+sdb_2278665,2025,2025-08-31T17:30:00,Regular Season - 2,FT,Beitar Jerusalem,135992,Maccabi Haifa,134400,0,0
+sdb_2278670,2025,2025-09-13T16:45:00,Regular Season - 3,FT,Bnei Sakhnin,135994,Hapoel Haifa,135995,0,2
+sdb_2278671,2025,2025-09-13T16:45:00,Regular Season - 3,FT,Hapoel Petah Tikva,141238,Maccabi Netanya,134087,3,1
+sdb_2278673,2025,2025-09-13T17:00:00,Regular Season - 3,FT,Ironi Kiryat Shmona,133950,Maccabi Bnei Raina,141801,3,1
+sdb_2278674,2025,2025-09-13T17:00:00,Regular Season - 3,FT,Ironi Tiberias,146401,Maccabi Tel Aviv,134315,1,4
+sdb_2278668,2025,2025-09-14T17:15:00,Regular Season - 3,FT,Hapoel Jerusalem,141235,Hapoel Beer Sheva,134799,1,5
+sdb_2278672,2025,2025-09-15T17:00:00,Regular Season - 3,FT,Maccabi Haifa,134400,Ashdod,135991,5,1
+sdb_2278669,2025,2025-09-15T17:30:00,Regular Season - 3,FT,Hapoel Tel Aviv,134124,Beitar Jerusalem,135992,3,2
+sdb_2278659,2025,2025-09-16T16:30:00,Regular Season - 1,FT,Hapoel Petah Tikva,141238,Maccabi Tel Aviv,134315,0,4
+sdb_2278677,2025,2025-09-20T16:45:00,Regular Season - 4,FT,Maccabi Bnei Raina,141801,Hapoel Petah Tikva,141238,1,6
+sdb_2278678,2025,2025-09-20T16:45:00,Regular Season - 4,FT,Ashdod,135991,Hapoel Tel Aviv,134124,2,6
+sdb_2278679,2025,2025-09-20T17:00:00,Regular Season - 4,FT,Maccabi Netanya,134087,Ironi Tiberias,146401,5,2
+sdb_2278680,2025,2025-09-20T17:00:00,Regular Season - 4,FT,Maccabi Tel Aviv,134315,Hapoel Jerusalem,141235,2,1
+sdb_2278681,2025,2025-09-20T17:00:00,Regular Season - 4,FT,Beitar Jerusalem,135992,Ironi Kiryat Shmona,133950,2,1
+sdb_2278676,2025,2025-09-21T17:00:00,Regular Season - 4,FT,Hapoel Beer Sheva,134799,Bnei Sakhnin,135994,3,1
+sdb_2278675,2025,2025-09-21T17:30:00,Regular Season - 4,FT,Hapoel Haifa,135995,Maccabi Haifa,134400,1,1
+sdb_2278686,2025,2025-09-27T16:30:00,Regular Season - 5,FT,Hapoel Jerusalem,141235,Maccabi Netanya,134087,1,2
+sdb_2278682,2025,2025-09-27T16:45:00,Regular Season - 5,FT,Hapoel Tel Aviv,134124,Hapoel Haifa,135995,1,0
+sdb_2278685,2025,2025-09-27T16:45:00,Regular Season - 5,FT,Hapoel Petah Tikva,141238,Ironi Tiberias,146401,0,2
+sdb_2278687,2025,2025-09-27T16:45:00,Regular Season - 5,FT,Ironi Kiryat Shmona,133950,Ashdod,135991,1,2
+sdb_2278688,2025,2025-09-27T17:00:00,Regular Season - 5,FT,Maccabi Bnei Raina,141801,Beitar Jerusalem,135992,1,3
+sdb_2278683,2025,2025-09-28T17:15:00,Regular Season - 5,FT,Bnei Sakhnin,135994,Maccabi Tel Aviv,134315,0,0
+sdb_2278684,2025,2025-09-29T17:30:00,Regular Season - 5,FT,Maccabi Haifa,134400,Hapoel Beer Sheva,134799,0,1
+sdb_2278691,2025,2025-10-04T16:15:00,Regular Season - 6,FT,Hapoel Haifa,135995,Ironi Kiryat Shmona,133950,0,0
+sdb_2278693,2025,2025-10-04T16:15:00,Regular Season - 6,FT,Ironi Tiberias,146401,Hapoel Jerusalem,141235,1,0
+sdb_2278690,2025,2025-10-04T16:30:00,Regular Season - 6,FT,Ashdod,135991,Maccabi Bnei Raina,141801,2,0
+sdb_2278689,2025,2025-10-04T17:00:00,Regular Season - 6,FT,Beitar Jerusalem,135992,Hapoel Petah Tikva,141238,5,2
+sdb_2278694,2025,2025-10-04T17:00:00,Regular Season - 6,FT,Hapoel Beer Sheva,134799,Hapoel Tel Aviv,134124,2,1
+sdb_2278692,2025,2025-10-05T17:00:00,Regular Season - 6,FT,Maccabi Netanya,134087,Bnei Sakhnin,135994,1,2
+sdb_2278695,2025,2025-10-05T17:30:00,Regular Season - 6,FT,Maccabi Tel Aviv,134315,Maccabi Haifa,134400,1,1
+sdb_2278696,2025,2025-10-18T16:15:00,Regular Season - 7,FT,Bnei Sakhnin,135994,Ironi Tiberias,146401,2,0
+sdb_2278699,2025,2025-10-18T16:15:00,Regular Season - 7,FT,Hapoel Petah Tikva,141238,Hapoel Jerusalem,141235,0,0
+sdb_2278697,2025,2025-10-18T16:30:00,Regular Season - 7,FT,Maccabi Bnei Raina,141801,Hapoel Haifa,135995,1,2
+sdb_2278701,2025,2025-10-18T16:30:00,Regular Season - 7,FT,Ironi Kiryat Shmona,133950,Hapoel Beer Sheva,134799,1,0
+sdb_2278702,2025,2025-10-18T17:00:00,Regular Season - 7,FT,Maccabi Haifa,134400,Maccabi Netanya,134087,2,3
+sdb_2278698,2025,2025-10-19T17:30:00,Regular Season - 7,NS,Hapoel Tel Aviv,134124,Maccabi Tel Aviv,134315,,
+sdb_2278700,2025,2025-10-20T17:00:00,Regular Season - 7,FT,Beitar Jerusalem,135992,Ashdod,135991,0,0
+sdb_2278704,2025,2025-10-25T16:15:00,Regular Season - 8,FT,Hapoel Haifa,135995,Beitar Jerusalem,135992,2,3
+sdb_2278705,2025,2025-10-25T16:15:00,Regular Season - 8,FT,Ashdod,135991,Hapoel Petah Tikva,141238,1,1
+sdb_2278706,2025,2025-10-25T16:30:00,Regular Season - 8,FT,Hapoel Jerusalem,141235,Bnei Sakhnin,135994,0,0
+sdb_2278709,2025,2025-10-25T16:30:00,Regular Season - 8,FT,Ironi Tiberias,146401,Maccabi Haifa,134400,1,1
+sdb_2278707,2025,2025-10-25T17:00:00,Regular Season - 8,FT,Maccabi Netanya,134087,Hapoel Tel Aviv,134124,2,0
+sdb_2278708,2025,2025-10-26T18:15:00,Regular Season - 8,FT,Hapoel Beer Sheva,134799,Maccabi Bnei Raina,141801,1,0
+sdb_2278703,2025,2025-10-27T18:00:00,Regular Season - 8,FT,Maccabi Tel Aviv,134315,Ironi Kiryat Shmona,133950,3,1
+sdb_2278716,2025,2025-11-01T13:00:00,Regular Season - 9,FT,Maccabi Haifa,134400,Hapoel Jerusalem,141235,2,2
+sdb_2278715,2025,2025-11-01T15:30:00,Regular Season - 9,FT,Hapoel Tel Aviv,134124,Ironi Tiberias,146401,2,0
+sdb_2278710,2025,2025-11-01T16:30:00,Regular Season - 9,FT,Hapoel Petah Tikva,141238,Bnei Sakhnin,135994,2,2
+sdb_2278711,2025,2025-11-01T16:30:00,Regular Season - 9,FT,Ashdod,135991,Hapoel Haifa,135995,4,1
+sdb_2278713,2025,2025-11-01T17:30:00,Regular Season - 9,FT,Maccabi Bnei Raina,141801,Maccabi Tel Aviv,134315,0,2
+sdb_2278714,2025,2025-11-02T18:15:00,Regular Season - 9,FT,Ironi Kiryat Shmona,133950,Maccabi Netanya,134087,1,2
+sdb_2278712,2025,2025-11-03T18:30:00,Regular Season - 9,FT,Beitar Jerusalem,135992,Hapoel Beer Sheva,134799,0,1
+sdb_2278719,2025,2025-11-08T13:00:00,Regular Season - 10,FT,Hapoel Jerusalem,141235,Hapoel Tel Aviv,134124,0,0
+sdb_2278723,2025,2025-11-08T15:30:00,Regular Season - 10,FT,Bnei Sakhnin,135994,Maccabi Haifa,134400,3,3
+sdb_2278717,2025,2025-11-08T16:30:00,Regular Season - 10,FT,Ironi Tiberias,146401,Ironi Kiryat Shmona,133950,2,3
+sdb_2278722,2025,2025-11-08T16:30:00,Regular Season - 10,FT,Maccabi Netanya,134087,Maccabi Bnei Raina,141801,2,1
+sdb_2278718,2025,2025-11-08T17:30:00,Regular Season - 10,FT,Hapoel Beer Sheva,134799,Ashdod,135991,2,2
+sdb_2278720,2025,2025-11-09T18:00:00,Regular Season - 10,FT,Hapoel Haifa,135995,Hapoel Petah Tikva,141238,2,2
+sdb_2278721,2025,2025-11-09T18:30:00,Regular Season - 10,FT,Maccabi Tel Aviv,134315,Beitar Jerusalem,135992,2,6
+sdb_2278729,2025,2025-11-29T13:00:00,Regular Season - 11,FT,Hapoel Haifa,135995,Hapoel Beer Sheva,134799,3,4
+sdb_2278726,2025,2025-11-29T15:30:00,Regular Season - 11,FT,Hapoel Tel Aviv,134124,Bnei Sakhnin,135994,2,0
+sdb_2278728,2025,2025-11-29T16:30:00,Regular Season - 11,FT,Maccabi Bnei Raina,141801,Ironi Tiberias,146401,1,3
+sdb_2278730,2025,2025-11-29T16:30:00,Regular Season - 11,FT,Ironi Kiryat Shmona,133950,Hapoel Jerusalem,141235,1,2
+sdb_2278725,2025,2025-11-29T17:30:00,Regular Season - 11,FT,Hapoel Petah Tikva,141238,Maccabi Haifa,134400,0,0
+sdb_2278727,2025,2025-11-30T18:00:00,Regular Season - 11,FT,Ashdod,135991,Maccabi Tel Aviv,134315,2,2
+sdb_2278724,2025,2025-11-30T18:30:00,Regular Season - 11,FT,Beitar Jerusalem,135992,Maccabi Netanya,134087,4,2
+sdb_2278737,2025,2025-12-02T17:30:00,Regular Season - 12,FT,Bnei Sakhnin,135994,Ironi Kiryat Shmona,133950,1,1
+sdb_2278735,2025,2025-12-02T17:45:00,Regular Season - 12,FT,Hapoel Jerusalem,141235,Maccabi Bnei Raina,141801,1,2
+sdb_2278736,2025,2025-12-02T18:00:00,Regular Season - 12,FT,Hapoel Petah Tikva,141238,Hapoel Beer Sheva,134799,1,1
+sdb_2278731,2025,2025-12-02T18:30:00,Regular Season - 12,FT,Maccabi Haifa,134400,Hapoel Tel Aviv,134124,2,1
+sdb_2278733,2025,2025-12-03T17:30:00,Regular Season - 12,FT,Maccabi Netanya,134087,Ashdod,135991,2,2
+sdb_2278734,2025,2025-12-03T17:45:00,Regular Season - 12,FT,Ironi Tiberias,146401,Beitar Jerusalem,135992,0,5
+sdb_2278732,2025,2025-12-03T18:00:00,Regular Season - 12,FT,Maccabi Tel Aviv,134315,Hapoel Haifa,135995,2,1
+sdb_2278739,2025,2025-12-06T13:00:00,Regular Season - 13,FT,Hapoel Tel Aviv,134124,Hapoel Petah Tikva,141238,4,0
+sdb_2278741,2025,2025-12-06T17:30:00,Regular Season - 13,FT,Ironi Kiryat Shmona,133950,Maccabi Haifa,134400,0,1
+sdb_2278743,2025,2025-12-07T18:00:00,Regular Season - 13,FT,Hapoel Haifa,135995,Maccabi Netanya,134087,3,4
+sdb_2278742,2025,2025-12-07T18:30:00,Regular Season - 13,FT,Hapoel Beer Sheva,134799,Maccabi Tel Aviv,134315,1,0
+sdb_2278738,2025,2025-12-08T17:45:00,Regular Season - 13,FT,Ashdod,135991,Ironi Tiberias,146401,1,1
+sdb_2278744,2025,2025-12-08T17:45:00,Regular Season - 13,FT,Maccabi Bnei Raina,141801,Bnei Sakhnin,135994,0,1
+sdb_2278740,2025,2025-12-08T18:00:00,Regular Season - 13,FT,Beitar Jerusalem,135992,Hapoel Jerusalem,141235,1,1
+sdb_2278751,2025,2025-12-13T13:00:00,Regular Season - 14,FT,Ashdod,135991,Hapoel Jerusalem,141235,0,2
+sdb_2278747,2025,2025-12-13T15:00:00,Regular Season - 14,FT,Ironi Kiryat Shmona,133950,Hapoel Tel Aviv,134124,2,2
+sdb_2278746,2025,2025-12-13T16:00:00,Regular Season - 14,FT,Hapoel Haifa,135995,Ironi Tiberias,146401,2,0
+sdb_2278745,2025,2025-12-13T17:30:00,Regular Season - 14,FT,Hapoel Beer Sheva,134799,Maccabi Netanya,134087,2,0
+sdb_2278748,2025,2025-12-14T18:15:00,Regular Season - 14,FT,Maccabi Bnei Raina,141801,Maccabi Haifa,134400,0,4
+sdb_2278749,2025,2025-12-15T18:00:00,Regular Season - 14,FT,Maccabi Tel Aviv,134315,Hapoel Petah Tikva,141238,2,2
+sdb_2278750,2025,2025-12-15T18:30:00,Regular Season - 14,FT,Beitar Jerusalem,135992,Bnei Sakhnin,135994,2,1
+sdb_2278756,2025,2025-12-20T13:00:00,Regular Season - 15,FT,Hapoel Tel Aviv,134124,Maccabi Bnei Raina,141801,3,1
+sdb_2278755,2025,2025-12-20T15:30:00,Regular Season - 15,FT,Hapoel Jerusalem,141235,Hapoel Haifa,135995,0,1
+sdb_2278757,2025,2025-12-20T16:30:00,Regular Season - 15,FT,Bnei Sakhnin,135994,Ashdod,135991,3,0
+sdb_2278758,2025,2025-12-20T16:30:00,Regular Season - 15,FT,Hapoel Petah Tikva,141238,Ironi Kiryat Shmona,133950,4,1
+sdb_2278752,2025,2025-12-20T17:30:00,Regular Season - 15,FT,Ironi Tiberias,146401,Hapoel Beer Sheva,134799,3,0
+sdb_2278754,2025,2025-12-21T18:15:00,Regular Season - 15,FT,Maccabi Netanya,134087,Maccabi Tel Aviv,134315,1,1
+sdb_2278753,2025,2025-12-22T18:30:00,Regular Season - 15,FT,Maccabi Haifa,134400,Beitar Jerusalem,135992,1,2
+sdb_2278765,2025,2025-12-30T17:00:00,Regular Season - 16,FT,Maccabi Bnei Raina,141801,Ironi Kiryat Shmona,133950,3,1
+sdb_2278763,2025,2025-12-30T17:30:00,Regular Season - 16,FT,Hapoel Haifa,135995,Bnei Sakhnin,135994,0,2
+sdb_2278760,2025,2025-12-30T18:00:00,Regular Season - 16,FT,Maccabi Tel Aviv,134315,Ironi Tiberias,146401,1,1
+sdb_2278761,2025,2025-12-31T17:30:00,Regular Season - 16,FT,Maccabi Netanya,134087,Hapoel Petah Tikva,141238,0,2
+sdb_2278759,2025,2025-12-31T17:45:00,Regular Season - 16,FT,Ashdod,135991,Maccabi Haifa,134400,0,4
+sdb_2278764,2025,2025-12-31T18:00:00,Regular Season - 16,FT,Hapoel Beer Sheva,134799,Hapoel Jerusalem,141235,4,1
+sdb_2278762,2025,2026-01-01T18:30:00,Regular Season - 16,FT,Beitar Jerusalem,135992,Hapoel Tel Aviv,134124,1,0
+sdb_2278771,2025,2026-01-03T13:00:00,Regular Season - 17,FT,Hapoel Jerusalem,141235,Maccabi Tel Aviv,134315,1,3
+sdb_2278770,2025,2026-01-03T15:30:00,Regular Season - 17,FT,Bnei Sakhnin,135994,Hapoel Beer Sheva,134799,0,5
+sdb_2278766,2025,2026-01-03T16:30:00,Regular Season - 17,FT,Hapoel Petah Tikva,141238,Maccabi Bnei Raina,141801,4,1
+sdb_2278767,2025,2026-01-03T16:30:00,Regular Season - 17,FT,Ironi Tiberias,146401,Maccabi Netanya,134087,4,0
+sdb_2278769,2025,2026-01-04T18:15:00,Regular Season - 17,FT,Hapoel Tel Aviv,134124,Ashdod,135991,1,0
+sdb_2278772,2025,2026-01-04T18:30:00,Regular Season - 17,FT,Ironi Kiryat Shmona,133950,Beitar Jerusalem,135992,1,2
+sdb_2278768,2025,2026-01-05T18:30:00,Regular Season - 17,FT,Maccabi Haifa,134400,Hapoel Haifa,135995,2,0
+sdb_2278778,2025,2026-01-09T12:00:00,Regular Season - 18,FT,Maccabi Netanya,134087,Hapoel Jerusalem,141235,1,1
+sdb_2278775,2025,2026-01-10T13:00:00,Regular Season - 18,FT,Maccabi Tel Aviv,134315,Bnei Sakhnin,135994,1,0
+sdb_2278779,2025,2026-01-10T15:30:00,Regular Season - 18,FT,Hapoel Haifa,135995,Hapoel Tel Aviv,134124,3,3
+sdb_2278776,2025,2026-01-10T16:30:00,Regular Season - 18,FT,Ironi Tiberias,146401,Hapoel Petah Tikva,141238,1,4
+sdb_2278774,2025,2026-01-10T17:30:00,Regular Season - 18,FT,Beitar Jerusalem,135992,Maccabi Bnei Raina,141801,1,0
+sdb_2278773,2025,2026-01-10T18:00:00,Regular Season - 18,FT,Hapoel Beer Sheva,134799,Maccabi Haifa,134400,0,0
+sdb_2278777,2025,2026-01-11T17:30:00,Regular Season - 18,FT,Ashdod,135991,Ironi Kiryat Shmona,133950,2,5
+sdb_2278782,2025,2026-01-17T13:00:00,Regular Season - 19,FT,Hapoel Petah Tikva,141238,Beitar Jerusalem,135992,1,3
+sdb_2278783,2025,2026-01-17T15:30:00,Regular Season - 19,FT,Hapoel Jerusalem,141235,Ironi Tiberias,146401,2,0
+sdb_2278780,2025,2026-01-17T16:30:00,Regular Season - 19,FT,Maccabi Bnei Raina,141801,Ashdod,135991,0,0
+sdb_2278781,2025,2026-01-17T17:30:00,Regular Season - 19,FT,Bnei Sakhnin,135994,Maccabi Netanya,134087,2,1
+sdb_2278784,2025,2026-01-18T18:30:00,Regular Season - 19,FT,Maccabi Haifa,134400,Maccabi Tel Aviv,134315,4,1
+sdb_2278785,2025,2026-01-19T17:30:00,Regular Season - 19,FT,Ironi Kiryat Shmona,133950,Hapoel Haifa,135995,3,1
+sdb_2278786,2025,2026-01-19T18:00:00,Regular Season - 19,FT,Hapoel Tel Aviv,134124,Hapoel Beer Sheva,134799,2,1
+sdb_2278787,2025,2026-01-23T12:00:00,Regular Season - 20,FT,Hapoel Jerusalem,141235,Hapoel Petah Tikva,141238,2,1
+sdb_2278792,2025,2026-01-24T13:00:00,Regular Season - 20,FT,Maccabi Netanya,134087,Maccabi Haifa,134400,4,1
+sdb_2278791,2025,2026-01-24T16:30:00,Regular Season - 20,FT,Ironi Tiberias,146401,Bnei Sakhnin,135994,1,1
+sdb_2278793,2025,2026-01-24T16:30:00,Regular Season - 20,FT,Hapoel Haifa,135995,Maccabi Bnei Raina,141801,0,1
+sdb_2278789,2025,2026-01-24T17:30:00,Regular Season - 20,FT,Hapoel Beer Sheva,134799,Ironi Kiryat Shmona,133950,3,2
+sdb_2278790,2025,2026-01-25T18:15:00,Regular Season - 20,FT,Ashdod,135991,Beitar Jerusalem,135992,1,1
+sdb_2278788,2025,2026-01-26T18:30:00,Regular Season - 20,FT,Maccabi Tel Aviv,134315,Hapoel Tel Aviv,134124,1,2
+sdb_2278797,2025,2026-01-31T13:00:00,Regular Season - 21,FT,Hapoel Tel Aviv,134124,Maccabi Netanya,134087,2,0
+sdb_2278795,2025,2026-01-31T15:30:00,Regular Season - 21,FT,Maccabi Bnei Raina,141801,Hapoel Beer Sheva,134799,0,2
+sdb_2278798,2025,2026-01-31T16:30:00,Regular Season - 21,FT,Bnei Sakhnin,135994,Hapoel Jerusalem,141235,0,0
+sdb_2278800,2025,2026-01-31T17:15:00,Regular Season - 21,FT,Beitar Jerusalem,135992,Hapoel Haifa,135995,2,2
+sdb_2278796,2025,2026-01-31T17:30:00,Regular Season - 21,FT,Maccabi Haifa,134400,Ironi Tiberias,146401,3,2
+sdb_2278799,2025,2026-02-01T18:00:00,Regular Season - 21,FT,Hapoel Petah Tikva,141238,Ashdod,135991,2,0
+sdb_2278794,2025,2026-02-02T18:00:00,Regular Season - 21,FT,Ironi Kiryat Shmona,133950,Maccabi Tel Aviv,134315,1,4
+sdb_2278804,2025,2026-02-07T13:00:00,Regular Season - 22,FT,Ironi Tiberias,146401,Hapoel Tel Aviv,134124,0,2
+sdb_2278806,2025,2026-02-07T15:30:00,Regular Season - 22,FT,Hapoel Jerusalem,141235,Maccabi Haifa,134400,1,1
+sdb_2278802,2025,2026-02-07T16:30:00,Regular Season - 22,FT,Hapoel Haifa,135995,Ashdod,135991,0,2
+sdb_2278805,2025,2026-02-07T16:30:00,Regular Season - 22,FT,Bnei Sakhnin,135994,Hapoel Petah Tikva,141238,1,2
+sdb_2278807,2025,2026-02-07T17:30:00,Regular Season - 22,FT,Maccabi Netanya,134087,Ironi Kiryat Shmona,133950,1,1
+sdb_2278803,2025,2026-02-09T18:00:00,Regular Season - 22,FT,Maccabi Tel Aviv,134315,Maccabi Bnei Raina,141801,4,0
+sdb_2278801,2025,2026-02-09T18:30:00,Regular Season - 22,FT,Hapoel Beer Sheva,134799,Beitar Jerusalem,135992,2,1
+sdb_2278812,2025,2026-02-13T12:00:00,Regular Season - 23,FT,Hapoel Tel Aviv,134124,Hapoel Jerusalem,141235,3,1
+sdb_2278808,2025,2026-02-14T13:00:00,Regular Season - 23,FT,Hapoel Petah Tikva,141238,Hapoel Haifa,135995,0,1
+sdb_2278810,2025,2026-02-14T15:30:00,Regular Season - 23,FT,Ironi Kiryat Shmona,133950,Ironi Tiberias,146401,2,2
+sdb_2278811,2025,2026-02-14T16:30:00,Regular Season - 23,FT,Maccabi Bnei Raina,141801,Maccabi Netanya,134087,0,4
+sdb_2278814,2025,2026-02-14T17:30:00,Regular Season - 23,FT,Ashdod,135991,Hapoel Beer Sheva,134799,1,2
+sdb_2278813,2025,2026-02-15T18:15:00,Regular Season - 23,FT,Maccabi Haifa,134400,Bnei Sakhnin,135994,4,0
+sdb_2278809,2025,2026-02-16T18:30:00,Regular Season - 23,FT,Beitar Jerusalem,135992,Maccabi Tel Aviv,134315,0,0
+sdb_2278818,2025,2026-02-21T13:00:00,Regular Season - 24,FT,Maccabi Tel Aviv,134315,Ashdod,135991,3,2
+sdb_2278817,2025,2026-02-21T15:30:00,Regular Season - 24,FT,Maccabi Haifa,134400,Hapoel Petah Tikva,141238,0,1
+sdb_2278816,2025,2026-02-21T16:30:00,Regular Season - 24,FT,Hapoel Jerusalem,141235,Ironi Kiryat Shmona,133950,0,1
+sdb_2278815,2025,2026-02-21T17:30:00,Regular Season - 24,FT,Ironi Tiberias,146401,Maccabi Bnei Raina,141801,2,1
+sdb_2278819,2025,2026-02-21T17:30:00,Regular Season - 24,FT,Bnei Sakhnin,135994,Hapoel Tel Aviv,134124,0,0
+sdb_2278820,2025,2026-02-22T18:15:00,Regular Season - 24,FT,Hapoel Beer Sheva,134799,Hapoel Haifa,135995,1,1
+sdb_2278821,2025,2026-02-23T18:30:00,Regular Season - 24,FT,Maccabi Netanya,134087,Beitar Jerusalem,135992,2,8
+sdb_2278823,2025,2026-04-04T16:45:00,Regular Season - 25,FT,Maccabi Bnei Raina,141801,Hapoel Jerusalem,141235,0,0
+sdb_2278827,2025,2026-04-04T17:00:00,Regular Season - 25,FT,Ironi Kiryat Shmona,133950,Bnei Sakhnin,135994,2,0
+sdb_2278826,2025,2026-04-04T17:15:00,Regular Season - 25,FT,Hapoel Beer Sheva,134799,Hapoel Petah Tikva,141238,1,1
+sdb_2278824,2025,2026-04-04T17:30:00,Regular Season - 25,FT,Beitar Jerusalem,135992,Ironi Tiberias,146401,3,2
+sdb_2278822,2025,2026-04-05T16:00:00,Regular Season - 25,FT,Ashdod,135991,Maccabi Netanya,134087,2,3
+sdb_2278825,2025,2026-04-05T17:15:00,Regular Season - 25,FT,Hapoel Haifa,135995,Maccabi Tel Aviv,134315,1,4
+sdb_2278828,2025,2026-04-06T17:30:00,Regular Season - 25,FT,Hapoel Tel Aviv,134124,Maccabi Haifa,134400,2,0
+sdb_2278829,2025,2026-04-11T17:00:00,Regular Season - 26,FT,Ironi Tiberias,146401,Ashdod,135991,0,0
+sdb_2278830,2025,2026-04-11T17:00:00,Regular Season - 26,FT,Hapoel Petah Tikva,141238,Hapoel Tel Aviv,134124,0,0
+sdb_2278832,2025,2026-04-11T17:00:00,Regular Season - 26,FT,Maccabi Netanya,134087,Hapoel Haifa,135995,0,0
+sdb_2278834,2025,2026-04-11T17:00:00,Regular Season - 26,FT,Bnei Sakhnin,135994,Maccabi Bnei Raina,141801,2,0
+sdb_2278831,2025,2026-04-12T17:00:00,Regular Season - 26,FT,Maccabi Haifa,134400,Ironi Kiryat Shmona,133950,4,1
+sdb_2278833,2025,2026-04-12T17:00:00,Regular Season - 26,FT,Hapoel Jerusalem,141235,Beitar Jerusalem,135992,0,2
+sdb_2360752,2025,2026-04-12T17:30:00,Regular Season - 26,FT,Maccabi Tel Aviv,134315,Hapoel Beer Sheva,134799,1,3
+sdb_2465576,2025,2026-04-18T16:50:00,Regular Season - 27,FT,Maccabi Netanya,134087,Ashdod,135991,2,1
+sdb_2465577,2025,2026-04-18T17:00:00,Regular Season - 27,FT,Hapoel Haifa,135995,Maccabi Bnei Raina,141801,2,3
+sdb_2465578,2025,2026-04-18T17:15:00,Regular Season - 27,FT,Bnei Sakhnin,135994,Ironi Tiberias,146401,0,0
+sdb_2465579,2025,2026-04-18T17:30:00,Regular Season - 27,FT,Hapoel Beer Sheva,134799,Hapoel Petah Tikva,141238,3,0
+sdb_2465580,2025,2026-04-19T16:00:00,Regular Season - 27,FT,Ironi Kiryat Shmona,133950,Hapoel Jerusalem,141235,3,1
+sdb_2465581,2025,2026-04-19T17:00:00,Regular Season - 27,FT,Beitar Jerusalem,135992,Maccabi Haifa,134400,3,0
+sdb_2465582,2025,2026-04-19T17:30:00,Regular Season - 27,FT,Maccabi Tel Aviv,134315,Hapoel Tel Aviv,134124,1,0
+sdb_2465586,2025,2026-04-25T17:00:00,Regular Season - 28,FT,Hapoel Petah Tikva,141238,Hapoel Tel Aviv,134124,0,1
+sdb_2465588,2025,2026-04-25T17:00:00,Regular Season - 28,FT,Ashdod,135991,Maccabi Bnei Raina,141801,1,2
+sdb_2465584,2025,2026-04-25T17:15:00,Regular Season - 28,FT,Maccabi Haifa,134400,Maccabi Tel Aviv,134315,1,3
+sdb_2465587,2025,2026-04-25T17:15:00,Regular Season - 28,FT,Maccabi Netanya,134087,Bnei Sakhnin,135994,3,0
+sdb_2465583,2025,2026-04-25T17:30:00,Regular Season - 28,FT,Hapoel Beer Sheva,134799,Beitar Jerusalem,135992,2,2
+sdb_2465585,2025,2026-04-26T17:00:00,Regular Season - 28,FT,Hapoel Jerusalem,141235,Hapoel Haifa,135995,0,0
+sdb_2465589,2025,2026-04-26T17:00:00,Regular Season - 28,FT,Ironi Tiberias,146401,Ironi Kiryat Shmona,133950,2,0
+sdb_2465593,2025,2026-04-28T16:00:00,Regular Season - 29,FT,Bnei Sakhnin,135994,Ashdod,135991,1,1
+sdb_2465590,2025,2026-04-28T16:30:00,Regular Season - 29,FT,Maccabi Tel Aviv,134315,Hapoel Beer Sheva,134799,1,0
+sdb_2465591,2025,2026-04-28T17:00:00,Regular Season - 29,FT,Beitar Jerusalem,135992,Hapoel Petah Tikva,141238,3,1
+sdb_2465592,2025,2026-04-29T16:00:00,Regular Season - 29,FT,Hapoel Haifa,135995,Ironi Tiberias,146401,1,1
+sdb_2465595,2025,2026-04-29T16:00:00,Regular Season - 29,FT,Ironi Kiryat Shmona,133950,Maccabi Netanya,134087,1,0
+sdb_2465596,2025,2026-04-29T16:00:00,Regular Season - 29,FT,Maccabi Bnei Raina,141801,Hapoel Jerusalem,141235,0,1
+sdb_2465594,2025,2026-04-29T16:30:00,Regular Season - 29,FT,Hapoel Tel Aviv,134124,Maccabi Haifa,134400,4,0
+sdb_2465600,2025,2026-05-02T17:15:00,Regular Season - 30,FT,Hapoel Petah Tikva,141238,Maccabi Haifa,134400,1,2
+sdb_2465597,2025,2026-05-02T17:30:00,Regular Season - 30,FT,Hapoel Beer Sheva,134799,Hapoel Tel Aviv,134124,2,0
+sdb_2465598,2025,2026-05-02T17:30:00,Regular Season - 30,FT,Beitar Jerusalem,135992,Maccabi Tel Aviv,134315,4,2
+sdb_2465611,2025,2026-05-03T16:30:00,Regular Season - 32,FT,Hapoel Haifa,135995,Ironi Kiryat Shmona,133950,2,0
+sdb_2465617,2025,2026-05-03T17:00:00,Regular Season - 32,FT,Ashdod,135991,Ironi Tiberias,146401,0,3
+sdb_2465613,2025,2026-05-04T17:00:00,Regular Season - 32,FT,Bnei Sakhnin,135994,Maccabi Bnei Raina,141801,0,2
+sdb_2465616,2025,2026-05-04T17:00:00,Regular Season - 32,FT,Maccabi Netanya,134087,Hapoel Jerusalem,141235,1,0
+sdb_2465604,2025,2026-05-05T16:30:00,Regular Season - 31,FT,Maccabi Tel Aviv,134315,Hapoel Petah Tikva,141238,4,0
+sdb_2465608,2025,2026-05-06T16:30:00,Regular Season - 31,FT,Hapoel Tel Aviv,134124,Beitar Jerusalem,135992,0,1
+sdb_2465606,2025,2026-05-06T17:00:00,Regular Season - 31,FT,Maccabi Haifa,134400,Hapoel Beer Sheva,134799,0,1
+sdb_2465624,2025,2026-05-09T17:15:00,Regular Season - 33,FT,Maccabi Bnei Raina,141801,Ironi Kiryat Shmona,133950,1,1
+sdb_2465612,2025,2026-05-09T17:30:00,Regular Season - 32,FT,Maccabi Haifa,134400,Beitar Jerusalem,135992,3,0
+sdb_2465614,2025,2026-05-09T17:30:00,Regular Season - 32,FT,Hapoel Petah Tikva,141238,Hapoel Beer Sheva,134799,2,4
+sdb_2465615,2025,2026-05-09T17:30:00,Regular Season - 32,FT,Hapoel Tel Aviv,134124,Maccabi Tel Aviv,134315,1,1
+sdb_2465620,2025,2026-05-10T17:00:00,Regular Season - 33,FT,Hapoel Haifa,135995,Ashdod,135991,1,0
+sdb_2465621,2025,2026-05-10T17:00:00,Regular Season - 33,FT,Hapoel Jerusalem,141235,Bnei Sakhnin,135994,1,0
+sdb_2465623,2025,2026-05-10T17:00:00,Regular Season - 33,FT,Ironi Tiberias,146401,Maccabi Netanya,134087,4,3
+sdb_2465622,2025,2026-05-12T17:00:00,Regular Season - 33,FT,Hapoel Tel Aviv,134124,Hapoel Petah Tikva,141238,1,0
+sdb_2465619,2025,2026-05-12T17:30:00,Regular Season - 33,FT,Beitar Jerusalem,135992,Hapoel Beer Sheva,134799,1,1
+sdb_2465599,2025,2026-05-13T17:00:00,Regular Season - 30,FT,Bnei Sakhnin,135994,Ironi Kiryat Shmona,133950,0,4
+sdb_2465601,2025,2026-05-13T17:00:00,Regular Season - 30,FT,Maccabi Netanya,134087,Hapoel Haifa,135995,1,1
+sdb_2465602,2025,2026-05-13T17:00:00,Regular Season - 30,FT,Ashdod,135991,Hapoel Jerusalem,141235,0,1
+sdb_2465603,2025,2026-05-13T17:00:00,Regular Season - 30,FT,Ironi Tiberias,146401,Maccabi Bnei Raina,141801,1,0
+sdb_2465618,2025,2026-05-13T17:30:00,Regular Season - 33,FT,Maccabi Tel Aviv,134315,Maccabi Haifa,134400,3,0
+sdb_2465630,2025,2026-05-15T13:00:00,Regular Season - 35,FT,Hapoel Tel Aviv,134124,Hapoel Beer Sheva,134799,0,2
+sdb_2465629,2025,2026-05-16T15:00:00,Regular Season - 35,FT,Maccabi Haifa,134400,Hapoel Petah Tikva,141238,1,1
+sdb_2465628,2025,2026-05-16T17:30:00,Regular Season - 35,FT,Maccabi Tel Aviv,134315,Beitar Jerusalem,135992,1,2
+sdb_2465605,2025,2026-05-18T17:00:00,Regular Season - 31,FT,Hapoel Haifa,135995,Bnei Sakhnin,135994,3,0
+sdb_2465607,2025,2026-05-18T17:00:00,Regular Season - 31,FT,Hapoel Jerusalem,141235,Ironi Tiberias,146401,0,2
+sdb_2465609,2025,2026-05-18T17:00:00,Regular Season - 31,FT,Ironi Kiryat Shmona,133950,Ashdod,135991,2,3
+sdb_2465610,2025,2026-05-18T17:00:00,Regular Season - 31,FT,Maccabi Bnei Raina,141801,Maccabi Netanya,134087,1,4
+sdb_2465625,2025,2026-05-19T17:30:00,Regular Season - 34,NS,Hapoel Beer Sheva,134799,Maccabi Tel Aviv,134315,,
+sdb_2465626,2025,2026-05-19T17:30:00,Regular Season - 34,NS,Maccabi Haifa,134400,Hapoel Tel Aviv,134124,,
+sdb_2465627,2025,2026-05-19T17:30:00,Regular Season - 34,NS,Hapoel Petah Tikva,141238,Beitar Jerusalem,135992,,
+sdb_2465633,2025,2026-05-23T15:00:00,Regular Season - 36,NS,Hapoel Petah Tikva,141238,Maccabi Tel Aviv,134315,,
+sdb_2465631,2025,2026-05-23T18:00:00,Regular Season - 36,NS,Hapoel Beer Sheva,134799,Maccabi Haifa,134400,,
+sdb_2465632,2025,2026-05-23T18:00:00,Regular Season - 36,NS,Beitar Jerusalem,135992,Hapoel Tel Aviv,134124,,

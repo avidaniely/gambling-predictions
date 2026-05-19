@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ligat Ha'Al Predictor</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: system-ui, -apple-system, sans-serif; background: #f0f4f0; color: #1a1a1a; }
+
+header { background: #1a5c2a; color: white; padding: 0.9rem 2rem; display: flex; align-items: center; gap: 2rem; }
+header h1 { font-size: 1.3rem; letter-spacing: 0.02em; }
+nav a { color: #a8d5b5; text-decoration: none; font-size: 0.88rem; }
+nav a:hover { color: white; }
+nav a.active { color: white; font-weight: 600; }
+
+main { max-width: 960px; margin: 2rem auto; padding: 0 1rem; }
+
+.card { background: white; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+h2 { font-size: 1.1rem; color: #1a5c2a; margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 2px solid #e0ebe2; }
+
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th { text-align: left; padding: 0.5rem 0.75rem; background: #f6f9f6; color: #555; font-weight: 600; border-bottom: 2px solid #e0e0e0; }
+th.num, td.num { text-align: right; }
+td { padding: 0.45rem 0.75rem; border-bottom: 1px solid #f2f2f2; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #fafff9; }
+.rank { color: #888; font-size: 0.82rem; }
+.form-dots { letter-spacing: 2px; font-size: 0.85rem; }
+.w { color: #1a7a34; font-weight: 700; }
+.d { color: #f5a623; font-weight: 700; }
+.l { color: #c0392b; font-weight: 700; }
+
+.btn { display: inline-block; padding: 0.55rem 1.3rem; background: #1a5c2a; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 0.9rem; text-decoration: none; font-weight: 500; }
+.btn:hover { background: #145022; }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.field { margin-bottom: 0.9rem; }
+label { display: block; font-size: 0.85rem; font-weight: 600; color: #333; margin-bottom: 0.3rem; }
+select, input[type=number] { width: 100%; padding: 0.45rem 0.6rem; border: 1px solid #ccc; border-radius: 4px; font-size: 0.9rem; background: white; }
+select:focus, input:focus { outline: 2px solid #1a5c2a; border-color: #1a5c2a; }
+.check-row { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.35rem; font-size: 0.85rem; font-weight: 400; color: #444; }
+.check-row input[type=checkbox] { width: auto; accent-color: #1a5c2a; }
+.hint { font-size: 0.75rem; color: #888; margin-top: 0.3rem; line-height: 1.5; }
+
+.section-head { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #1a5c2a; margin-bottom: 0.6rem; }
+.team-col-label { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.75rem; padding: 0.4rem 0.7rem; border-radius: 4px; }
+.home-label { background: #e8f4ec; color: #1a5c2a; }
+.away-label { background: #fde8e8; color: #c0392b; }
+
+/* probability bar */
+.prob-section { margin-top: 1rem; }
+.matchup { text-align: center; font-size: 1.05rem; font-weight: 700; margin-bottom: 1rem; color: #1a1a1a; }
+.prob-bar { display: flex; border-radius: 6px; overflow: hidden; height: 3rem; }
+.prob-h { background: #1a5c2a; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; }
+.prob-d { background: #f5a623; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; }
+.prob-a { background: #c0392b; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; }
+.prob-labels { display: flex; margin-top: 0.35rem; font-size: 0.82rem; color: #555; }
+.prob-labels div { flex: 1; text-align: center; }
+
+/* auto-features mini-grid */
+.feat-row { display: flex; gap: 0.75rem; margin-bottom: 1rem; }
+.feat-box { flex: 1; background: #f6f9f6; border-radius: 6px; padding: 0.55rem 0.8rem; text-align: center; }
+.feat-val { font-size: 1.25rem; font-weight: 700; }
+.feat-val.pos { color: #1a7a34; }
+.feat-val.neg { color: #c0392b; }
+.feat-val.neu { color: #888; }
+.feat-lbl { font-size: 0.72rem; color: #777; margin-top: 0.15rem; }
+.feat-warn { font-size: 0.72rem; color: #c07000; margin-top: 0.1rem; }
+
+.alert { padding: 0.75rem 1rem; border-radius: 5px; font-size: 0.88rem; margin-bottom: 1rem; }
+.alert-info { background: #e8f4ec; color: #1a5c2a; border-left: 3px solid #1a5c2a; }
+.alert-warn { background: #fff8e6; color: #8a6000; border-left: 3px solid #f5a623; }
+</style>
+</head>
+<body>
+<header>
+  <h1>⚽ Ligat Ha'Al Predictor</h1>
+  <nav>
+    <a href="/" {% if active=='home' %}class="active"{% endif %}>Standings</a>
+    &nbsp;·&nbsp;
+    <a href="/predict" {% if active=='predict' %}class="active"{% endif %}>Predict</a>
+    &nbsp;·&nbsp;
+    <a href="/import" {% if active=='import' %}class="active"{% endif %}>Import Data</a>
+  </nav>
+</header>
+<main>
+  {% block content %}{% endblock %}
+</main>
+</body>
+</html>

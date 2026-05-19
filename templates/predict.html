@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card">
+  <h2>Prediction Form</h2>
+
+  <form method="post" action="/predict">
+
+    {# ── team selectors ── #}
+    <div class="grid2" style="margin-bottom:1.25rem;">
+      <div class="field">
+        <label>Home Team</label>
+        <select name="home" required>
+          <option value="">— select —</option>
+          {% for t in teams %}
+          <option value="{{ t }}" {% if t == form.home %}selected{% endif %}>{{ t }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="field">
+        <label>Away Team</label>
+        <select name="away" required>
+          <option value="">— select —</option>
+          {% for t in teams %}
+          <option value="{{ t }}" {% if t == form.away %}selected{% endif %}>{{ t }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+
+    {# ── automatic features (shown after a prediction) ── #}
+    {% if features %}
+    <div style="margin-bottom:1.25rem;">
+      <div class="section-head">Automatic Features (from data)</div>
+      <div class="feat-row">
+        <div class="feat-box">
+          <div class="feat-val {% if features.ppg_diff > 0.1 %}pos{% elif features.ppg_diff < -0.1 %}neg{% else %}neu{% endif %}">
+            {{ "%+.2f"|format(features.ppg_diff) }}
+          </div>
+          <div class="feat-lbl">PPG diff (home − away)</div>
+          {% if features.home_played < min_mp or features.away_played < min_mp %}
+          <div class="feat-warn">⚠ early season (&lt;{{ min_mp }} matches)</div>
+          {% endif %}
+        </div>
+        <div class="feat-box">
+          <div class="feat-val {% if features.form_diff > 0.1 %}pos{% elif features.form_diff < -0.1 %}neg{% else %}neu{% endif %}">
+            {{ "%+.2f"|format(features.form_diff) }}
+          </div>
+          <div class="feat-lbl">Form diff (opp-adj, decayed)</div>
+        </div>
+        <div class="feat-box">
+          <div class="feat-val {% if features.h2h_diff > 0.05 %}pos{% elif features.h2h_diff < -0.05 %}neg{% else %}neu{% endif %}">
+            {{ "%+.2f"|format(features.h2h_diff) }}
+          </div>
+          <div class="feat-lbl">H2H diff ({{ features.h2h_n }} matches)</div>
+        </div>
+      </div>
+      <div style="font-size:0.78rem; color:#999;">
+        Home PPG {{ "%.2f"|format(features.home_ppg) if features.home_ppg is not none else "—" }}
+        ({{ features.home_played }} played) &nbsp;·&nbsp;
+        Away PPG {{ "%.2f"|format(features.away_ppg) if features.away_ppg is not none else "—" }}
+        ({{ features.away_played }} played)
+      </div>
+    </div>
+    {% endif %}
+
+    {# ── motivation ── #}
+    <div class="section-head" style="margin-bottom:0.75rem;">Motivation</div>
+    <div class="grid2" style="margin-bottom:1rem;">
+
+      <div>
+        <div class="team-col-label home-label">🏠 Home: {{ form.home or "Home team" }}</div>
+        <div class="field">
+          <label>What's at stake?</label>
+          <select name="home_stake">
+            {% for val, label in stake_options %}
+            <option value="{{ val }}" {% if form.home_stake|int == val %}selected{% endif %}>{{ label }} ({{ val }})</option>
+            {% endfor %}
+          </select>
+        </div>
+        <label class="check-row">
+          <input type="checkbox" name="home_derby" value="1" {% if form.home_derby %}checked{% endif %}>
+          Derby match (+{{ derby_bonus }})
+        </label>
+        <label class="check-row">
+          <input type="checkbox" name="home_rivalry" value="1" {% if form.home_rivalry %}checked{% endif %}>
+          Historical rivalry (+{{ rivalry_bonus }})
+        </label>
+      </div>
+
+      <div>
+        <div class="team-col-label away-label">✈ Away: {{ form.away or "Away team" }}</div>
+        <div class="field">
+          <label>What's at stake?</label>
+          <select name="away_stake">
+            {% for val, label in stake_options %}
+            <option value="{{ val }}" {% if form.away_stake|int == val %}selected{% endif %}>{{ label }} ({{ val }})</option>
+            {% endfor %}
+          </select>
+        </div>
+        <label class="check-row">
+          <input type="checkbox" name="away_derby" value="1" {% if form.away_derby %}checked{% endif %}>
+          Derby match (+{{ derby_bonus }})
+        </label>
+        <label class="check-row">
+          <input type="checkbox" name="away_rivalry" value="1" {% if form.away_rivalry %}checked{% endif %}>
+          Historical rivalry (+{{ rivalry_bonus }})
+        </label>
+      </div>
+    </div>
+
+    {# ── injuries ── #}
+    <div class="section-head" style="margin-bottom:0.75rem;">Injury / Absence Severity</div>
+    <div class="grid2" style="margin-bottom:1.5rem;">
+      <div>
+        <div class="field">
+          <label>🏠 Home team absence severity (0–10)</label>
+          <input type="number" name="home_injury" min="0" max="10" value="{{ form.home_injury or 0 }}">
+          <div class="hint">
+            0 = full squad &nbsp;·&nbsp; 2–3 = fringe players out &nbsp;·&nbsp;
+            4–5 = one key player, no replacement &nbsp;·&nbsp;
+            7–8 = multiple starters incl. key position &nbsp;·&nbsp; 9–10 = crisis
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="field">
+          <label>✈ Away team absence severity (0–10)</label>
+          <input type="number" name="away_injury" min="0" max="10" value="{{ form.away_injury or 0 }}">
+          <div class="hint">Rate what changed since their last match to avoid double-counting form.</div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn" type="submit">Calculate Prediction</button>
+  </form>
+</div>
+
+{# ── prediction result ── #}
+{% if prediction %}
+<div class="card">
+  <h2>Prediction: {{ form.home }} vs {{ form.away }}</h2>
+
+  <div class="prob-section">
+    <div class="prob-bar">
+      <div class="prob-h" style="width: {{ (prediction.H * 100)|round|int }}%">
+        {% if prediction.H > 0.12 %}{{ (prediction.H * 100)|round|int }}%{% endif %}
+      </div>
+      <div class="prob-d" style="width: {{ (prediction.D * 100)|round|int }}%">
+        {% if prediction.D > 0.08 %}{{ (prediction.D * 100)|round|int }}%{% endif %}
+      </div>
+      <div class="prob-a" style="width: {{ (prediction.A * 100)|round|int }}%">
+        {% if prediction.A > 0.12 %}{{ (prediction.A * 100)|round|int }}%{% endif %}
+      </div>
+    </div>
+    <div class="prob-labels">
+      <div><strong>Home win</strong><br>{{ (prediction.H * 100)|round(1) }}%</div>
+      <div><strong>Draw</strong><br>{{ (prediction.D * 100)|round(1) }}%</div>
+      <div><strong>Away win</strong><br>{{ (prediction.A * 100)|round(1) }}%</div>
+    </div>
+  </div>
+
+  {% if mot_diff != 0 or inj_diff != 0 %}
+  <div style="margin-top:1rem; font-size:0.82rem; color:#666;">
+    Manual adjustments applied —
+    motivation diff: {{ "%+d"|format(mot_diff|int) }}
+    &nbsp;·&nbsp;
+    injury diff (away − home): {{ "%+d"|format(inj_diff|int) }}
+    &nbsp;·&nbsp;
+    manual weights: mot={{ model_weights.motivation_diff }}, inj={{ model_weights.injury_diff }}
+    {% if model_weights.motivation_diff == 0 and model_weights.injury_diff == 0 %}
+    <span style="color:#c07000;">(both at 0.0 — edit data/model_weights.json to tune)</span>
+    {% endif %}
+  </div>
+  {% endif %}
+</div>
+{% endif %}
+
+{% endblock %}

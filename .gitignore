@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Duplicate file (Windows download artifact)
+_test_features (1).py
+
+# Environment / secrets
+.env
+*.env
+
+# Editor
+.vscode/
+.idea/

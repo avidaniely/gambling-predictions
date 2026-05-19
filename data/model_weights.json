@@ -1,0 +1,40 @@
+{
+  "classes": [
+    "A",
+    "D",
+    "H"
+  ],
+  "features": [
+    "ppg_diff",
+    "form_diff",
+    "h2h_diff"
+  ],
+  "coef": {
+    "A": {
+      "ppg_diff": -0.579336432857241,
+      "form_diff": -0.03282370719369802,
+      "h2h_diff": -0.011194767898785811
+    },
+    "D": {
+      "ppg_diff": 0.17443709322431789,
+      "form_diff": -0.0325210612940796,
+      "h2h_diff": -0.03782842366348087
+    },
+    "H": {
+      "ppg_diff": 0.40489933963292374,
+      "form_diff": 0.06534476848777789,
+      "h2h_diff": 0.04902319156226642
+    }
+  },
+  "intercept": {
+    "A": 0.008183239229968237,
+    "D": -0.18880685559516766,
+    "H": 0.18062361636519939
+  },
+  "n_trained": 868,
+  "manual_weights": {
+    "motivation_diff": 0.0,
+    "injury_diff": 0.0,
+    "_note": "motivation_diff and injury_diff are (home - away) scores. They are added as extra linear terms to every class score before the softmax, using the coefficient here. Start at 0.0 and tune by hand over the season."
+  }
+}
