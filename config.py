@@ -21,7 +21,8 @@ LEAGUE_ID = 383
 # Seasons are identified by their STARTING year (2023 == season 2023/24).
 # 3-4 recent seasons is the sweet spot we agreed on: enough matches to
 # calibrate on, recent enough to still be "the same league".
-SEASONS = [2022, 2023, 2024]
+SEASONS = [2022, 2023, 2024]          # API-Football (optional, historical only)
+ALL_SEASONS = [2022, 2023, 2024, 2025]  # TheSportsDB pulls these for free
 
 # --- Files ------------------------------------------------------------------
 DATA_DIR = "data"

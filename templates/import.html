@@ -1,6 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 
+{# ── Refresh All Data ── #}
+<div class="card">
+  <h2>Refresh All Data</h2>
+  <p style="font-size:0.88rem; color:#555; margin-bottom:1.25rem;">
+    Pulls all seasons (2022 – present) from TheSportsDB for free, then rebuilds
+    the calibration table and re-fits the model. Run this weekly to keep predictions current.
+    Takes ~6 minutes due to API rate limits.
+  </p>
+
+  <button id="refresh-btn" class="btn" onclick="startRefresh()">Refresh All Data</button>
+
+  <pre id="refresh-log"
+       style="display:none; margin-top:1.25rem; background:#111; color:#d4d4d4;
+              border-radius:6px; padding:1rem; font-size:0.8rem; line-height:1.6;
+              max-height:320px; overflow-y:auto; white-space:pre-wrap;"></pre>
+</div>
+
 {# ── Export / Download ── #}
 <div class="card">
   <h2>Export Data (CSV)</h2>
@@ -13,115 +30,53 @@
   </div>
 </div>
 
-{# ── TheSportsDB pull ── #}
+{# ── FootyStats CSV upload (fallback) ── #}
 <div class="card">
-  <h2>Pull Current Season from TheSportsDB</h2>
-  <div class="alert alert-info" style="margin-bottom:1.25rem;">
-    <strong>Free, no sign-up needed.</strong> TheSportsDB provides Ligat Ha'Al results for seasons the API-Football free plan doesn't cover. Click the button to pull and merge the season automatically.
-  </div>
-  <p style="font-size:0.88rem; color:#333; margin-bottom:0.75rem;">
-    Run this command in your terminal from the project folder:
-  </p>
-  <pre style="background:#f4f4f4; border:1px solid #ddd; border-radius:5px; padding:0.75rem 1rem; font-size:0.9rem; margin-bottom:0.75rem;">python pull_thesportsdb.py 2025</pre>
-  <p style="font-size:0.82rem; color:#666;">
-    Change <code>2025</code> to the season start year if needed. The script pulls round-by-round,
-    merges into the SQLite database, and rebuilds the calibration table automatically.
-    Then run <code>python calibrate.py</code> to update the model weights.
+  <h2>Import CSV (manual fallback)</h2>
+  <p style="font-size:0.85rem; color:#666; margin-bottom:1rem;">
+    If you have a FootyStats CSV from a paid account, you can import it here.
+    Not needed when using the Refresh above.
   </p>
 
-  {% if sdb_result %}
-    {% if sdb_result.error %}
-    <div class="alert alert-warn" style="margin-top:1rem;"><strong>Error:</strong> {{ sdb_result.error }}</div>
-    {% else %}
-    <div class="alert alert-info" style="margin-top:1rem;">
-      <strong>{{ sdb_result.added }}</strong> new matches added &nbsp;·&nbsp;
-      <strong>{{ sdb_result.skipped }}</strong> already existed &nbsp;·&nbsp;
-      <strong>{{ sdb_result.total }}</strong> total in database
-      &nbsp;·&nbsp; {{ sdb_result.rounds }} rounds pulled
-      {% if sdb_result.added > 0 %}
-      <br><strong>Next:</strong> run <code>python calibrate.py</code> in your terminal to update the model weights.
-      {% endif %}
-    </div>
-    {% endif %}
-  {% endif %}
-</div>
-
-{# ── FootyStats CSV upload ── #}
-<div class="card">
-  <h2>Import FootyStats CSV (manual upload)</h2>
-
-  <div class="alert alert-info" style="margin-bottom:1.25rem;">
-    <strong>Alternative:</strong> If you have a FootyStats CSV, you can upload it here instead.
-    Note that the CSV download on FootyStats requires a paid account.
-  </div>
-
-  <div class="section-head">Step 1 — Download the CSV from FootyStats</div>
-  <ol style="font-size:0.88rem; line-height:2; margin:0.5rem 0 1.25rem 1.25rem; color:#333;">
-    <li>Go to <strong>footystats.org/israel/premier-league</strong></li>
-    <li>Make sure you are on the correct season (check the season selector near the top of the page)</li>
-    <li>Scroll down to the matches table and look for a <strong>Download CSV</strong> or <strong>Export</strong> button</li>
-    <li>Save the file anywhere on your computer</li>
-  </ol>
-
-  <div class="section-head">Step 2 — Upload and import</div>
-  <form method="post" action="/import" enctype="multipart/form-data" style="margin-top:0.6rem;">
+  <form method="post" action="/import" enctype="multipart/form-data">
     <div class="field" style="max-width:480px;">
-      <label>FootyStats CSV file</label>
+      <label>CSV file</label>
       <input type="file" name="csv_file" accept=".csv" required
              style="padding:0.4rem; border:1px solid #ccc; border-radius:4px; width:100%; background:white;">
     </div>
     <div class="field" style="max-width:200px;">
       <label>Season start year</label>
-      <input type="number" name="season" value="2025" min="2018" max="2030"
-             style="width:100%;">
+      <input type="number" name="season" value="2025" min="2018" max="2030" style="width:100%;">
       <div class="hint">e.g. 2025 for the 2025/26 season</div>
     </div>
     <button class="btn" type="submit">Import</button>
   </form>
-</div>
 
-{% if result %}
-<div class="card">
-  <h2>Import Result</h2>
-
-  {% if result.error %}
-    <div class="alert alert-warn">
+  {% if result %}
+    {% if result.error %}
+    <div class="alert alert-warn" style="margin-top:1rem;">
       <strong>Error:</strong> {{ result.error }}
       {% if result.detected_cols %}
-      <br><br>
-      <strong>Columns detected in your file:</strong><br>
+      <br><br><strong>Columns in your file:</strong><br>
       <code style="font-size:0.8rem;">{{ result.detected_cols | join(', ') }}</code>
-      <br><br>
-      Please post these column names so the converter can be updated.
       {% endif %}
     </div>
-
-  {% else %}
-    <div style="display:flex; gap:2rem; margin-bottom:1rem; font-size:0.9rem;">
+    {% else %}
+    <div style="display:flex; gap:2rem; margin-top:1rem; font-size:0.9rem;">
       <div><strong>{{ result.added }}</strong> new matches added</div>
-      <div><strong>{{ result.skipped }}</strong> already existed (skipped)</div>
+      <div><strong>{{ result.skipped }}</strong> already existed</div>
       <div><strong>{{ result.total }}</strong> total in database</div>
     </div>
-
     {% if result.added > 0 %}
-    <div class="alert alert-info" style="margin-bottom:1rem;">
-      Calibration table has been rebuilt automatically.
-      <br>
-      <strong>Next step:</strong> re-run <code>python calibrate.py</code> in your terminal to update
-      the model weights with the new data, then refresh the portal.
+    <div class="alert alert-info" style="margin-top:0.75rem;">
+      Calibration table rebuilt automatically.
     </div>
     {% else %}
-    <div class="alert alert-warn">No new matches were added — all rows in the file already exist in the data.</div>
+    <div class="alert alert-warn" style="margin-top:0.75rem;">No new matches added — all rows already exist.</div>
     {% endif %}
-
     {% if result.sample %}
-    <div class="section-head" style="margin-top:0.5rem;">Sample of imported matches</div>
-    <table style="margin-top:0.5rem;">
-      <thead>
-        <tr>
-          <th>Date</th><th>Home</th><th></th><th>Away</th><th class="num">Score</th>
-        </tr>
-      </thead>
+    <table style="margin-top:0.75rem;">
+      <thead><tr><th>Date</th><th>Home</th><th></th><th>Away</th><th class="num">Score</th></tr></thead>
       <tbody>
         {% for r in result.sample %}
         <tr>
@@ -130,7 +85,7 @@
           <td style="color:#999; text-align:center;">vs</td>
           <td>{{ r.away_team }}</td>
           <td class="num">
-            {% if r.home_goals != '' and r.away_goals != '' %}
+            {% if r.home_goals is not none and r.away_goals is not none %}
               {{ r.home_goals }}–{{ r.away_goals }}
             {% else %}—{% endif %}
           </td>
@@ -139,8 +94,75 @@
       </tbody>
     </table>
     {% endif %}
+    {% endif %}
   {% endif %}
 </div>
-{% endif %}
+
+<script>
+let _poll = null;
+
+async function startRefresh() {
+  const btn = document.getElementById('refresh-btn');
+  const log = document.getElementById('refresh-log');
+
+  btn.disabled = true;
+  btn.textContent = 'Starting…';
+  log.style.display = 'block';
+  log.textContent = 'Connecting…';
+
+  const resp = await fetch('/import/refresh', {method: 'POST'});
+  const data = await resp.json();
+
+  if (!data.started) {
+    log.textContent = 'Already running — showing progress below.';
+  }
+
+  btn.textContent = 'Running…';
+  _poll = setInterval(pollStatus, 2000);
+}
+
+async function pollStatus() {
+  const log = document.getElementById('refresh-log');
+  const btn = document.getElementById('refresh-btn');
+
+  try {
+    const resp = await fetch('/import/refresh/status');
+    const data = await resp.json();
+
+    log.textContent = data.log.join('\n') || '(waiting for first round…)';
+    log.scrollTop = log.scrollHeight;
+
+    if (!data.running) {
+      clearInterval(_poll);
+      if (data.error) {
+        log.textContent += '\n\nERROR: ' + data.error;
+        btn.textContent = 'Error — try again';
+        btn.disabled = false;
+      } else if (data.done) {
+        log.textContent += '\n\n✓ Complete — reload the page to see updated predictions.';
+        btn.textContent = 'Done! Reload to update predictions.';
+        btn.onclick = () => location.reload();
+        btn.disabled = false;
+      }
+    }
+  } catch (e) {
+    log.textContent += '\n(network error — retrying…)';
+  }
+}
+
+// Resume polling if a refresh is already in progress (page reload mid-run).
+window.addEventListener('load', async () => {
+  try {
+    const resp = await fetch('/import/refresh/status');
+    const data = await resp.json();
+    if (data.running) {
+      document.getElementById('refresh-btn').disabled = true;
+      document.getElementById('refresh-btn').textContent = 'Running…';
+      document.getElementById('refresh-log').style.display = 'block';
+      _poll = setInterval(pollStatus, 2000);
+    }
+  } catch (_) {}
+});
+</script>
 
 {% endblock %}

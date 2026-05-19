@@ -142,6 +142,16 @@ def save_weights(model, n_trained):
     print(f"\nWeights saved to {config.MODEL_WEIGHTS}")
 
 
+def run():
+    """Callable entry point for use from other modules."""
+    rows = load_reliable_rows()
+    X, y, seasons = to_arrays(rows)
+    model = fit_model(X, y)
+    report(model, X, y, seasons)
+    save_weights(model, len(rows))
+    return len(rows)
+
+
 if __name__ == "__main__":
     db.init_db()
     rows = load_reliable_rows()

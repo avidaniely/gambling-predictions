@@ -55,16 +55,16 @@ def _norm(name):
     return NAME_MAP.get(name, name)
 
 
-def pull_season(season_year):
+def pull_season(season_year, log=print):
     season_str = f"{season_year}-{season_year + 1}"
-    print(f"Pulling Ligat Ha'Al {season_str} from TheSportsDB...")
+    log(f"Pulling Ligat Ha'Al {season_str} from TheSportsDB...")
 
     rows = []
     for round_num in range(1, MAX_ROUNDS + 1):
         data = _get(f"eventsround.php?id={LEAGUE_ID}&r={round_num}&s={season_str}")
         events = data.get("events") or []
         if not events:
-            print(f"  Round {round_num}: empty — done ({round_num - 1} rounds pulled)")
+            log(f"  Round {round_num}: empty — done ({round_num - 1} rounds pulled)")
             break
 
         for e in events:
@@ -84,25 +84,53 @@ def pull_season(season_year):
                 "home_goals":   int(hg) if hg is not None else None,
                 "away_goals":   int(ag) if ag is not None else None,
             })
-        print(f"  Round {round_num}: {len(events)} events")
+        log(f"  Round {round_num}: {len(events)} events")
         time.sleep(2.5)
 
     return rows
 
 
+def pull_all_seasons(seasons=None, log=print):
+    """Pull multiple seasons and upsert into the DB. Returns total added."""
+    import build_features
+    import calibrate
+
+    if seasons is None:
+        import config as _cfg
+        seasons = _cfg.ALL_SEASONS
+
+    total_added = 0
+    for season in seasons:
+        rows = pull_season(season, log=log)
+        if rows:
+            added, skipped = db.insert_matches(rows)
+            total_added += added
+            completed = sum(1 for r in rows if r["status"] == "FT")
+            log(f"  → {added} new, {skipped} already existed ({completed} completed)")
+        else:
+            log(f"  → no data returned for {season}/{season+1}")
+
+    log("Rebuilding features...")
+    build_features.build()
+    log("Recalibrating model...")
+    calibrate.run()
+    log(f"Done. {total_added} new matches added in total.")
+    return total_added
+
+
 if __name__ == "__main__":
     db.init_db()
-    season_year = int(sys.argv[1]) if len(sys.argv) > 1 else 2025
-    rows = pull_season(season_year)
-    if not rows:
-        print("No data returned.")
-        sys.exit(0)
-
-    added, skipped = db.insert_matches(rows)
-    completed = sum(1 for r in rows if r["status"] == "FT")
-    print(f"\nAdded {added} new rows ({skipped} already existed).")
-    print(f"{completed} of {len(rows)} pulled matches are completed.")
-    if added:
-        print("\nNext steps:")
-        print("  python build_features.py")
-        print("  python calibrate.py")
+    if len(sys.argv) > 1 and sys.argv[1] == "all":
+        pull_all_seasons()
+    else:
+        season_year = int(sys.argv[1]) if len(sys.argv) > 1 else 2025
+        rows = pull_season(season_year)
+        if not rows:
+            print("No data returned.")
+            sys.exit(0)
+        added, skipped = db.insert_matches(rows)
+        completed = sum(1 for r in rows if r["status"] == "FT")
+        print(f"\nAdded {added} new rows ({skipped} already existed).")
+        print(f"{completed} of {len(rows)} pulled matches are completed.")
+        if added:
+            print("\nNext: python build_features.py && python calibrate.py")

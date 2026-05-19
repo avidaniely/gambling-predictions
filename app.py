@@ -13,12 +13,14 @@ import hashlib
 import io
 import json
 import math
+import os
 import subprocess
 import sys
+import threading
 from collections import defaultdict, deque
 
 try:
-    from flask import Flask, Response, render_template, request
+    from flask import Flask, Response, jsonify, render_template, request
 except ImportError:
     sys.exit("app.py needs Flask.  Install:  pip install flask")
 
@@ -27,6 +29,49 @@ import db
 
 app = Flask(__name__)
 db.init_db()  # create tables + migrate CSVs on first run
+
+# ── background refresh state ──────────────────────────────────────────────────
+# Single in-memory state (safe with --workers 1 --threads 4).
+
+_refresh = {"running": False, "log": [], "error": None, "done": False}
+_refresh_lock = threading.Lock()
+
+
+def _run_refresh():
+    import pull_thesportsdb as sdb
+
+    def log(msg):
+        with _refresh_lock:
+            _refresh["log"].append(msg)
+
+    with _refresh_lock:
+        _refresh.update({"running": True, "log": [], "error": None, "done": False})
+
+    try:
+        sdb.pull_all_seasons(log=log)
+        with _refresh_lock:
+            _refresh["running"] = False
+            _refresh["done"] = True
+    except Exception as e:
+        with _refresh_lock:
+            _refresh["running"] = False
+            _refresh["error"] = str(e)
+
+
+@app.route("/import/refresh", methods=["POST"])
+def start_refresh():
+    with _refresh_lock:
+        if _refresh["running"]:
+            return jsonify({"started": False, "reason": "already running"})
+    t = threading.Thread(target=_run_refresh, daemon=True)
+    t.start()
+    return jsonify({"started": True})
+
+
+@app.route("/import/refresh/status")
+def refresh_status():
+    with _refresh_lock:
+        return jsonify(dict(_refresh))
 
 COMPLETED = {"FT", "AET", "PEN"}
 
@@ -422,29 +467,6 @@ def _check_cols(header):
             missing.append(key)
     return missing
 
-
-@app.route("/import/thesportsdb", methods=["POST"])
-def import_thesportsdb():
-    import pull_thesportsdb as sdb
-    season = int(request.form.get("season", 2025))
-    sdb_result = None
-    try:
-        rows = sdb.pull_season(season)
-        if not rows:
-            sdb_result = {"error": "No data returned from TheSportsDB for that season."}
-        else:
-            added, skipped = db.insert_matches(rows)
-            if added > 0:
-                subprocess.run([sys.executable, "build_features.py"], check=True)
-            rounds = len({r["round"] for r in rows})
-            total = len(db.fetch_all_matches())
-            sdb_result = {"added": added, "skipped": skipped,
-                          "total": total, "rounds": rounds}
-    except Exception as e:
-        sdb_result = {"error": str(e)}
-
-    return render_template("import.html", active="import",
-                           result=None, sdb_result=sdb_result)
 
 
 @app.route("/import", methods=["GET", "POST"])
