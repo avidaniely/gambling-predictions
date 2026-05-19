@@ -1,16 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
 
-{# ── Refresh All Data ── #}
+{# ── Pull season ── #}
 <div class="card">
-  <h2>Refresh All Data</h2>
+  <h2>Pull Season Data</h2>
   <p style="font-size:0.88rem; color:#555; margin-bottom:1.25rem;">
-    Pulls all seasons (2022 – present) from TheSportsDB for free, then rebuilds
-    the calibration table and re-fits the model. Run this weekly to keep predictions current.
-    Takes ~6 minutes due to API rate limits.
+    Pulls results from TheSportsDB (free, no sign-up), rebuilds the calibration
+    table and re-fits the model. Run weekly to keep predictions current.
   </p>
 
-  <button id="refresh-btn" class="btn" onclick="startRefresh()">Refresh All Data</button>
+  <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+    <div>
+      <label style="font-size:0.85rem; color:#555; display:block; margin-bottom:0.3rem;">Season</label>
+      <select id="season-select" style="padding:0.5rem 0.75rem; border:1px solid #ccc; border-radius:4px; font-size:0.95rem;">
+        {% for year, label in seasons %}
+        <option value="{{ year }}" {% if year == default_season %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div style="padding-top:1.4rem;">
+      <button id="refresh-btn" class="btn" onclick="startRefresh()">Pull</button>
+    </div>
+  </div>
 
   <pre id="refresh-log"
        style="display:none; margin-top:1.25rem; background:#111; color:#d4d4d4;
@@ -18,12 +29,44 @@
               max-height:320px; overflow-y:auto; white-space:pre-wrap;"></pre>
 </div>
 
+{# ── Recent matches ── #}
+<div class="card">
+  <h2>Last 20 Matches in Database</h2>
+  {% if recent %}
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Season</th>
+        <th style="text-align:right;">Home</th>
+        <th class="num">Score</th>
+        <th>Away</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for m in recent %}
+      <tr>
+        <td style="white-space:nowrap;">{{ m.date[:10] }}</td>
+        <td class="num" style="white-space:nowrap;">{{ m.season }}/{{ m.season + 1 }}</td>
+        <td style="text-align:right;">{{ m.home_team }}</td>
+        <td class="num" style="font-weight:600;">
+          {% if m.home_goals is not none and m.away_goals is not none %}
+            {{ m.home_goals }} – {{ m.away_goals }}
+          {% else %}—{% endif %}
+        </td>
+        <td>{{ m.away_team }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p style="color:#999; font-size:0.9rem;">No completed matches in database yet.</p>
+  {% endif %}
+</div>
+
 {# ── Export / Download ── #}
 <div class="card">
   <h2>Export Data (CSV)</h2>
-  <p style="font-size:0.88rem; color:#555; margin-bottom:1rem;">
-    Download the current database contents as CSV files.
-  </p>
   <div style="display:flex; gap:1rem;">
     <a href="/export/matches" class="btn" style="text-decoration:none;">⬇ raw_matches.csv</a>
     <a href="/export/calibration" class="btn" style="text-decoration:none; background:#555;">⬇ calibration_table.csv</a>
@@ -35,7 +78,6 @@
   <h2>Import CSV (manual fallback)</h2>
   <p style="font-size:0.85rem; color:#666; margin-bottom:1rem;">
     If you have a FootyStats CSV from a paid account, you can import it here.
-    Not needed when using the Refresh above.
   </p>
 
   <form method="post" action="/import" enctype="multipart/form-data">
@@ -46,8 +88,7 @@
     </div>
     <div class="field" style="max-width:200px;">
       <label>Season start year</label>
-      <input type="number" name="season" value="2025" min="2018" max="2030" style="width:100%;">
-      <div class="hint">e.g. 2025 for the 2025/26 season</div>
+      <input type="number" name="season" value="{{ default_season }}" min="2018" max="2035" style="width:100%;">
     </div>
     <button class="btn" type="submit">Import</button>
   </form>
@@ -68,31 +109,9 @@
       <div><strong>{{ result.total }}</strong> total in database</div>
     </div>
     {% if result.added > 0 %}
-    <div class="alert alert-info" style="margin-top:0.75rem;">
-      Calibration table rebuilt automatically.
-    </div>
+    <div class="alert alert-info" style="margin-top:0.75rem;">Calibration table rebuilt automatically.</div>
     {% else %}
     <div class="alert alert-warn" style="margin-top:0.75rem;">No new matches added — all rows already exist.</div>
-    {% endif %}
-    {% if result.sample %}
-    <table style="margin-top:0.75rem;">
-      <thead><tr><th>Date</th><th>Home</th><th></th><th>Away</th><th class="num">Score</th></tr></thead>
-      <tbody>
-        {% for r in result.sample %}
-        <tr>
-          <td>{{ r.date[:10] }}</td>
-          <td>{{ r.home_team }}</td>
-          <td style="color:#999; text-align:center;">vs</td>
-          <td>{{ r.away_team }}</td>
-          <td class="num">
-            {% if r.home_goals is not none and r.away_goals is not none %}
-              {{ r.home_goals }}–{{ r.away_goals }}
-            {% else %}—{% endif %}
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
     {% endif %}
     {% endif %}
   {% endif %}
@@ -102,22 +121,24 @@
 let _poll = null;
 
 async function startRefresh() {
-  const btn = document.getElementById('refresh-btn');
-  const log = document.getElementById('refresh-log');
+  const season = document.getElementById('season-select').value;
+  const btn    = document.getElementById('refresh-btn');
+  const log    = document.getElementById('refresh-log');
 
   btn.disabled = true;
-  btn.textContent = 'Starting…';
+  btn.textContent = 'Running…';
   log.style.display = 'block';
-  log.textContent = 'Connecting…';
+  log.textContent = 'Starting…';
 
-  const resp = await fetch('/import/refresh', {method: 'POST'});
+  const fd = new FormData();
+  fd.append('season', season);
+  const resp = await fetch('/import/refresh', {method: 'POST', body: fd});
   const data = await resp.json();
 
   if (!data.started) {
-    log.textContent = 'Already running — showing progress below.';
+    log.textContent = 'A pull is already running — showing live progress below.';
   }
 
-  btn.textContent = 'Running…';
   _poll = setInterval(pollStatus, 2000);
 }
 
@@ -129,7 +150,7 @@ async function pollStatus() {
     const resp = await fetch('/import/refresh/status');
     const data = await resp.json();
 
-    log.textContent = data.log.join('\n') || '(waiting for first round…)';
+    log.textContent = data.log.join('\n') || '(waiting…)';
     log.scrollTop = log.scrollHeight;
 
     if (!data.running) {
@@ -139,18 +160,17 @@ async function pollStatus() {
         btn.textContent = 'Error — try again';
         btn.disabled = false;
       } else if (data.done) {
-        log.textContent += '\n\n✓ Complete — reload the page to see updated predictions.';
-        btn.textContent = 'Done! Reload to update predictions.';
-        btn.onclick = () => location.reload();
+        log.textContent += '\n\n✓ Done — reload to see updated standings and predictions.';
+        btn.textContent = 'Reload page';
         btn.disabled = false;
+        btn.onclick = () => location.reload();
       }
     }
-  } catch (e) {
+  } catch (_) {
     log.textContent += '\n(network error — retrying…)';
   }
 }
 
-// Resume polling if a refresh is already in progress (page reload mid-run).
 window.addEventListener('load', async () => {
   try {
     const resp = await fetch('/import/refresh/status');

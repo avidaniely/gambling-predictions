@@ -18,6 +18,7 @@ import subprocess
 import sys
 import threading
 from collections import defaultdict, deque
+from datetime import datetime
 
 try:
     from flask import Flask, Response, jsonify, render_template, request
@@ -37,7 +38,16 @@ _refresh = {"running": False, "log": [], "error": None, "done": False}
 _refresh_lock = threading.Lock()
 
 
-def _run_refresh():
+def _season_list():
+    now = datetime.now()
+    default = now.year - 1 if now.month < 8 else now.year
+    seasons = [(y, f"{y}/{str(y + 1)[-2:]}") for y in range(2022, now.year + 3)]
+    return seasons, default
+
+
+def _run_refresh(season_year):
+    import build_features
+    import calibrate
     import pull_thesportsdb as sdb
 
     def log(msg):
@@ -48,7 +58,18 @@ def _run_refresh():
         _refresh.update({"running": True, "log": [], "error": None, "done": False})
 
     try:
-        sdb.pull_all_seasons(log=log)
+        rows = sdb.pull_season(season_year, log=log)
+        if rows:
+            added, skipped = db.insert_matches(rows)
+            completed = sum(1 for r in rows if r["status"] == "FT")
+            log(f"  → {added} new, {skipped} already existed ({completed} completed)")
+        else:
+            log(f"  No data returned for {season_year}/{season_year + 1}.")
+        log("Rebuilding features...")
+        build_features.build()
+        log("Recalibrating model...")
+        calibrate.run()
+        log("Done.")
         with _refresh_lock:
             _refresh["running"] = False
             _refresh["done"] = True
@@ -60,10 +81,11 @@ def _run_refresh():
 
 @app.route("/import/refresh", methods=["POST"])
 def start_refresh():
+    season_year = int(request.form.get("season", _season_list()[1]))
     with _refresh_lock:
         if _refresh["running"]:
             return jsonify({"started": False, "reason": "already running"})
-    t = threading.Thread(target=_run_refresh, daemon=True)
+    t = threading.Thread(target=_run_refresh, args=(season_year,), daemon=True)
     t.start()
     return jsonify({"started": True})
 
@@ -472,6 +494,7 @@ def _check_cols(header):
 @app.route("/import", methods=["GET", "POST"])
 def import_data():
     result = None
+    seasons, default_season = _season_list()
 
     if request.method == "POST":
         f      = request.files.get("csv_file")
@@ -513,7 +536,15 @@ def import_data():
             except Exception as e:
                 result = {"error": str(e)}
 
-    return render_template("import.html", active="import", result=result, sdb_result=None)
+    recent = db.fetch_recent_matches(20)
+    return render_template(
+        "import.html",
+        active="import",
+        result=result,
+        seasons=seasons,
+        default_season=default_season,
+        recent=recent,
+    )
 
 
 if __name__ == "__main__":

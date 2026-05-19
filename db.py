@@ -208,6 +208,17 @@ def fetch_calibration():
 
 # ── CSV export ────────────────────────────────────────────────────────────────
 
+def fetch_recent_matches(n=20):
+    """Return the n most recently played completed matches."""
+    with get_conn() as conn:
+        rows = conn.execute(
+            "SELECT * FROM raw_matches WHERE status IN ('FT','AET','PEN') "
+            "ORDER BY date DESC, fixture_id DESC LIMIT ?",
+            (n,),
+        ).fetchall()
+    return [dict(r) for r in rows]
+
+
 def export_matches_csv():
     buf = io.StringIO()
     writer = csv_mod.DictWriter(buf, fieldnames=MATCH_COLS)
