@@ -1,0 +1,10 @@
+services:
+  gambling-predictions:
+    build: .
+    container_name: gambling-predictions
+    ports:
+      - "5005:5000"
+    volumes:
+      - ./data:/app/data
+    env_file: .env
+    restart: unless-stopped
