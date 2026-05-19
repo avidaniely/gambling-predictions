@@ -407,8 +407,8 @@ def build_summary(features, form_vals, mot_diff, inj_diff, model, home="הבית
     })
 
     # 5 — Motivation
-    match_bonus = ((DERBY_BONUS   if form_vals["derby"]   else 0)
-                   + (RIVALRY_BONUS if form_vals["rivalry"] else 0))
+    ctx = form_vals["match_context"]
+    match_bonus = DERBY_BONUS if ctx == "derby" else (RIVALRY_BONUS if ctx == "rivalry" else 0)
     home_mot = form_vals["home_stake"] + match_bonus
     away_mot = form_vals["away_stake"]
     logit_mot = w_mot * mot_diff
