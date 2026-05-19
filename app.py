@@ -305,14 +305,12 @@ def index():
         [{"team": t, **s} for t, s in team_states.items() if s["played"] > 0],
         key=lambda r: (-r["points"], -(r["gf"] - r["ga"]), -r["gf"]),
     )
-    teams = sorted(team_states.keys())
 
     return render_template(
         "index.html",
         active="home",
         season=latest_season,
         standings=standings,
-        teams=teams,
     )
 
 

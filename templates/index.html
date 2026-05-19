@@ -45,35 +45,4 @@
   </table>
 </div>
 
-<div class="card">
-  <h2>Make a Prediction</h2>
-  <p style="font-size:0.88rem; color:#555; margin-bottom:1rem;">
-    Select two teams from the {{ season }}/{{ season+1 }} season. The automatic features (PPG, form, H2H)
-    are computed from completed results. Add motivation and injury context below.
-  </p>
-  <form method="get" action="/predict">
-    <div class="grid2">
-      <div class="field">
-        <label>Home Team</label>
-        <select name="home" required>
-          <option value="">— select —</option>
-          {% for t in teams %}
-          <option value="{{ t }}">{{ t }}</option>
-          {% endfor %}
-        </select>
-      </div>
-      <div class="field">
-        <label>Away Team</label>
-        <select name="away" required>
-          <option value="">— select —</option>
-          {% for t in teams %}
-          <option value="{{ t }}">{{ t }}</option>
-          {% endfor %}
-        </select>
-      </div>
-    </div>
-    <button class="btn" type="submit">Go to Prediction Form →</button>
-  </form>
-</div>
-
 {% endblock %}
