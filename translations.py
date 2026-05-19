@@ -76,6 +76,7 @@ TRANSLATIONS = {
         "injury_hint2":     "Rate what changed since their last match to avoid double-counting form.",
 
         "calc_btn":         "Calculate Prediction",
+        "clear_btn":        "Clear",
 
         # Result
         "result_title":     "Prediction: {home} vs {away}",
@@ -217,6 +218,7 @@ TRANSLATIONS = {
         "injury_hint2":     "דרג מה שהשתנה מהמשחק האחרון כדי להימנע מכפל ספירה עם הפורמה.",
 
         "calc_btn":         "חשב ניבוי",
+        "clear_btn":        "נקה",
 
         # Result
         "result_title":     "ניבוי: {home} נגד {away}",
