@@ -55,8 +55,9 @@ TRANSLATIONS = {
         # Motivation
         "motivation_head":  "Motivation",
         "stake_label":      "What's at stake?",
-        "derby_label":      "Derby match (+{bonus})",
-        "rivalry_label":    "Historical rivalry (+{bonus})",
+        "match_context_head": "Match Context",
+        "derby_label":      "Derby match (+{bonus} to both teams)",
+        "rivalry_label":    "Historical rivalry (+{bonus} to both teams)",
         "home_prefix":      "🏠 Home",
         "away_prefix":      "✈ Away",
 
@@ -195,8 +196,9 @@ TRANSLATIONS = {
         # Motivation
         "motivation_head":  "מוטיבציה",
         "stake_label":      "מה על הכף?",
-        "derby_label":      "דרבי (+{bonus})",
-        "rivalry_label":    "יריבות היסטורית (+{bonus})",
+        "match_context_head": "הקשר המשחק",
+        "derby_label":      "דרבי (+{bonus} לשתי הקבוצות)",
+        "rivalry_label":    "יריבות היסטורית (+{bonus} לשתי הקבוצות)",
         "home_prefix":      "🏠 בית",
         "away_prefix":      "✈ חוץ",
 

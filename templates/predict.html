@@ -136,7 +136,7 @@
 
     {# ── motivation ── #}
     <div class="section-head" style="margin-bottom:0.75rem;">{{ t.motivation_head }}</div>
-    <div class="grid2" style="margin-bottom:1rem;">
+    <div class="grid2" style="margin-bottom:0.75rem;">
 
       <div>
         <div class="team-col-label home-label">{{ t.home_prefix }}: {{ form.home or t.home_team }}</div>
@@ -148,14 +148,6 @@
             {% endfor %}
           </select>
         </div>
-        <label class="check-row">
-          <input type="checkbox" name="home_derby" value="1" {% if form.home_derby %}checked{% endif %}>
-          {{ t.derby_label.format(bonus=derby_bonus) }}
-        </label>
-        <label class="check-row">
-          <input type="checkbox" name="home_rivalry" value="1" {% if form.home_rivalry %}checked{% endif %}>
-          {{ t.rivalry_label.format(bonus=rivalry_bonus) }}
-        </label>
       </div>
 
       <div>
@@ -168,15 +160,20 @@
             {% endfor %}
           </select>
         </div>
-        <label class="check-row">
-          <input type="checkbox" name="away_derby" value="1" {% if form.away_derby %}checked{% endif %}>
-          {{ t.derby_label.format(bonus=derby_bonus) }}
-        </label>
-        <label class="check-row">
-          <input type="checkbox" name="away_rivalry" value="1" {% if form.away_rivalry %}checked{% endif %}>
-          {{ t.rivalry_label.format(bonus=rivalry_bonus) }}
-        </label>
       </div>
+    </div>
+
+    {# ── match context (shared — applies to both teams) ── #}
+    <div class="section-head" style="margin-bottom:0.5rem;">{{ t.match_context_head }}</div>
+    <div style="display:flex; gap:2rem; margin-bottom:1.25rem;">
+      <label class="check-row">
+        <input type="checkbox" name="derby" value="1" {% if form.derby %}checked{% endif %}>
+        {{ t.derby_label.format(bonus=derby_bonus) }}
+      </label>
+      <label class="check-row">
+        <input type="checkbox" name="rivalry" value="1" {% if form.rivalry %}checked{% endif %}>
+        {{ t.rivalry_label.format(bonus=rivalry_bonus) }}
+      </label>
     </div>
 
     {# ── injuries ── #}

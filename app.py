@@ -407,12 +407,10 @@ def build_summary(features, form_vals, mot_diff, inj_diff, model, home="הבית
     })
 
     # 5 — Motivation
-    home_mot = (form_vals["home_stake"]
-                + (DERBY_BONUS   if form_vals["home_derby"]   else 0)
-                + (RIVALRY_BONUS if form_vals["home_rivalry"] else 0))
-    away_mot = (form_vals["away_stake"]
-                + (DERBY_BONUS   if form_vals["away_derby"]   else 0)
-                + (RIVALRY_BONUS if form_vals["away_rivalry"] else 0))
+    match_bonus = ((DERBY_BONUS   if form_vals["derby"]   else 0)
+                   + (RIVALRY_BONUS if form_vals["rivalry"] else 0))
+    home_mot = form_vals["home_stake"] + match_bonus
+    away_mot = form_vals["away_stake"] + match_bonus
     logit_mot = w_mot * mot_diff
     mot_note  = "" if w_mot != 0 else " Weight is 0.0 — inactive. Tune motivation_diff in model_weights.json."
     if w_mot == 0:
@@ -525,14 +523,12 @@ def predict():
     form_vals = {
         "home": request.args.get("home", ""),
         "away": request.args.get("away", ""),
-        "home_stake":   5,
-        "away_stake":   5,
-        "home_derby":   False,
-        "away_derby":   False,
-        "home_rivalry": False,
-        "away_rivalry": False,
-        "home_injury":  0,
-        "away_injury":  0,
+        "home_stake":  5,
+        "away_stake":  5,
+        "derby":       False,
+        "rivalry":     False,
+        "home_injury": 0,
+        "away_injury": 0,
     }
 
     features   = None
@@ -546,27 +542,23 @@ def predict():
         away = request.form.get("away", "").strip()
 
         form_vals.update({
-            "home":         home,
-            "away":         away,
-            "home_stake":   int(request.form.get("home_stake", 5)),
-            "away_stake":   int(request.form.get("away_stake", 5)),
-            "home_derby":   bool(request.form.get("home_derby")),
-            "away_derby":   bool(request.form.get("away_derby")),
-            "home_rivalry": bool(request.form.get("home_rivalry")),
-            "away_rivalry": bool(request.form.get("away_rivalry")),
-            "home_injury":  int(request.form.get("home_injury", 0)),
-            "away_injury":  int(request.form.get("away_injury", 0)),
+            "home":        home,
+            "away":        away,
+            "home_stake":  int(request.form.get("home_stake", 5)),
+            "away_stake":  int(request.form.get("away_stake", 5)),
+            "derby":       bool(request.form.get("derby")),
+            "rivalry":     bool(request.form.get("rivalry")),
+            "home_injury": int(request.form.get("home_injury", 0)),
+            "away_injury": int(request.form.get("away_injury", 0)),
         })
 
         if home and away and home != away:
             features = get_features(home, away, latest_season, states, h2h_history)
 
-            home_mot = (form_vals["home_stake"]
-                        + (DERBY_BONUS   if form_vals["home_derby"]   else 0)
-                        + (RIVALRY_BONUS if form_vals["home_rivalry"] else 0))
-            away_mot = (form_vals["away_stake"]
-                        + (DERBY_BONUS   if form_vals["away_derby"]   else 0)
-                        + (RIVALRY_BONUS if form_vals["away_rivalry"] else 0))
+            match_bonus = ((DERBY_BONUS   if form_vals["derby"]   else 0)
+                           + (RIVALRY_BONUS if form_vals["rivalry"] else 0))
+            home_mot = form_vals["home_stake"] + match_bonus
+            away_mot = form_vals["away_stake"] + match_bonus
             mot_diff = home_mot - away_mot
             inj_diff = form_vals["away_injury"] - form_vals["home_injury"]
 
