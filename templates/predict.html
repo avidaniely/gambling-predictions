@@ -231,6 +231,31 @@
 {% if summary %}
 <div class="card">
   <h2>{{ t.breakdown_title }}</h2>
+
+  {% if lang == 'he' %}
+  {# ── Simple Hebrew breakdown ── #}
+  <div style="font-size:0.9rem;">
+    {% for f in summary %}
+    <div style="display:flex; align-items:baseline; gap:0.75rem; padding:0.65rem 0; border-bottom:1px solid #f2f2f2; {% if f.inactive %}color:#bbb;{% endif %}">
+      <strong style="min-width:140px; flex-shrink:0;">{{ t[f.name_key] }}</strong>
+      <span style="flex:1; {% if f.inactive %}color:#bbb{% else %}color:#444{% endif %};">{{ f.sentence_he }}</span>
+      <span style="flex-shrink:0;">
+        {% if f.inactive %}
+          <span style="font-size:0.75rem; background:#eee; color:#999; padding:2px 7px; border-radius:10px;">{{ t.bd_inactive }}</span>
+        {% elif f.direction == 'home' %}
+          <span style="font-size:0.75rem; background:#d4edda; color:#155724; padding:2px 7px; border-radius:10px; white-space:nowrap;">{{ t.bd_home }}</span>
+        {% elif f.direction == 'away' %}
+          <span style="font-size:0.75rem; background:#f8d7da; color:#721c24; padding:2px 7px; border-radius:10px; white-space:nowrap;">{{ t.bd_away }}</span>
+        {% else %}
+          <span style="font-size:0.75rem; background:#e2e3e5; color:#555; padding:2px 7px; border-radius:10px;">{{ t.bd_neutral }}</span>
+        {% endif %}
+      </span>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% else %}
+  {# ── Full English technical table ── #}
   <table style="font-size:0.88rem;">
     <thead>
       <tr>
@@ -261,6 +286,8 @@
       {% endfor %}
     </tbody>
   </table>
+  {% endif %}
+
   <div style="margin-top:0.75rem; font-size:0.78rem; color:#999;">
     {{ t.bd_footer }}
   </div>

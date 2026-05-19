@@ -286,10 +286,11 @@ def get_features(home, away, season, states, h2h_history):
     }
 
 
-def build_summary(features, form_vals, mot_diff, inj_diff, model):
+def build_summary(features, form_vals, mot_diff, inj_diff, model, home="הבית", away="החוץ"):
     """
-    Return a list of dicts describing how each of the 6 factors
-    contributed to the prediction, expressed in plain language.
+    Return a list of dicts describing how each of the 6 factors contributed
+    to the prediction. Each item includes both a technical English sentence
+    and a simple Hebrew sentence for display.
     """
     coef      = model["coef"]
     intercept = model["intercept"]
@@ -306,14 +307,15 @@ def build_summary(features, form_vals, mot_diff, inj_diff, model):
     # 1 — Home advantage (regression intercept)
     logit_ha = intercept.get("H", 0)
     items.append({
-        "name":     "Home advantage",
-        "name_key": "factor_home_adv",
-        "values":   f"intercept {logit_ha:+.3f}",
-        "sentence": (f"Every home match starts with +{logit_ha:.3f} added to the home logit — "
-                     "calibrated from historical home/away win rates across all seasons."),
+        "name":      "Home advantage",
+        "name_key":  "factor_home_adv",
+        "values":    f"intercept {logit_ha:+.3f}",
+        "sentence":  (f"Every home match starts with +{logit_ha:.3f} added to the home logit — "
+                      "calibrated from historical home/away win rates across all seasons."),
+        "sentence_he": f"ל{home} יש יתרון בית {logit_ha:+.3f} נקודות הוספן (מחושב מעונות קודמות).",
         "direction": "home" if logit_ha > 0 else "neutral",
-        "logit_h":  logit_ha,
-        "inactive": False,
+        "logit_h":   logit_ha,
+        "inactive":  False,
     })
 
     # 2 — Table strength (PPG)
@@ -324,15 +326,25 @@ def build_summary(features, form_vals, mot_diff, inj_diff, model):
     ppg_vals  = (f"Home {home_ppg:.2f} PPG vs away {away_ppg:.2f} PPG (diff {ppg_diff:+.2f})"
                  if home_ppg is not None and away_ppg is not None
                  else "Insufficient data — early season")
+    if home_ppg is not None and away_ppg is not None:
+        if ppg_diff > 0.1:
+            ppg_he = f"{home} חזקים יותר בטבלה — {home_ppg:.2f} לעומת {away_ppg:.2f} נק׳/מ׳ (פער {ppg_diff:+.2f})."
+        elif ppg_diff < -0.1:
+            ppg_he = f"{away} חזקים יותר בטבלה — {away_ppg:.2f} לעומת {home_ppg:.2f} נק׳/מ׳ (פער {ppg_diff:+.2f})."
+        else:
+            ppg_he = f"שתי הקבוצות שוות בטבלה — {home_ppg:.2f} מול {away_ppg:.2f} נק׳/מ׳."
+    else:
+        ppg_he = "נתוני טבלה חסרים — תחילת עונה."
     items.append({
-        "name":     "Table strength (PPG)",
-        "name_key": "factor_ppg_strength",
-        "values":   ppg_vals,
-        "sentence": (f"PPG diff {ppg_diff:+.2f} × model weight {coef['H']['ppg_diff']:+.3f} "
-                     f"= {logit_ppg:+.3f} to home logit."),
+        "name":      "Table strength (PPG)",
+        "name_key":  "factor_ppg_strength",
+        "values":    ppg_vals,
+        "sentence":  (f"PPG diff {ppg_diff:+.2f} × model weight {coef['H']['ppg_diff']:+.3f} "
+                      f"= {logit_ppg:+.3f} to home logit."),
+        "sentence_he": ppg_he,
         "direction": _dir(logit_ppg),
-        "logit_h":  logit_ppg,
-        "inactive": False,
+        "logit_h":   logit_ppg,
+        "inactive":  False,
     })
 
     # 3 — Recent form
@@ -344,15 +356,25 @@ def build_summary(features, form_vals, mot_diff, inj_diff, model):
                      f"(diff {form_diff:+.2f}, opponent-adjusted, last 5 matches)"
                      if home_form is not None and away_form is not None
                      else "Insufficient data — early season")
+    if home_form is not None and away_form is not None:
+        if form_diff > 0.1:
+            form_he = f"{home} בפורמה טובה יותר — {home_form:.2f} לעומת {away_form:.2f} (ממוצע 5 משחקים, מותאם ליריב)."
+        elif form_diff < -0.1:
+            form_he = f"{away} בפורמה טובה יותר — {away_form:.2f} לעומת {home_form:.2f} (ממוצע 5 משחקים, מותאם ליריב)."
+        else:
+            form_he = f"פורמה שקולה — {home_form:.2f} מול {away_form:.2f} (5 משחקים אחרונים)."
+    else:
+        form_he = "נתוני פורמה חסרים — תחילת עונה."
     items.append({
-        "name":     "Recent form",
-        "name_key": "factor_form_bd",
-        "values":   form_vals_str,
-        "sentence": (f"Form diff {form_diff:+.2f} × model weight {coef['H']['form_diff']:+.3f} "
-                     f"= {logit_form:+.3f} to home logit."),
+        "name":      "Recent form",
+        "name_key":  "factor_form_bd",
+        "values":    form_vals_str,
+        "sentence":  (f"Form diff {form_diff:+.2f} × model weight {coef['H']['form_diff']:+.3f} "
+                      f"= {logit_form:+.3f} to home logit."),
+        "sentence_he": form_he,
         "direction": _dir(logit_form),
-        "logit_h":  logit_form,
-        "inactive": False,
+        "logit_h":   logit_form,
+        "inactive":  False,
     })
 
     # 4 — Head-to-head
@@ -362,16 +384,26 @@ def build_summary(features, form_vals, mot_diff, inj_diff, model):
     h2h_vals  = (f"{h2h_n} recent meeting{'s' if h2h_n != 1 else ''}, "
                  f"home avg {h2h_diff:+.2f} pts/match advantage"
                  if h2h_n > 0 else "No recent H2H data — defaulted to 0")
+    if h2h_n > 0:
+        if h2h_diff > 0.1:
+            h2h_he = f"{home} ממוצע {h2h_diff:+.2f} נק׳/מ׳ מעל {away} ב-{h2h_n} עימותים אחרונים."
+        elif h2h_diff < -0.1:
+            h2h_he = f"{away} ממוצע {-h2h_diff:+.2f} נק׳/מ׳ מעל {home} ב-{h2h_n} עימותים אחרונים."
+        else:
+            h2h_he = f"עימותים ישירים מאוזנים — {home} ממוצע {h2h_diff:+.2f} נק׳/מ׳ ב-{h2h_n} משחקים."
+    else:
+        h2h_he = "אין עימותים ישירים אחרונים — גורם זה לא השפיע על הניבוי."
     items.append({
-        "name":     "Head-to-head",
-        "name_key": "factor_h2h_bd",
-        "values":   h2h_vals,
-        "sentence": (f"H2H diff {h2h_diff:+.2f} × model weight {coef['H']['h2h_diff']:+.3f} "
-                     f"= {logit_h2h:+.3f} to home logit."
-                     if h2h_n > 0 else "No H2H history in the window — zero contribution."),
+        "name":      "Head-to-head",
+        "name_key":  "factor_h2h_bd",
+        "values":    h2h_vals,
+        "sentence":  (f"H2H diff {h2h_diff:+.2f} × model weight {coef['H']['h2h_diff']:+.3f} "
+                      f"= {logit_h2h:+.3f} to home logit."
+                      if h2h_n > 0 else "No H2H history in the window — zero contribution."),
+        "sentence_he": h2h_he,
         "direction": _dir(logit_h2h) if h2h_n > 0 else "neutral",
-        "logit_h":  logit_h2h,
-        "inactive": False,
+        "logit_h":   logit_h2h,
+        "inactive":  False,
     })
 
     # 5 — Motivation
@@ -383,29 +415,47 @@ def build_summary(features, form_vals, mot_diff, inj_diff, model):
                 + (RIVALRY_BONUS if form_vals["away_rivalry"] else 0))
     logit_mot = w_mot * mot_diff
     mot_note  = "" if w_mot != 0 else " Weight is 0.0 — inactive. Tune motivation_diff in model_weights.json."
+    if w_mot == 0:
+        mot_he = "גורם מוטיבציה לא פעיל."
+    elif mot_diff > 0:
+        mot_he = f"ל{home} מוטיבציה גבוהה יותר — ציון {home_mot} לעומת {away_mot} לחוץ (פער {mot_diff:+d})."
+    elif mot_diff < 0:
+        mot_he = f"ל{away} מוטיבציה גבוהה יותר — ציון {away_mot} לעומת {home_mot} לבית (פער {mot_diff:+d})."
+    else:
+        mot_he = f"מוטיבציה שקולה — ציון {home_mot} לשתי הקבוצות."
     items.append({
-        "name":     "Motivation",
-        "name_key": "factor_motivation",
-        "values":   f"Home score {home_mot} vs away score {away_mot} (diff {mot_diff:+d})",
-        "sentence": (f"Diff {mot_diff:+d} × manual weight {w_mot} = {logit_mot:+.3f} to home logit.{mot_note}"),
+        "name":      "Motivation",
+        "name_key":  "factor_motivation",
+        "values":    f"Home score {home_mot} vs away score {away_mot} (diff {mot_diff:+d})",
+        "sentence":  (f"Diff {mot_diff:+d} × manual weight {w_mot} = {logit_mot:+.3f} to home logit.{mot_note}"),
+        "sentence_he": mot_he,
         "direction": _dir(logit_mot) if w_mot != 0 else "neutral",
-        "logit_h":  logit_mot,
-        "inactive": w_mot == 0,
+        "logit_h":   logit_mot,
+        "inactive":  w_mot == 0,
     })
 
     # 6 — Injuries
     logit_inj = w_inj * inj_diff
     inj_note  = "" if w_inj != 0 else " Weight is 0.0 — inactive. Tune injury_diff in model_weights.json."
+    hi = form_vals['home_injury']
+    ai = form_vals['away_injury']
+    if w_inj == 0:
+        inj_he = "גורם פציעות לא פעיל."
+    elif inj_diff > 0:
+        inj_he = f"ל{away} פציעות פחות חמורות — {home} חומרה {hi}/10, {away} חומרה {ai}/10."
+    elif inj_diff < 0:
+        inj_he = f"ל{home} פציעות פחות חמורות — {home} חומרה {hi}/10, {away} חומרה {ai}/10."
+    else:
+        inj_he = f"פציעות שקולות — {hi}/10 לבית, {ai}/10 לחוץ."
     items.append({
-        "name":     "Injuries / absences",
-        "name_key": "factor_injuries",
-        "values":   (f"Home severity {form_vals['home_injury']}/10, "
-                     f"away severity {form_vals['away_injury']}/10 "
-                     f"(net diff away−home: {inj_diff:+d})"),
-        "sentence": (f"Net diff {inj_diff:+d} × manual weight {w_inj} = {logit_inj:+.3f} to home logit.{inj_note}"),
+        "name":      "Injuries / absences",
+        "name_key":  "factor_injuries",
+        "values":    (f"Home severity {hi}/10, away severity {ai}/10 (net diff away−home: {inj_diff:+d})"),
+        "sentence":  (f"Net diff {inj_diff:+d} × manual weight {w_inj} = {logit_inj:+.3f} to home logit.{inj_note}"),
+        "sentence_he": inj_he,
         "direction": _dir(logit_inj) if w_inj != 0 else "neutral",
-        "logit_h":  logit_inj,
-        "inactive": w_inj == 0,
+        "logit_h":   logit_inj,
+        "inactive":  w_inj == 0,
     })
 
     return items
@@ -521,7 +571,8 @@ def predict():
             inj_diff = form_vals["away_injury"] - form_vals["home_injury"]
 
             prediction = predict_probs(features, mot_diff, inj_diff, model)
-            summary    = build_summary(features, form_vals, mot_diff, inj_diff, model)
+            summary    = build_summary(features, form_vals, mot_diff, inj_diff, model,
+                                       home=home, away=away)
 
     return render_template(
         "predict.html",
