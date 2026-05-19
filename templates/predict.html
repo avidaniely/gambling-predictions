@@ -165,15 +165,12 @@
 
     {# ── match context (shared — applies to both teams) ── #}
     <div class="section-head" style="margin-bottom:0.5rem;">{{ t.match_context_head }}</div>
-    <div style="display:flex; gap:2rem; margin-bottom:1.25rem;">
-      <label class="check-row">
-        <input type="checkbox" name="derby" value="1" {% if form.derby %}checked{% endif %}>
-        {{ t.derby_label.format(bonus=derby_bonus) }}
-      </label>
-      <label class="check-row">
-        <input type="checkbox" name="rivalry" value="1" {% if form.rivalry %}checked{% endif %}>
-        {{ t.rivalry_label.format(bonus=rivalry_bonus) }}
-      </label>
+    <div class="field" style="max-width:400px; margin-bottom:1.25rem;">
+      <select name="match_context">
+        <option value="none"    {% if form.match_context == 'none'    %}selected{% endif %}>{{ t.match_context_none }}</option>
+        <option value="rivalry" {% if form.match_context == 'rivalry' %}selected{% endif %}>{{ t.match_context_rivalry.format(bonus=rivalry_bonus) }}</option>
+        <option value="derby"   {% if form.match_context == 'derby'   %}selected{% endif %}>{{ t.match_context_derby.format(bonus=derby_bonus) }}</option>
+      </select>
     </div>
 
     {# ── injuries ── #}

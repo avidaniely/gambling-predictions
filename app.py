@@ -523,12 +523,11 @@ def predict():
     form_vals = {
         "home": request.args.get("home", ""),
         "away": request.args.get("away", ""),
-        "home_stake":  5,
-        "away_stake":  5,
-        "derby":       False,
-        "rivalry":     False,
-        "home_injury": 0,
-        "away_injury": 0,
+        "home_stake":    5,
+        "away_stake":    5,
+        "match_context": "none",
+        "home_injury":   0,
+        "away_injury":   0,
     }
 
     features   = None
@@ -542,21 +541,20 @@ def predict():
         away = request.form.get("away", "").strip()
 
         form_vals.update({
-            "home":        home,
-            "away":        away,
-            "home_stake":  int(request.form.get("home_stake", 5)),
-            "away_stake":  int(request.form.get("away_stake", 5)),
-            "derby":       bool(request.form.get("derby")),
-            "rivalry":     bool(request.form.get("rivalry")),
-            "home_injury": int(request.form.get("home_injury", 0)),
-            "away_injury": int(request.form.get("away_injury", 0)),
+            "home":          home,
+            "away":          away,
+            "home_stake":    int(request.form.get("home_stake", 5)),
+            "away_stake":    int(request.form.get("away_stake", 5)),
+            "match_context": request.form.get("match_context", "none"),
+            "home_injury":   int(request.form.get("home_injury", 0)),
+            "away_injury":   int(request.form.get("away_injury", 0)),
         })
 
         if home and away and home != away:
             features = get_features(home, away, latest_season, states, h2h_history)
 
-            match_bonus = ((DERBY_BONUS   if form_vals["derby"]   else 0)
-                           + (RIVALRY_BONUS if form_vals["rivalry"] else 0))
+            ctx = form_vals["match_context"]
+            match_bonus = DERBY_BONUS if ctx == "derby" else (RIVALRY_BONUS if ctx == "rivalry" else 0)
             home_mot = form_vals["home_stake"] + match_bonus
             away_mot = form_vals["away_stake"]
             mot_diff = home_mot - away_mot
